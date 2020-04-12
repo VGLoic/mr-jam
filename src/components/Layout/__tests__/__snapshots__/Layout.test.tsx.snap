@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Layout /> it should match snapshot: Layout 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="MuiGrid-root makeStyles-header-2 MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-around"
+      data-testid="header-container"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-grid-sm-3"
+        data-testid="nyan-cat-animation"
+      >
+        <img
+          alt="nyan-cat"
+          class="makeStyles-nyanCat-6"
+          src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
+        />
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-xs-9 MuiGrid-grid-sm-6"
+      >
+        <button
+          aria-label="Select a project"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+          data-testid="select-project-button"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Select a project
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-flex-end MuiGrid-grid-sm-3"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
+        >
+          <button
+            aria-label="Switch to light mode"
+            class="MuiButtonBase-root MuiIconButton-root"
+            data-testid="toggle-mode-button"
+            tabindex="0"
+            title="Switch to light mode"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <div
+            aria-label="Open user menu"
+            class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-5"
+            data-testid="user-avatar"
+          >
+            <img
+              alt="avatar-user"
+              class="MuiAvatar-img"
+              src="currentUserAvatarUrl"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <main
+      class="makeStyles-content-3"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1"
+        />
+        <div
+          class="MuiGrid-root makeStyles-itemContent-4 MuiGrid-item MuiGrid-grid-md-10"
+        >
+          <div
+            data-testid="children-test"
+          />
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1"
+        />
+      </div>
+    </main>
+  </div>
+</DocumentFragment>
+`;
