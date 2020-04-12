@@ -1,0 +1,11 @@
+{
+  "name": "mr-jam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "This repository contains the frontend and lamda functions code.",
+  "scripts": {
+    "build:fonctions": "cd functions && yarn build",
+    "build:frontend": "cd frontend && yarn build"
+  },
+  "license": "MIT"
+}
