@@ -29,7 +29,7 @@ const server = {
   ],
   resolve: {
     extensions: [".ts", ".js", ".json"],
-    // modules: [path.resolve("./lambda"), 'node_modules']
+    modules: [path.resolve("./lambda"), "node_modules"],
   },
   module: {
     rules: [{ test: /\.tsx?$/, loader: "ts-loader" }],
