@@ -3,4 +3,6 @@
   functions = "functions/dist" #  netlify-lambda reads this
   publish = "build"
 [[redirects]]
-  /*    /index.html   200
+  from = "/*"
+  to = "/index.html"
+  status = 200
