@@ -1,6 +1,6 @@
 [build]
   command = "yarn build"
-  functions = "functions/dist" #  netlify-lambda reads this
+  functions = "src/lambda/dist" #  netlify-lambda reads this
   publish = "build"
 [[redirects]]
   from = "/*"

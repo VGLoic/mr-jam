@@ -11,7 +11,7 @@ import {
 import AuthUtils from "utils/auth.utils";
 
 const httpLink: ApolloLink = new HttpLink({
-  uri: "/api",
+  uri: "/.netlify/functions/main",
 });
 
 const authMiddleware: ApolloLink = new ApolloLink(

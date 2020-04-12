@@ -5,11 +5,11 @@ const nodeExternals = require("webpack-node-externals");
 dotenv.config();
 
 const server = {
-  entry: path.resolve("./functions/src/main.ts"),
+  entry: path.resolve("./src/lambda/src/main.ts"),
   mode: process.env.NODE_ENV || "production",
   output: {
-    path: path.resolve("./functions/dist"),
-    filename: "graphql.js",
+    path: path.resolve("./src/lambda/dist"),
+    filename: "main.js",
   },
   optimization: {
     minimize: false,
@@ -23,20 +23,20 @@ const server = {
         "source-map-support/register",
         ...(process.env.DEBUG === "true" ? ["--inspect-brk"] : []),
       ],
-      script: "./functions/dist/graphql.js",
+      script: "./src/lambda/dist/main.js",
       outDir: "dist",
     }),
   ],
   resolve: {
     extensions: [".ts", ".js", ".json"],
-    // modules: [path.resolve("./functions"), 'node_modules']
+    // modules: [path.resolve("./lambda"), 'node_modules']
   },
   module: {
     rules: [{ test: /\.tsx?$/, loader: "ts-loader" }],
   },
   externals: [
     nodeExternals({
-      modulesDir: path.resolve("./functions/node_modules"),
+      modulesDir: path.resolve("./src/lambda/node_modules"),
     }),
   ],
   devtool: "source-map",

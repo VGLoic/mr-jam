@@ -17,8 +17,9 @@ function extractAccessToken(authorizationHeader: string): string {
   return accessToken;
 }
 
-export function contextFunction({ req }: any): BaseContext {
-  const accessToken: string = extractAccessToken(req.headers.authorization);
+export function contextFunction({ event }: any): BaseContext {
+  console.log("rest: ", event);
+  const accessToken: string = extractAccessToken(event.headers.authorization);
 
   if (!accessToken) {
     throw new AuthenticationError("Unauthorized. No access token detected.");
