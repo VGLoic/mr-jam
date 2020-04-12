@@ -1,6 +1,7 @@
 {
   "name": "mr-jam",
   "version": "0.1.0",
+  "license": "MIT",
   "dependencies": {
     "@apollo/client": "3.0.0-beta.38",
     "@date-io/date-fns": "1.x",
@@ -30,6 +31,7 @@
     "start": "react-scripts start",
     "start:dev": "react-scripts start",
     "start:lambda": "netlify-lambda serve -c src/lambda/webpack.config.js src/lambda",
+    "build:lambda": "netlify-lambda build -c src/lambda/webpack.config.js src/lambda",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:cover": "CI=true NODE_ENV=test react-scripts test --coverage --testResultsProcessor=jest-sonar-reporter --env=jest-environment-jsdom-sixteen",
