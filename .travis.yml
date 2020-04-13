@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+    - stable
+
+stages:
+    - test
+    # - build
+    # - name: deploy
+    #   if: branch = master
+
+install:
+    # install deps
+    - yarn install
+
+jobs:
+    include:
+        - stage: test
+          script: yarn test:cover
+          after_script: bash <(curl -s https://codecov.io/bash)
+
+        - stage: build
+          script:
+            # build docker images
+            - yarn build
