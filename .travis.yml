@@ -4,9 +4,9 @@ node_js:
 
 stages:
     - test
-    # - build
-    # - name: deploy
-    #   if: branch = master
+    - build
+    - name: deploy
+      if: branch = master
 
 install:
     # install deps
@@ -22,3 +22,12 @@ jobs:
           script:
             # build docker images
             - yarn build
+
+        - stage: deploy
+          provider: netlify
+          site: a2d722ce-ad9e-4849-a48d-78041460f264
+          dir: build
+          functions: src/lambda/dist
+          auth: $NETLIFY_AUTH_TOKEN
+          edge: true
+          prod: true
