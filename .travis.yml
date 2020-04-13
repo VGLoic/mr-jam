@@ -21,7 +21,7 @@ jobs:
         - stage: build
           script:
             # build app and functions
-            - yarn build
+            - yarn build:all
 
         # - stage: deploy
         #   provider: netlify
