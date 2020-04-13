@@ -57,7 +57,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -143,7 +142,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -229,7 +227,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -315,7 +312,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -401,7 +397,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -487,7 +482,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -573,7 +567,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -659,7 +652,6 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -757,7 +749,6 @@ exports[`<Header /> User query it should render without error: Header loaded wit
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
@@ -843,7 +834,6 @@ exports[`<Header /> User query it should render without error: Header loading 1`
               aria-hidden="true"
               class="MuiSvgIcon-root"
               focusable="false"
-              role="presentation"
               viewBox="0 0 24 24"
             >
               <path
