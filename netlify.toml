@@ -1,5 +1,5 @@
 [build]
-  command = "yarn build"
+  command = "yarn build:all"
   functions = "src/lambda/dist" #  netlify-lambda reads this
   publish = "build"
 [[redirects]]
