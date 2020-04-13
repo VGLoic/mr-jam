@@ -4,8 +4,8 @@ import { GitlabUser, User } from "./models";
 import { gitlabUserToUser } from "./mappers";
 
 export class UserAPI extends RESTDataSource {
-  constructor() {
-    super();
+  constructor(constructorArgs?: any) {
+    super(constructorArgs);
     this.baseURL = `https://gitlab.com/api/v4/user`;
   }
 
