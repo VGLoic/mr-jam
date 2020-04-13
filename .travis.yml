@@ -10,7 +10,7 @@ stages:
 
 install:
     # install deps
-    - yarn install
+    - yarn install && cd src/lambda && yarn install
 
 jobs:
     include:
@@ -20,7 +20,7 @@ jobs:
 
         - stage: build
           script:
-            # build docker images
+            # build app and functions
             - yarn build
 
         - stage: deploy
