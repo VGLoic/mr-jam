@@ -88,7 +88,8 @@
       "!**/src/index.ts",
       "!**/src/setupProxy.ts",
       "!**/src/setupTests.ts",
-      "!**/src/utils/serviceWorker.ts"
+      "!**/src/serviceWorker.ts",
+      "!**/src/services/apollo.service.ts"
     ]
   },
   "jestSonar": {
