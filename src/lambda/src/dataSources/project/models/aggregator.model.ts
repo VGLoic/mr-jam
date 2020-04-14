@@ -1,4 +1,4 @@
-import { User, GitlabUser } from "../../user";
+import { User } from "../../user";
 
 interface Namespace {
   id: number;
