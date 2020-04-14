@@ -1,6 +1,5 @@
 import { UserAPI } from "../user.api";
 import { gitlabUserTest, userTest } from "../../../__mocks__/mockData";
-import { RequestOptions } from "apollo-datasource-rest";
 
 describe("UserAPI", () => {
   test("getCurrentUser", async () => {

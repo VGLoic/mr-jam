@@ -19,8 +19,8 @@ import { User, GitlabUser, gitlabUserToUser } from "../user";
 import { MrStates } from "../../common/mr-constants";
 
 export class ProjectAPI extends RESTDataSource {
-  constructor() {
-    super();
+  constructor(constructorArgs?: any) {
+    super(constructorArgs);
     this.baseURL = `https://gitlab.com/api/v4/projects`;
   }
 
