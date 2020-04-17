@@ -7,9 +7,9 @@ import debounce from 'lodash/debounce';
 
 import Header from "../";
 
-import { CURRENT_USER } from "../controllers/currentUser.query";
 import { PROJECTS } from "../ProjectSelectionDialog/controllers/projects.query";
-import { CurrentUserData } from "../controllers/currentUser.types";
+import { CURRENT_USER } from "hooks/useUser/currentUser.query";
+import { CurrentUserData } from "hooks/useUser/currentUser.types";
 import { ProjectsData } from "../ProjectSelectionDialog/controllers/projects.types";
 
 jest.mock("lodash/debounce");
