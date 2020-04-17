@@ -2,8 +2,8 @@ import React from "react";
 import { render, waitFor, screen } from "test-utils";
 import Layout from "..";
 import { MockedProvider } from '@apollo/client/testing';
-import { CurrentUserData } from "components/Header/controllers/currentUser.types";
-import { CURRENT_USER } from "components/Header/controllers/currentUser.query";
+import { CURRENT_USER } from "hooks/useUser/currentUser.query";
+import { CurrentUserData } from "hooks/useUser/currentUser.types";
 
 
 describe("<Layout />", () => {

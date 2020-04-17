@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
 // UI Components
 import {
   Grid,
@@ -14,19 +13,16 @@ import {
 import { mdiBrightness6 } from "@mdi/js";
 // Components
 import ProjectSelectionDialog from "./ProjectSelectionDialog";
-// Query
-import { CURRENT_USER } from "./controllers/currentUser.query";
-// Types
-import { CurrentUserData } from "./controllers/currentUser.types";
 // Hooks
 import { useDialog } from "hooks/useDialog";
 // Styles
 import { useStyles } from "./styles";
 import { useTheme } from "contexts/theme";
+import { useUser } from "hooks/useUser";
 
 type HeaderProps = { className: string };
 const Header = ({ className }: HeaderProps) => {
-  const { loading, error, data } = useQuery<CurrentUserData>(CURRENT_USER);
+  const { loading, error, data } = useUser();
   const { open, toggleDialog } = useDialog();
 
   const { toggleMode, isDarkMode } = useTheme();
@@ -88,7 +84,7 @@ const Header = ({ className }: HeaderProps) => {
                   <Avatar
                     data-testid="user-avatar"
                     aria-label="Open user menu"
-                    src={data?.currentUser.avatarUrl}
+                    src={data?.avatarUrl}
                     alt="avatar-user"
                     className={classes.avatar}
                   />

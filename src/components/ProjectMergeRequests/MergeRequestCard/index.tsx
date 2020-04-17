@@ -18,11 +18,14 @@ import { mdiGitlab } from "@mdi/js";
 import { useStyles } from "./styles";
 // Types
 import { MergeRequest } from "../controllers/mergeRequests.types";
+import { useUser } from "hooks/useUser";
 
 interface MergeRequestProps {
   mergeRequest: MergeRequest;
 }
 const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
+  const { data } = useUser();
+
   const classes = useStyles();
 
   const dayAgo: number = 
@@ -31,8 +34,10 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
       new Date(mergeRequest.createdAt)
     )
 
+  const isUserAuthor = data?.id === mergeRequest.author.id;
+
   return (
-    <Grid item xs={12} key={mergeRequest.id}>
+    <Grid item xs={12}>
       <Card>
         <CardContent>
           <Box
@@ -40,9 +45,16 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Typography>
-              <strong>{mergeRequest.title}</strong>
-            </Typography>
+            <Box display="flex" alignItems="baseline">
+              <Typography>
+                <strong>{mergeRequest.title}</strong>
+              </Typography>
+              {isUserAuthor && (
+                <Typography className={classes.authorBadge} variant="caption">
+                  Author
+                </Typography>
+              )}
+            </Box>
             <Box display="flex">
               <Typography variant="subtitle2">Approvals:</Typography>
               <AvatarGroup className={classes.avatarGroup}>
