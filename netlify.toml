@@ -1,7 +1,7 @@
 [build]
   command = "yarn build:all"
-  functions = "packages/lambda/dist" #  netlify-lambda reads this
-  publish = "packages/client/build"
+  functions = "packages/lambda/dist/" #  netlify-lambda reads this
+  publish = "packages/client/build/"
 [[redirects]]
   from = "/*"
   to = "/index.html"
