@@ -3,8 +3,8 @@ node_js:
     - stable
 
 stages:
-    - test
-    - build
+    # - test
+    # - build
     - name: deploy
     #   if: branch = master
 
@@ -30,4 +30,5 @@ jobs:
           functions: packages/lambda/dist
           auth: $NETLIFY_AUTH_TOKEN
           edge: true
+          message: "COUCOU JE SUIS LA"
         #   prod: true
