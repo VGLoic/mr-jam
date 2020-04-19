@@ -3,9 +3,9 @@ node_js:
     - stable
 
 stages:
-    # - test
-    # - build
-    - name: deploy
+    - test
+    - build
+    # - name: deploy
     #   if: branch = master
 
 install:
@@ -23,12 +23,11 @@ jobs:
             # build app and functions
             - yarn build:all
 
-        - stage: deploy
-          provider: netlify
-          site: a2d722ce-ad9e-4849-a48d-78041460f264
-          dir: packages/client/build
-          functions: packages/lambda/dist
-          auth: $NETLIFY_AUTH_TOKEN
-          edge: true
-          message: "COUCOU JE SUIS LA"
+        # - stage: deploy
+        #   provider: netlify
+        #   site: a2d722ce-ad9e-4849-a48d-78041460f264
+        #   dir: packages/client/build
+        #   functions: packages/lambda/dist
+        #   auth: $NETLIFY_AUTH_TOKEN
+        #   edge: true
         #   prod: true
