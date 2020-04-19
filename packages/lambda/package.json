@@ -5,7 +5,8 @@
   "scripts": {
     "start": "netlify-lambda serve -c webpack.lambda.js .",
     "test": "NODE_ENV=test jest src --watch",
-    "test:cover": "NODE_ENV=test jest src --coverage"
+    "test:cover": "NODE_ENV=test jest src --coverage",
+    "build": "netlify-lambda build -c webpack.lambda.js ."
   },
   "dependencies": {
     "apollo-datasource-rest": "^0.6.9",
