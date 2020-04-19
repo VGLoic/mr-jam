@@ -5,10 +5,10 @@ const nodeExternals = require("webpack-node-externals");
 dotenv.config();
 
 const server = {
-  entry: path.resolve("./src/lambda/src/main.ts"),
+  entry: path.resolve(__dirname, "./src/main.ts"),
   mode: process.env.NODE_ENV || "production",
   output: {
-    path: path.resolve("./src/lambda/dist"),
+    path: path.resolve("./dist"),
     filename: "main.js",
   },
   optimization: {
@@ -16,27 +16,20 @@ const server = {
   },
   plugins: [
     new NodemonPlugin({
-      nodeArgs: [
-        "-r",
-        "dotenv/config",
-        "-r",
-        "source-map-support/register",
-        ...(process.env.DEBUG === "true" ? ["--inspect-brk"] : []),
-      ],
-      script: "./src/lambda/dist/main.js",
-      outDir: "dist",
-    }),
+      watch: path.resolve(__dirname, 'dist/main.js'),
+      ignore: ['*.js.map'],
+      script: path.resolve(__dirname, 'dist/main.js')
+    })
   ],
   resolve: {
     extensions: [".ts", ".js", ".json"],
-    modules: [path.resolve("./lambda"), "node_modules"],
   },
   module: {
     rules: [{ test: /\.tsx?$/, loader: "ts-loader" }],
   },
   externals: [
     nodeExternals({
-      modulesDir: path.resolve("./src/lambda/node_modules"),
+      modulesDir: path.resolve(__dirname, "../../node_modules"),
     }),
   ],
   devtool: "source-map",

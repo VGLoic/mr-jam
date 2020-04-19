@@ -1,100 +1,22 @@
 {
-  "name": "mr-jam",
+  "name": "mr-explorer-monorepo",
+  "private": true,
   "version": "0.1.0",
   "license": "MIT",
-  "dependencies": {
-    "@apollo/client": "3.0.0-beta.38",
-    "@date-io/date-fns": "1.x",
-    "@material-ui/core": "^4.9.5",
-    "@material-ui/lab": "^4.0.0-alpha.45",
-    "@material-ui/pickers": "^3.2.10",
-    "@mdi/js": "^5.0.45",
-    "@types/classnames": "^2.2.10",
-    "@types/jest": "^24.0.0",
-    "@types/lodash": "^4.14.149",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-router-dom": "^5.1.3",
-    "axios": "^0.19.2",
-    "classnames": "^2.2.6",
-    "date-fns": "^2.11.0",
-    "graphql": "^14.6.0",
-    "lodash": "^4.17.15",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
-    "typescript": "~3.7.2"
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "install:all": "cd src/lambda && yarn && cd ../.. && yarn",
-    "start:all": "npm-run-all --parallel start:app start:lambda",
-    "start:app": "react-scripts start",
-    "build:app": "react-scripts build",
-    "start:lambda": "netlify-lambda serve -c src/lambda/webpack.config.js src/lambda",
-    "build:lambda": "cd src/lambda && yarn && cd ../.. && netlify-lambda build -c src/lambda/webpack.config.js src/lambda",
-    "build:all": "yarn build:app && yarn build:lambda",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "test:cover": "CI=true NODE_ENV=test react-scripts test --coverage --testResultsProcessor=jest-sonar-reporter --env=jest-environment-jsdom-sixteen",
-    "lint": "eslint src",
-    "eject": "react-scripts eject",
-    "prettier": "prettier --write src/"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start:client": "yarn workspace client start",
+    "test:client": "yarn workspace client test",
+    "test:client:cover": "yarn workspace client test:cover",
+    "start:lambda": "yarn workspace lambda start",
+    "test:lambda": "yarn workspace lambda test",
+    "test:lambda:cover": "yarn workspace lambda test:cover",
+    "start:all": "npm-run-all --parallel start:client start:lambda",
+    "test:cover": "npm-run-all --parallel test:client:cover test:lambda:cover"
   },
   "devDependencies": {
-    "@testing-library/dom": "^7.1.3",
-    "@testing-library/jest-dom": "^5.3.0",
-    "@testing-library/react": "^10.0.1",
-    "@types/css-mediaquery": "^0.1.0",
-    "css-mediaquery": "^0.1.2",
-    "husky": ">=4",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jest-sonar-reporter": "^2.0.0",
-    "lint-staged": ">=10",
-    "netlify-lambda": "^1.6.3",
-    "npm-run-all": "^4.1.5",
-    "prettier": "2.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js,css,md}": "prettier --write"
-  },
-  "prettier": {
-    "useTabs": false,
-    "tabWidth": 2
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!**/src/index.ts",
-      "!**/src/setupProxy.ts",
-      "!**/src/setupTests.ts",
-      "!**/src/serviceWorker.ts",
-      "!**/src/services/apollo.service.ts"
-    ]
-  },
-  "jestSonar": {
-    "reportPath": "coverage",
-    "reportFile": "test-reporter.xml",
-    "indent": 4
+    "npm-run-all": "^4.1.5"
   }
 }

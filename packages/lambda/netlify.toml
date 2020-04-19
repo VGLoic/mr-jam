@@ -1,7 +1,7 @@
 [build]
   command = "yarn build:all"
-  functions = "src/lambda/dist" #  netlify-lambda reads this
-  publish = "build"
+  functions = "dist" #  netlify-lambda reads this
+  publish = "frontend/build"
 [[redirects]]
   from = "/*"
   to = "/index.html"
