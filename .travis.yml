@@ -10,7 +10,7 @@ stages:
 
 install:
     # install deps
-    - yarn install && cd src/lambda && yarn install && cd ../..
+    - yarn install
 
 jobs:
     include:
