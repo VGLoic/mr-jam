@@ -1,8 +1,2 @@
 [build]
-  command = "yarn build:all"
   functions = "dist" #  netlify-lambda reads this
-  publish = "frontend/build"
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
