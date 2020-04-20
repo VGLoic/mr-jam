@@ -10,13 +10,13 @@
     "start:client": "yarn workspace client start",
     "test:client": "yarn workspace client test",
     "test:client:cover": "yarn workspace client test:cover",
+    "start:all": "npm-run-all --parallel start:client start:lambda",
     "build:client": "yarn workspace client build",
     "start:lambda": "yarn workspace lambda start",
     "test:lambda": "yarn workspace lambda test",
     "test:lambda:cover": "yarn workspace lambda test:cover",
-    "build:lambda": "yarn workspace lambda build",
-    "start:all": "npm-run-all --parallel start:client start:lambda",
     "test:cover": "npm-run-all --parallel test:client:cover test:lambda:cover",
+    "build:lambda": "yarn workspace lambda build",
     "build:all": "yarn install && npm-run-all --parallel build:client build:lambda"
   },
   "devDependencies": {
