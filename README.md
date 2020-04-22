@@ -70,3 +70,24 @@ Builds the functions for production to the `packages/lambda/dist` folder.<br />
 
 Builds the functions and the client application for production.
 
+### `yarn contracts:compile`
+
+Compile the solidity contracts and create the JSON artifacts in `build/contracts`.
+
+### `yarn contracts:deploy:dev`
+
+Deploy the contracts on the `development` network.
+
+### `yarn contracts:console:dev`
+
+Launch the truffle console on the `development` network.
+
+### `yarn ganache:start`
+
+Launch a development blockchain associated to the `development` network on port `7545`.
+
+## Available blockchain networks
+
+### `development`
+
+Local network used to develop and test the smart contracts. The expected port is `7545`.

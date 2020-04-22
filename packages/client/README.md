@@ -4,7 +4,7 @@ In the project directory, you can run:
 
 ### `yarn install`
 
-Installs the dependencies for the client application and the lambda functions
+Installs the dependencies for the client application.
 
 ### `yarn start:client`
 
