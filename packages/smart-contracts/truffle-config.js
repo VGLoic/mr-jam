@@ -97,3 +97,8 @@ module.exports = {
     }
   }
 }
+
+
+// const setup = async () => {const projectRegistry = await ProjectRegistry.deployed();const projectHash = web3.utils.sha3("test");await projectRegistry.registerProject(projectHash);const projectAddress = await projectRegistry.registry(projectHash);const project = await Project.at(projectAddress);await project.addMember(accounts[1]);await project.addMember(accounts[2]);await project.addMember(accounts[3]);const mrId = 1;await project.contribute(mrId, 10);await project.contribute(mrId, 10, { from: accounts[1] });await project.addParticipant(accounts[2], mrId);await project.addParticipant(accounts[3], mrId);return project;}
+
+// const balanceOf = async (account) => (await project.balanceOf(account)).toString()
