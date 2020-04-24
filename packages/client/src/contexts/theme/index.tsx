@@ -18,7 +18,7 @@ interface IContext {
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ThemeContext: React.Context<any> = createContext(undefined);
+const ThemeContext: React.Context<IContext | undefined> = createContext(undefined as IContext | undefined );
 
 type ThemeProviderProps = any;
 export const ThemeProvider = (props: ThemeProviderProps) => {
@@ -39,7 +39,7 @@ interface UseTheme {
 }
 
 export const useTheme = () => {
-  const context: IContext = useContext(ThemeContext);
+  const context: IContext | undefined = useContext(ThemeContext);
   if (!context) {
     throw new Error("useTheme must be used in a child of the ThemeProvider");
   }

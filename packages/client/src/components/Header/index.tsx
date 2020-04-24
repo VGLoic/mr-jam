@@ -13,12 +13,13 @@ import {
 import { mdiBrightness6 } from "@mdi/js";
 // Components
 import ProjectSelectionDialog from "./ProjectSelectionDialog";
+import EthereumIndicator from "./EthereumIndicator";
 // Hooks
 import { useDialog } from "hooks/useDialog";
+import { useUser } from "hooks/useUser";
+import { useTheme } from "contexts/theme";
 // Styles
 import { useStyles } from "./styles";
-import { useTheme } from "contexts/theme";
-import { useUser } from "hooks/useUser";
 
 type HeaderProps = { className: string };
 const Header = ({ className }: HeaderProps) => {
@@ -65,6 +66,7 @@ const Header = ({ className }: HeaderProps) => {
         <Hidden xsDown>
           <Grid item container sm={3} justify="flex-end">
             <Grid item container justify="flex-end" alignItems="center">
+              <EthereumIndicator />
               <Tooltip
                 title={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
               >

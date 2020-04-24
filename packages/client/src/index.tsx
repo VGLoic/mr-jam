@@ -10,6 +10,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // Context
 import { AuthProvider } from "contexts/auth";
+import { EthersProvider } from "contexts/ethers";
 // Services
 import { client } from "./services/apollo.service";
 
@@ -18,7 +19,9 @@ ReactDOM.render(
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <ApolloProvider client={client}>
         <AuthProvider>
-          <App />
+          <EthersProvider>
+            <App />
+          </EthersProvider>
         </AuthProvider>
       </ApolloProvider>
     </MuiPickersUtilsProvider>

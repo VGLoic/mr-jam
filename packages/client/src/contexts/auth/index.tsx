@@ -14,7 +14,7 @@ interface IContext {
   isAuthInitialized: boolean;
 }
 
-const AuthContext: React.Context<any> = createContext(undefined);
+const AuthContext: React.Context<IContext | undefined> = createContext(undefined as IContext | undefined);
 
 type AuthProviderProps = any;
 export const AuthProvider = (props: AuthProviderProps) => {
@@ -65,7 +65,7 @@ export interface IAuth {
 }
 
 export const useAuth = (): IAuth => {
-  const context: IContext = useContext(AuthContext);
+  const context: IContext | undefined = useContext(AuthContext);
 
   if (!context) {
     throw new Error(
