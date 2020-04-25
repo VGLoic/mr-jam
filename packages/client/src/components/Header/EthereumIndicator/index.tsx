@@ -4,11 +4,9 @@ import classnames from "classnames";
 import {
     Tooltip,
     IconButton,
-    SvgIcon,
-    Typography,
-    Box
+    SvgIcon
 } from "@material-ui/core";
-import { mdiEthereum, mdiAlert } from "@mdi/js";
+import { mdiEthereum } from "@mdi/js";
 // Hooks
 import { useEthers, allowedNetworks } from "contexts/ethers";
 // Styles
@@ -16,7 +14,7 @@ import { useStyles } from "./styles";
 
 const networkString = Object.entries(allowedNetworks).reduce(
     (acc: string, [networkId, networkName]): string => {
-        const networkAddition = `${networkName} (id ${networkId})`;
+        const networkAddition = `${networkName} (ID ${networkId})`;
         if (acc) {
             return `${acc}, ${networkAddition}`;
         }
@@ -30,16 +28,26 @@ const EthereumIndicator = () => {
 
     const classes = useStyles();
 
+    if (!isMetaMaskDetected) {
+        return (
+            <Tooltip title="MetaMask extension is needed in order to use blockchain features.">
+                <SvgIcon
+                    aria-label="MetaMask extension is needed in order to use blockchain features."
+                    className={classnames(classes.notFound, classes.aloneIcon)}
+                >
+                    <path d={mdiEthereum} />
+                </SvgIcon>
+            </Tooltip>
+        )
+    }
+
     if (!isEnabled) {
         return (
-            <Tooltip
-                title="Enable MetaMask"
-            >
+            <Tooltip title="Enable MetaMask">
                 <IconButton
-                data-testid="enable-metamask-button"
-                aria-label="Enable MetaMask"
-                onClick={enableMetaMask}
-                disabled={!isMetaMaskDetected}
+                    data-testid="enable-metamask-button"
+                    aria-label="Enable MetaMask"
+                    onClick={enableMetaMask}
                 >
                     <SvgIcon>
                         <path d={mdiEthereum} />
@@ -48,31 +56,30 @@ const EthereumIndicator = () => {
             </Tooltip>
         )
     }
+
     if (!isNetworkAllowed) {
         return (
-            <Tooltip
-                title={`Please, change on one of the following networks ${networkString}.`}
-            >
-                <Box
-                    display="flex"
-                    alignItems="center"
-                    className={classes.networkBadgeContainer}
+            <Tooltip title={`Please, change on one of the allowed following networks ${networkString}.`}>
+                <SvgIcon
+                    aria-label={`Please, change on one of the following networks ${networkString}.`}
+                    className={classnames(classes.wrongNetwork, classes.aloneIcon)}
                 >
-                    <SvgIcon
-                        fontSize="inherit"
-                        className={classnames(classes.networkBadgeContent, classes.networkBadgeIcon)}
-                    >
-                        <path d={mdiAlert} />
-                    </SvgIcon>
-                    <Typography className={classes.networkBadgeContent} variant="caption">
-                        Network not allowed
-                    </Typography>
-                </Box>
+                    <path d={mdiEthereum} />
+                </SvgIcon>
             </Tooltip>
         )
     }
 
-    return null;
+    return (
+        <Tooltip title="MetaMask is properly setup">
+            <SvgIcon
+                aria-label="MetaMask is properly setup"
+                className={classnames(classes.correctNetwork, classes.aloneIcon)}
+            >
+                <path d={mdiEthereum} />
+            </SvgIcon>
+        </Tooltip>
+    );
 }
 
 export default EthereumIndicator;

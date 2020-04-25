@@ -12,7 +12,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -42,6 +42,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -70,7 +82,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -97,7 +109,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -127,6 +139,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -155,7 +179,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -182,7 +206,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -212,6 +236,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -240,7 +276,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -267,7 +303,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -297,6 +333,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -325,7 +373,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -352,7 +400,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -382,6 +430,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -410,7 +470,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -437,7 +497,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -467,6 +527,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -495,7 +567,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -522,7 +594,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -552,6 +624,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -580,7 +664,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -607,7 +691,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-843"
+        class="makeStyles-nyanCat-859"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -637,6 +721,18 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -665,7 +761,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-842"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
           data-testid="user-avatar"
         >
           <img
@@ -704,7 +800,7 @@ exports[`<Header /> User query it should render without error: Header loaded wit
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-210"
+        class="makeStyles-nyanCat-214"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -734,6 +830,18 @@ exports[`<Header /> User query it should render without error: Header loaded wit
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-382 makeStyles-aloneIcon-383"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"
@@ -762,7 +870,7 @@ exports[`<Header /> User query it should render without error: Header loaded wit
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-209"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-213"
           data-testid="user-avatar"
         >
           <img
@@ -789,7 +897,7 @@ exports[`<Header /> User query it should render without error: Header loading 1`
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-210"
+        class="makeStyles-nyanCat-214"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -819,6 +927,18 @@ exports[`<Header /> User query it should render without error: Header loading 1`
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-flex-end"
       >
+        <svg
+          aria-hidden="true"
+          aria-label="MetaMask is properly setup"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-382 makeStyles-aloneIcon-383"
+          focusable="false"
+          title="MetaMask is properly setup"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
         <button
           aria-label="Switch to light mode"
           class="MuiButtonBase-root MuiIconButton-root"

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EthereumIndicator /> when MetaMask is not detected: MetaMask not detected 1`] = `
+<DocumentFragment>
+  <div>
+    <svg
+      aria-hidden="true"
+      aria-label="MetaMask extension is needed in order to use blockchain features."
+      class="MuiSvgIcon-root makeStyles-notFound-1 makeStyles-aloneIcon-4"
+      focusable="false"
+      title="MetaMask extension is needed in order to use blockchain features."
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<EthereumIndicator /> when MetaMask is not enabled: MetaMask not enabled 1`] = `
+<DocumentFragment>
+  <div>
+    <button
+      aria-label="Enable MetaMask"
+      class="MuiButtonBase-root MuiIconButton-root"
+      data-testid="enable-metamask-button"
+      tabindex="0"
+      title="Enable MetaMask"
+      type="button"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+          />
+        </svg>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<EthereumIndicator /> when network is not allowed: Network not allowed 1`] = `
+<DocumentFragment>
+  <div>
+    <svg
+      aria-hidden="true"
+      aria-label="Please, change on one of the following networks development (ID 5777)."
+      class="MuiSvgIcon-root makeStyles-wrongNetwork-72 makeStyles-aloneIcon-74"
+      focusable="false"
+      title="Please, change on one of the allowed following networks development (ID 5777)."
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

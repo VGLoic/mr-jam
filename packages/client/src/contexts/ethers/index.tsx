@@ -1,8 +1,9 @@
 import React, { createContext, Context, useContext, useState, useEffect } from "react";
 import { ethers,  } from "ethers";
 
-interface IEthereum {
+export interface IEthereum {
     isMetaMask: boolean;
+    networkVersion: string;
     selectedAddress: string | null;
     enable: () => Promise<void>;
     on: (eventName: string, callback: (args: any) => any) => void;
@@ -11,7 +12,7 @@ interface IEthereum {
 
 type Ethereum = IEthereum | null;
 
-interface IContext {
+export interface IEthersContext {
     ethereum: Ethereum;
     isMetaMaskDetected: boolean;
     isEnabled: boolean;
@@ -20,7 +21,7 @@ interface IContext {
     provider: ethers.providers.Web3Provider | null
 }
 
-const EthersContext: Context<IContext | undefined> = createContext(undefined as IContext | undefined);
+const EthersContext: Context<IEthersContext | undefined> = createContext(undefined as IEthersContext | undefined);
 
 type EthersProviderProps = any;
 
@@ -28,13 +29,24 @@ export const allowedNetworks: Record<number, string> = {
     5777: "development"
 };
 
+export const METAMASK_ENABLED_KEY: string = "mr-explorer_metamask_enabled";
+export const METAMASK_ENABLED_VALUE: string = "yeay";
+
 export const EthersProvider = (props: EthersProviderProps) => {
     const ethereum: Ethereum = (window as any).ethereum || null;
 
     const isMetaMaskDetected = Boolean(ethereum?.isMetaMask);
 
-    const [isEnabled, setIsEnabled] = useState<boolean>(false);
-    const [isNetworkAllowed, setIsNetworkAllowed] = useState<boolean>(false);
+    const [isEnabled, setIsEnabled] = useState<boolean>(
+        localStorage.getItem(METAMASK_ENABLED_KEY) === METAMASK_ENABLED_VALUE
+    );
+
+    const [isNetworkAllowed, setIsNetworkAllowed] = useState<boolean>(
+        Boolean(
+            ethereum?.networkVersion &&
+            ethereum.networkVersion in allowedNetworks
+        )
+    );
 
     useEffect((): () => void => {
         const onAccountsChanged = (accounts: string[]): void => {
@@ -53,7 +65,7 @@ export const EthersProvider = (props: EthersProviderProps) => {
 
     const provider = ethereum ? new ethers.providers.Web3Provider(ethereum) : null;
 
-    const value: IContext = {
+    const value: IEthersContext = {
         ethereum,
         isMetaMaskDetected,
         isEnabled,
@@ -65,7 +77,7 @@ export const EthersProvider = (props: EthersProviderProps) => {
     return <EthersContext.Provider value={value} {...props} />
 }
 
-interface UseEthers {
+export interface UseEthers {
     isMetaMaskDetected: boolean;
     isEnabled: boolean;
     enableMetaMask: () => Promise<void>;
@@ -74,7 +86,7 @@ interface UseEthers {
 }
 
 export const useEthers = (): UseEthers => {
-    const context: IContext | undefined = useContext(EthersContext);
+    const context: IEthersContext | undefined = useContext(EthersContext);
 
     if (!context) {
         throw new Error(
@@ -86,8 +98,10 @@ export const useEthers = (): UseEthers => {
         try {
             await context.ethereum?.enable();
             context.setIsEnabled(true);
+            localStorage.setItem(METAMASK_ENABLED_KEY, METAMASK_ENABLED_VALUE);
         } catch (err) {
             console.error("User has canceled the connection request. MetaMask error: ", err);
+            localStorage.removeItem(METAMASK_ENABLED_KEY);
         }
     }
 

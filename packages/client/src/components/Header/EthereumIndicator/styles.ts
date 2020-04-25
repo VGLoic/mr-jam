@@ -1,23 +1,25 @@
 import { makeStyles, Theme } from "@material-ui/core";
 
 const styles = ({ spacing, palette }: Theme): Styles => ({
-    networkBadgeContainer: {
-        border: `1px solid ${palette.warning.main}`,
-        padding: `${spacing(1)}px`,
-        borderRadius: `${spacing(2)}px`,
+    notFound: {
+        color: palette.error.main
     },
-    networkBadgeContent: {
-        color: palette.warning.main,
+    wrongNetwork: {
+        color: palette.warning.main
     },
-    networkBadgeIcon: {
-        marginRight: `${spacing(1)}px`
+    correctNetwork: {
+        color: palette.success.main
+    },
+    aloneIcon: {
+        margin: `0 ${spacing(1) + spacing(1) / 2}px`
     }
 });
 
 export interface Styles {
-    networkBadgeContainer: any;
-    networkBadgeContent: any;
-    networkBadgeIcon: any;
+    notFound: any;
+    wrongNetwork: any;
+    correctNetwork: any;
+    aloneIcon: any;
 }
 
 export const useStyles = makeStyles(styles);
