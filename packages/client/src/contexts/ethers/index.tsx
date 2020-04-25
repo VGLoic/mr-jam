@@ -50,7 +50,10 @@ export const EthersProvider = (props: EthersProviderProps) => {
 
     useEffect((): () => void => {
         const onAccountsChanged = (accounts: string[]): void => {
-            if (accounts.length === 0) setIsEnabled(false);
+            if (accounts.length === 0) {
+                localStorage.removeItem(METAMASK_ENABLED_KEY);
+                setIsEnabled(false);
+            }
         }
         const onNetworkChanged = (networkId: number): void => {
             setIsNetworkAllowed(networkId in allowedNetworks);

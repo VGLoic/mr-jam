@@ -84,6 +84,7 @@ describe("<EthersProvider />", () => {
                     trigger("accountsChanged");
                 });
                 expect(result.current.isEnabled).toEqual(false);
+                expect(localStorage.getItem(METAMASK_ENABLED_KEY)).toEqual(null);
                 // Clear local storage for safety
                 localStorage.removeItem(METAMASK_ENABLED_KEY);
             });
