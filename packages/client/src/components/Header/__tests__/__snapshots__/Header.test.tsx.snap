@@ -12,7 +12,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -45,7 +45,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -109,7 +109,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -142,7 +142,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -179,7 +179,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -206,7 +206,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -239,7 +239,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -276,7 +276,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -303,7 +303,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -336,7 +336,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -373,7 +373,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -400,7 +400,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -433,7 +433,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -470,7 +470,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -497,7 +497,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -530,7 +530,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -567,7 +567,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -594,7 +594,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -627,7 +627,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -664,7 +664,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -691,7 +691,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-859"
+        class="makeStyles-nyanCat-867"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -724,7 +724,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-1027 makeStyles-aloneIcon-1028"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-1036 makeStyles-aloneIcon-1037"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -761,7 +761,7 @@ exports[`<Header /> Selection of a project when there is no error, we should be 
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-858"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-866"
           data-testid="user-avatar"
         >
           <img
@@ -800,7 +800,7 @@ exports[`<Header /> User query it should render without error: Header loaded wit
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-214"
+        class="makeStyles-nyanCat-216"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -833,7 +833,7 @@ exports[`<Header /> User query it should render without error: Header loaded wit
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-382 makeStyles-aloneIcon-383"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-385 makeStyles-aloneIcon-386"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"
@@ -870,7 +870,7 @@ exports[`<Header /> User query it should render without error: Header loaded wit
         </button>
         <div
           aria-label="Open user menu"
-          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-213"
+          class="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-215"
           data-testid="user-avatar"
         >
           <img
@@ -897,7 +897,7 @@ exports[`<Header /> User query it should render without error: Header loading 1`
     >
       <img
         alt="nyan-cat"
-        class="makeStyles-nyanCat-214"
+        class="makeStyles-nyanCat-216"
         src="https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif"
       />
     </div>
@@ -930,7 +930,7 @@ exports[`<Header /> User query it should render without error: Header loading 1`
         <svg
           aria-hidden="true"
           aria-label="MetaMask is properly setup"
-          class="MuiSvgIcon-root makeStyles-correctNetwork-382 makeStyles-aloneIcon-383"
+          class="MuiSvgIcon-root makeStyles-correctNetwork-385 makeStyles-aloneIcon-386"
           focusable="false"
           title="MetaMask is properly setup"
           viewBox="0 0 24 24"

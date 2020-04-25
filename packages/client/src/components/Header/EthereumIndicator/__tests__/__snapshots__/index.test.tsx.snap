@@ -6,7 +6,7 @@ exports[`<EthereumIndicator /> when MetaMask is not detected: MetaMask not detec
     <svg
       aria-hidden="true"
       aria-label="MetaMask extension is needed in order to use blockchain features."
-      class="MuiSvgIcon-root makeStyles-notFound-1 makeStyles-aloneIcon-4"
+      class="MuiSvgIcon-root makeStyles-notFound-1 makeStyles-aloneIcon-5"
       focusable="false"
       title="MetaMask extension is needed in order to use blockchain features."
       viewBox="0 0 24 24"
@@ -35,7 +35,7 @@ exports[`<EthereumIndicator /> when MetaMask is not enabled: MetaMask not enable
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root"
+          class="MuiSvgIcon-root makeStyles-notEnabled-28"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -58,7 +58,7 @@ exports[`<EthereumIndicator /> when network is not allowed: Network not allowed 
     <svg
       aria-hidden="true"
       aria-label="Please, change on one of the following networks development (ID 5777)."
-      class="MuiSvgIcon-root makeStyles-wrongNetwork-72 makeStyles-aloneIcon-74"
+      class="MuiSvgIcon-root makeStyles-wrongNetwork-77 makeStyles-aloneIcon-79"
       focusable="false"
       title="Please, change on one of the allowed following networks development (ID 5777)."
       viewBox="0 0 24 24"

@@ -49,7 +49,7 @@ const EthereumIndicator = () => {
                     aria-label="Enable MetaMask"
                     onClick={enableMetaMask}
                 >
-                    <SvgIcon>
+                    <SvgIcon className={classes.notEnabled}>
                         <path d={mdiEthereum} />
                     </SvgIcon>
                 </IconButton>
