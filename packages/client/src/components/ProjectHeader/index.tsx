@@ -16,6 +16,8 @@ import {
   CircularProgress
 } from "@material-ui/core";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
+// Components
+import ProjectMemberShip from "./ProjectMembership";
 // Hooks
 import { useDialog } from "hooks/useDialog";
 // Query
@@ -77,7 +79,7 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
   return (
     <>
       <Grid item container xs={12} direction="row" justify="space-between">
-        <Grid item container sm={8}>
+        <Grid item container sm={5}>
           <Typography
             variant="h6"
             component="h6"
@@ -128,6 +130,11 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
               ))
             )}
           </AvatarGroup>
+        </Grid>
+        <Grid item container sm={3} alignItems="center">
+          <ProjectMemberShip
+            projectName={project.name}
+          />
         </Grid>
         <Grid item container sm={4} justify="flex-end">
           <Typography

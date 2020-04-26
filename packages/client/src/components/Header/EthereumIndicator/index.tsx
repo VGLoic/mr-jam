@@ -8,7 +8,8 @@ import {
 } from "@material-ui/core";
 import { mdiEthereum } from "@mdi/js";
 // Hooks
-import { useEthers, allowedNetworks } from "contexts/ethers";
+import { useEthers } from "contexts/ethers";
+import { allowedNetworks } from "contexts/ethers/config";
 // Styles
 import { useStyles } from "./styles";
 

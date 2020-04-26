@@ -1,5 +1,6 @@
 import React, { createContext, Context, useContext, useState, useEffect } from "react";
 import { ethers,  } from "ethers";
+import { allowedNetworks } from "./config";
 
 export interface IEthereum {
     isMetaMask: boolean;
@@ -24,10 +25,6 @@ export interface IEthersContext {
 const EthersContext: Context<IEthersContext | undefined> = createContext(undefined as IEthersContext | undefined);
 
 type EthersProviderProps = any;
-
-export const allowedNetworks: Record<number, string> = {
-    5777: "development"
-};
 
 export const METAMASK_ENABLED_KEY: string = "mr-explorer_metamask_enabled";
 export const METAMASK_ENABLED_VALUE: string = "yeay";
@@ -66,7 +63,7 @@ export const EthersProvider = (props: EthersProviderProps) => {
         }
     }, [ethereum]);
 
-    const provider = ethereum ? new ethers.providers.Web3Provider(ethereum) : null;
+    const provider = (ethereum && isEnabled && isNetworkAllowed) ? new ethers.providers.Web3Provider(ethereum) : null;
 
     const value: IEthersContext = {
         ethereum,

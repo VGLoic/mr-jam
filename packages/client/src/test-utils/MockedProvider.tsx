@@ -7,6 +7,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "contexts/theme";
 import { EthersProvider, IEthersContext } from "contexts/ethers";
 
+const mockProvider: any = {
+    getNetwork: () => 1
+} 
+
 const defaultMockEthersContext: IEthersContext = {
     ethereum: {
         isMetaMask: true,
@@ -20,7 +24,7 @@ const defaultMockEthersContext: IEthersContext = {
     isEnabled: true,
     setIsEnabled: () => {},
     isNetworkAllowed: true,
-    provider: ({} as ethers.providers.Web3Provider)
+    provider: (mockProvider as ethers.providers.Web3Provider)
 } 
 
 export interface MockedProviderProps {
