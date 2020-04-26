@@ -31,7 +31,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -157,7 +158,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -181,7 +183,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -205,7 +208,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -234,7 +238,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"addParticipant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestClosed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestMerged\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestOpened\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"isParticipant\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"removeParticipant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"updateStateToClosed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"projectHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"updateStateToMerged\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"addParticipant(bytes32,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\",\"userId\":\"Gitlab ID of the user\"}},\"isMergeRequestClosed(bytes32,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\"},\"returns\":{\"_0\":\"{bool} True if the merge request is in Closed state\"}},\"isMergeRequestMerged(bytes32,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\"},\"returns\":{\"_0\":\"{bool} True if the merge request is in Merged state\"}},\"isMergeRequestOpened(bytes32,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\"},\"returns\":{\"_0\":\"True if the merge request is in Opened state\"}},\"isParticipant(bytes32,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\",\"userId\":\"Gitlab ID of the user\"},\"returns\":{\"_0\":\"{bool} True if the user belongs to the participants\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"removeParticipant(bytes32,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\",\"userId\":\"Gitlab ID of the user\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"updateStateToClosed(bytes32,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\"}},\"updateStateToMerged(bytes32,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectHash\":\"Hash of the project\"}}}},\"userdoc\":{\"methods\":{\"addParticipant(bytes32,uint256,uint256)\":{\"notice\":\"Add a participant to a merge request of a project\"},\"isMergeRequestClosed(bytes32,uint256)\":{\"notice\":\"Check if a merge request of a project is in Closed state\"},\"isMergeRequestMerged(bytes32,uint256)\":{\"notice\":\"Check if a merge request of a project is in Merged state\"},\"isMergeRequestOpened(bytes32,uint256)\":{\"notice\":\"Check if a merge request of a project is in Opened state\"},\"isParticipant(bytes32,uint256,uint256)\":{\"notice\":\"Check if a user is a participant to a merge request of a project\"},\"removeParticipant(bytes32,uint256,uint256)\":{\"notice\":\"Remove a participant to a merge request of a project\"},\"updateStateToClosed(bytes32,uint256)\":{\"notice\":\"Update the state of a merge request of a project to Closed\"},\"updateStateToMerged(bytes32,uint256)\":{\"notice\":\"Update the state of a merge request of a project to Merged\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol\":\"Oracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol\":{\"keccak256\":\"0xa8e6a9b59513ed2a861360ca4933d31f970867d14042f1caba5c6be4ba385468\",\"urls\":[\"bzz-raw://235785695acc4bc68d83da3c8d1a986f3707f17503996c11a3b0f0b7b7d8f4bb\",\"dweb:/ipfs/QmTJHV6Mt3LYEkToDh1agNRTjBuRGok1VUHZSHtNESKvHN\"]},\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x0de74dfa6b37943c1b834cbd8fb7a8d052e5ff80c7adb33692102dd6cd2985e9\",\"urls\":[\"bzz-raw://9d2d827fcf4a838f5821732c0acd6a40d21c2a5a2cfe2563feec91465f47bb60\",\"dweb:/ipfs/Qmex3wMKf5Sghbfvr288RUg1kP2uAyTMf11w83WbMbpQQc\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x9a8c691b81a4a48adbbd5b010faa56a168c189e711495c16347d93b60b805f82\",\"urls\":[\"bzz-raw://d951d626ed7bfe1a2d7a6bd4af315ff8691929bd567594d6ab53599fe9e17e4e\",\"dweb:/ipfs/QmYkGeowpa6Bjr9aaDirWdDo7hSfShzzZhanKC4nTfRhLj\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0x7f6401708b61f575b497aa7c8118ca9d70348643c83c26e70d9b643edf1a95c1\",\"urls\":[\"bzz-raw://b020d65f592c1715bc3d5799ad835cd975ef7d314f340f27603fb99ad86a0427\",\"dweb:/ipfs/QmQoGZmzE5aDTMGJM4BW77eraerfTSV9Rs8wykpQ42i1in\"]}},\"version\":1}",
@@ -4992,9 +4997,37 @@
     "name": "solc",
     "version": "0.6.2+commit.bacdbe57.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xF4a01d9eED32464222Ce76a099Bf2b8672eadf4c",
+      "transactionHash": "0x4cb2b00471cb38d0ad7317e913865f55ba28e3a2b0e9ea455e6bc5b0d013bf52"
+    }
+  },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-04-26T14:39:33.465Z",
+  "updatedAt": "2020-04-26T16:46:42.107Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "addParticipant(bytes32,uint256,uint256)": {

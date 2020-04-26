@@ -1,23 +1,17 @@
 import { ethers } from "ethers";
 import { useEffect, useReducer, useCallback } from "react";
 // Hooks
-import { useEthers } from "./";
+import { useMemoizedValue } from "hooks/useMemoizedValue";
+import { useEthers } from ".";
 // Config
 import { Contracts, contractMetadatas } from "./config";
-import { useMemoizedValue } from "hooks/useMemoizedValue";
 
-interface UseCallArgs {
-    contract: Contracts;
-    method: string;
-    address?: string;
-    args?: any[]
-}
 
 interface IState {
     unable: boolean;
     loading: boolean;
     error: string | null;
-    data: any | null;
+    data: ethers.Contract | null;
 }
 
 interface Action {
@@ -27,12 +21,21 @@ interface Action {
 
 const initialState: IState = {
     unable: false,
-    loading: true,
+    loading: false,
     error: null,
     data: null
 };
 
-const LOADING = "LOADING_TYPE";
+export interface UseTransactionArgs {
+    contract: Contracts;
+    method: string;
+    address?: string;
+    args?: any[];
+}
+
+export interface UseTransaction extends Array<(() => Promise<void>) | IState>{0: () => Promise<void>; 1: IState};
+
+const LOADING = "LOADING";
 const ERROR = "ERROR_TYPE";
 const SUCCESS = "SUCCESS_TYPE";
 const UNABLE = "UNABLE_TYPE";
@@ -44,8 +47,8 @@ const reducer = (state: IState, action: Action): IState => {
                 unable: false,
                 loading: true,
                 error: null,
-                data: state.data,
-            }
+                data: null
+            };
         case ERROR:
             return {
                 unable: false,
@@ -72,23 +75,23 @@ const reducer = (state: IState, action: Action): IState => {
     }
 }
 
-export interface UseCall extends IState {
-    refetch: () => Promise<void>
-}
-
-export const useCall = (hookArgs: UseCallArgs): UseCall => {
+export const useTransaction = (hookArgs: UseTransactionArgs): UseTransaction => {
     const memoizedHookArgs = useMemoizedValue(hookArgs);
 
     const { provider } = useEthers();
 
     const [state, dispatch] = useReducer<(state: IState, action: Action) => IState>(reducer, initialState);
 
-    const call: () => Promise<void> = useCallback(async () => {
+    useEffect(() => {
+        if (!provider) {
+            dispatch({ type: UNABLE });
+            return;
+        }
+    }, [provider]);
+
+    const sendTransaction = useCallback(async (): Promise<void> => {
+        if (!provider) return;
         try {
-            if (!provider) {
-                dispatch({ type: UNABLE });
-                return;
-            }
             const network: ethers.utils.Network = await provider.getNetwork();
             const contractAddress: string | undefined = memoizedHookArgs.address || contractMetadatas[memoizedHookArgs.contract]?.networks?.[network.chainId];
 
@@ -99,16 +102,24 @@ export const useCall = (hookArgs: UseCallArgs): UseCall => {
                 });
                 return;
             }
-            const contract = new ethers.Contract(contractAddress, contractMetadatas[memoizedHookArgs.contract].abi, provider);
-            const data: any = memoizedHookArgs.args
+
+            const contract = new ethers.Contract(contractAddress, contractMetadatas[memoizedHookArgs.contract].abi, provider.getSigner());
+
+            const tx = memoizedHookArgs.args
                 ? await contract[memoizedHookArgs.method](...memoizedHookArgs.args)
                 : await contract[memoizedHookArgs.method]();
+
+            dispatch({
+                type: LOADING
+            })
+            
+            const receipt = await tx.wait();
             dispatch({
                 type: SUCCESS,
-                payload: data
+                payload: receipt
             });
         } catch (err) {
-            console.error("Error during useCall: ", err);
+            console.error("Error during useTransaction: ", err);
             dispatch({
                 type: ERROR,
                 payload: err.message
@@ -116,17 +127,8 @@ export const useCall = (hookArgs: UseCallArgs): UseCall => {
         }
     }, [memoizedHookArgs, provider]);
 
-    const refetch: () => Promise<void> = useCallback(async () => {
-        dispatch({ type: LOADING });
-        await call();
-    }, [call, dispatch])
-
-    useEffect(() => {
-        call();
-    }, [call]);
-
-    return {
-        ...state,
-        refetch
-    };
+    return [
+        sendTransaction,
+        state
+    ];
 }

@@ -4,7 +4,7 @@ import { CircularProgress, Typography, Button } from "@material-ui/core";
 
 type ProjectMembershipProps = { projectName: string };
 const ProjectMembership = ({ projectName }: ProjectMembershipProps) => {
-    const { unable, loading, error, projectAddress } = useProjectMembership(projectName);
+    const { createProject, unable, loading, error, projectAddress } = useProjectMembership(projectName);
 
     if (unable) return null;
 
@@ -31,7 +31,7 @@ const ProjectMembership = ({ projectName }: ProjectMembershipProps) => {
     
     if (!projectAddress) {
         return (
-            <Button>
+            <Button onClick={createProject}>
                 Create a Game
             </Button>
         )
