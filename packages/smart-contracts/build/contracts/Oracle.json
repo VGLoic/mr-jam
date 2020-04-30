@@ -276,7 +276,7 @@
         "id": 39,
         "nodeType": "ImportDirective",
         "scope": 228,
-        "sourceUnit": 1930,
+        "sourceUnit": 1989,
         "src": "25:57:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -287,7 +287,7 @@
         "id": 40,
         "nodeType": "ImportDirective",
         "scope": 228,
-        "sourceUnit": 746,
+        "sourceUnit": 805,
         "src": "83:52:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -302,10 +302,10 @@
               "id": 41,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 745,
+              "referencedDeclaration": 804,
               "src": "156:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$745",
+                "typeIdentifier": "t_contract$_Ownable_$804",
                 "typeString": "contract Ownable"
               }
             },
@@ -315,8 +315,8 @@
           }
         ],
         "contractDependencies": [
-          642,
-          745
+          701,
+          804
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -324,8 +324,8 @@
         "id": 227,
         "linearizedBaseContracts": [
           227,
-          745,
-          642
+          804,
+          701
         ],
         "name": "Oracle",
         "nodeType": "ContractDefinition",
@@ -337,10 +337,10 @@
               "id": 43,
               "name": "EnumerableSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1929,
+              "referencedDeclaration": 1988,
               "src": "176:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EnumerableSet_$1929",
+                "typeIdentifier": "t_contract$_EnumerableSet_$1988",
                 "typeString": "library EnumerableSet"
               }
             },
@@ -351,10 +351,10 @@
               "id": 44,
               "name": "EnumerableSet.UintSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1839,
+              "referencedDeclaration": 1898,
               "src": "194:21:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_UintSet_$1839_storage_ptr",
+                "typeIdentifier": "t_struct$_UintSet_$1898_storage_ptr",
                 "typeString": "struct EnumerableSet.UintSet"
               }
             }
@@ -430,7 +430,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_UintSet_$1839_storage_ptr",
+                  "typeIdentifier": "t_struct$_UintSet_$1898_storage_ptr",
                   "typeString": "struct EnumerableSet.UintSet"
                 },
                 "typeName": {
@@ -438,10 +438,10 @@
                   "id": 52,
                   "name": "EnumerableSet.UintSet",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1839,
+                  "referencedDeclaration": 1898,
                   "src": "340:21:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_UintSet_$1839_storage_ptr",
+                    "typeIdentifier": "t_struct$_UintSet_$1898_storage_ptr",
                     "typeString": "struct EnumerableSet.UintSet"
                   }
                 },
@@ -632,7 +632,7 @@
                         "referencedDeclaration": 53,
                         "src": "783:46:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$1839_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$1898_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -643,10 +643,10 @@
                       "lValueRequested": false,
                       "memberName": "add",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1858,
+                      "referencedDeclaration": 1917,
                       "src": "783:50:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1839_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1839_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1898_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1898_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -686,7 +686,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "763:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -910,7 +910,7 @@
                         "referencedDeclaration": 53,
                         "src": "1174:46:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$1839_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$1898_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -921,10 +921,10 @@
                       "lValueRequested": false,
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1877,
+                      "referencedDeclaration": 1936,
                       "src": "1174:53:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1839_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1839_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1898_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1898_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -964,7 +964,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "1154:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1233,7 +1233,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "1497:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1475,7 +1475,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "1845:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2437,7 +2437,7 @@
                         "referencedDeclaration": 53,
                         "src": "3645:46:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$1839_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$1898_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -2448,10 +2448,10 @@
                       "lValueRequested": false,
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1896,
+                      "referencedDeclaration": 1955,
                       "src": "3645:55:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$1839_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1839_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$1898_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1898_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (bool)"
                       }
                     },
@@ -2648,7 +2648,7 @@
         "id": 39,
         "nodeType": "ImportDirective",
         "scope": 228,
-        "sourceUnit": 1930,
+        "sourceUnit": 1989,
         "src": "25:57:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2659,7 +2659,7 @@
         "id": 40,
         "nodeType": "ImportDirective",
         "scope": 228,
-        "sourceUnit": 746,
+        "sourceUnit": 805,
         "src": "83:52:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2674,10 +2674,10 @@
               "id": 41,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 745,
+              "referencedDeclaration": 804,
               "src": "156:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$745",
+                "typeIdentifier": "t_contract$_Ownable_$804",
                 "typeString": "contract Ownable"
               }
             },
@@ -2687,8 +2687,8 @@
           }
         ],
         "contractDependencies": [
-          642,
-          745
+          701,
+          804
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -2696,8 +2696,8 @@
         "id": 227,
         "linearizedBaseContracts": [
           227,
-          745,
-          642
+          804,
+          701
         ],
         "name": "Oracle",
         "nodeType": "ContractDefinition",
@@ -2709,10 +2709,10 @@
               "id": 43,
               "name": "EnumerableSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1929,
+              "referencedDeclaration": 1988,
               "src": "176:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EnumerableSet_$1929",
+                "typeIdentifier": "t_contract$_EnumerableSet_$1988",
                 "typeString": "library EnumerableSet"
               }
             },
@@ -2723,10 +2723,10 @@
               "id": 44,
               "name": "EnumerableSet.UintSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1839,
+              "referencedDeclaration": 1898,
               "src": "194:21:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_UintSet_$1839_storage_ptr",
+                "typeIdentifier": "t_struct$_UintSet_$1898_storage_ptr",
                 "typeString": "struct EnumerableSet.UintSet"
               }
             }
@@ -2802,7 +2802,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_UintSet_$1839_storage_ptr",
+                  "typeIdentifier": "t_struct$_UintSet_$1898_storage_ptr",
                   "typeString": "struct EnumerableSet.UintSet"
                 },
                 "typeName": {
@@ -2810,10 +2810,10 @@
                   "id": 52,
                   "name": "EnumerableSet.UintSet",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1839,
+                  "referencedDeclaration": 1898,
                   "src": "340:21:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_UintSet_$1839_storage_ptr",
+                    "typeIdentifier": "t_struct$_UintSet_$1898_storage_ptr",
                     "typeString": "struct EnumerableSet.UintSet"
                   }
                 },
@@ -3004,7 +3004,7 @@
                         "referencedDeclaration": 53,
                         "src": "783:46:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$1839_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$1898_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -3015,10 +3015,10 @@
                       "lValueRequested": false,
                       "memberName": "add",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1858,
+                      "referencedDeclaration": 1917,
                       "src": "783:50:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1839_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1839_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1898_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1898_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -3058,7 +3058,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "763:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3282,7 +3282,7 @@
                         "referencedDeclaration": 53,
                         "src": "1174:46:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$1839_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$1898_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -3293,10 +3293,10 @@
                       "lValueRequested": false,
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1877,
+                      "referencedDeclaration": 1936,
                       "src": "1174:53:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1839_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1839_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$1898_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1898_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -3336,7 +3336,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "1154:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3605,7 +3605,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "1497:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3847,7 +3847,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 696,
+                  "referencedDeclaration": 755,
                   "src": "1845:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -4809,7 +4809,7 @@
                         "referencedDeclaration": 53,
                         "src": "3645:46:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$1839_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$1898_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -4820,10 +4820,10 @@
                       "lValueRequested": false,
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1896,
+                      "referencedDeclaration": 1955,
                       "src": "3645:55:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$1839_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1839_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$1898_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$1898_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (bool)"
                       }
                     },
@@ -5021,12 +5021,12 @@
         }
       },
       "links": {},
-      "address": "0xF4a01d9eED32464222Ce76a099Bf2b8672eadf4c",
-      "transactionHash": "0x4cb2b00471cb38d0ad7317e913865f55ba28e3a2b0e9ea455e6bc5b0d013bf52"
+      "address": "0x2Aaa8DAbdfd08C7e7b1751b5DBD910c6F03330Bc",
+      "transactionHash": "0x6c0517520a41740732a5e458140f391d0ac59a3b6ffc0b4a6baf6da7d3da19ef"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-04-26T16:46:42.107Z",
+  "updatedAt": "2020-04-30T12:26:10.073Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

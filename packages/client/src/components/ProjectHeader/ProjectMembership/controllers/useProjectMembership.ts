@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import { useCall } from "contexts/ethers/useCall";
 // Config
 import { Contracts } from "contexts/ethers/config";
-import { useTransaction } from "contexts/ethers/useTransaction";
 
 export interface UseProjectMembership {
     unable: boolean;
@@ -11,7 +10,7 @@ export interface UseProjectMembership {
     error: string | null;
     projectAddress: string | null;
     isMember: boolean | null;
-    createProject: () => Promise<void>
+    refetch: () => Promise<void>
 }
 export const useProjectMembership = (projectName: string): UseProjectMembership => {
     const projectHash: string = ethers.utils.keccak256(
@@ -25,21 +24,21 @@ export const useProjectMembership = (projectName: string): UseProjectMembership 
 
     const projectAddress = projectRegistryResult.data === ethers.constants.AddressZero ? null : projectRegistryResult.data;
 
-    const [sendTransaction, state] = useTransaction(
-        {
-            contract: Contracts.ProjectRegistry,
-            method: "registerProject",
-            args:[projectHash, 2]
-        }
-    );
+    // const [sendTransaction, state] = useTransaction(
+    //     {
+    //         contract: Contracts.ProjectRegistry,
+    //         method: "registerProject",
+    //         args:[projectHash, 2]
+    //     }
+    // );
 
 
-    const createProject = async () => {
-        await sendTransaction();
-        await projectRegistryResult.refetch();
-    }
+    // const createProject = async () => {
+    //     await sendTransaction();
+    //     await projectRegistryResult.refetch();
+    // }
 
-    console.log("STATE: ", state)
+    // console.log("STATE: ", state)
     
     return {
         unable: projectRegistryResult.unable,
@@ -47,6 +46,6 @@ export const useProjectMembership = (projectName: string): UseProjectMembership 
         error: projectRegistryResult.error,
         projectAddress,
         isMember: null,
-        createProject
+        refetch: projectRegistryResult.refetch
     };
 }

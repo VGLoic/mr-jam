@@ -1,10 +1,22 @@
 import React from "react";
-import { useProjectMembership } from "./controllers/useProjectMembership";
+// UI Components
 import { CircularProgress, Typography, Button } from "@material-ui/core";
+// Components
+import CreateProjectDialog from "./CreateProjectDialog";
+// Hooks
+import { useProjectMembership } from "./controllers/useProjectMembership";
+import { useDialog } from "hooks/useDialog";
+// Types
+import { User } from "types/user";
 
-type ProjectMembershipProps = { projectName: string };
-const ProjectMembership = ({ projectName }: ProjectMembershipProps) => {
-    const { createProject, unable, loading, error, projectAddress } = useProjectMembership(projectName);
+interface ProjectMembershipProps {
+    projectName: string;
+    projectUsers: User[]
+};
+const ProjectMembership = ({ projectName, projectUsers }: ProjectMembershipProps) => {
+    const { refetch, unable, loading, error, projectAddress } = useProjectMembership(projectName);
+
+        const { open, closeDialog, openDialog } = useDialog();
 
     if (unable) return null;
 
@@ -31,9 +43,18 @@ const ProjectMembership = ({ projectName }: ProjectMembershipProps) => {
     
     if (!projectAddress) {
         return (
-            <Button onClick={createProject}>
-                Create a Game
-            </Button>
+            <>
+                <Button onClick={openDialog} variant="contained">
+                    Click here to setup on Ethereum
+                </Button>
+                <CreateProjectDialog
+                    open={open}
+                    closeDialog={closeDialog}
+                    updateProjectAddress={refetch}
+                    projectName={projectName}
+                    projectUsers={projectUsers}
+                />
+            </>
         )
     }
 

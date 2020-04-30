@@ -4,7 +4,7 @@ const styles = ({ spacing, shadows }: Theme): Styles => ({
   avatar: {
     height: "25px",
     width: "25px",
-    boxShadow: shadows[5],
+    boxShadow: shadows[5]
   },
   avatarWrapper: {
     display: "flex",

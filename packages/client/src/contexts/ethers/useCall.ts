@@ -13,7 +13,7 @@ interface UseCallArgs {
     args?: any[]
 }
 
-interface IState {
+interface CallState {
     unable: boolean;
     loading: boolean;
     error: string | null;
@@ -25,7 +25,7 @@ interface Action {
     payload?: any;
 }
 
-const initialState: IState = {
+const initialState: CallState = {
     unable: false,
     loading: true,
     error: null,
@@ -37,7 +37,7 @@ const ERROR = "ERROR_TYPE";
 const SUCCESS = "SUCCESS_TYPE";
 const UNABLE = "UNABLE_TYPE";
 
-const reducer = (state: IState, action: Action): IState => {
+const reducer = (state: CallState, action: Action): CallState => {
     switch (action.type) {
         case LOADING:
             return {
@@ -72,7 +72,7 @@ const reducer = (state: IState, action: Action): IState => {
     }
 }
 
-export interface UseCall extends IState {
+export interface UseCall extends CallState {
     refetch: () => Promise<void>
 }
 
@@ -81,7 +81,7 @@ export const useCall = (hookArgs: UseCallArgs): UseCall => {
 
     const { provider } = useEthers();
 
-    const [state, dispatch] = useReducer<(state: IState, action: Action) => IState>(reducer, initialState);
+    const [state, dispatch] = useReducer<(state: CallState, action: Action) => CallState>(reducer, initialState);
 
     const call: () => Promise<void> = useCallback(async () => {
         try {

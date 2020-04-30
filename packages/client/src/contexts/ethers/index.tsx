@@ -19,7 +19,8 @@ export interface IEthersContext {
     isEnabled: boolean;
     setIsEnabled: React.Dispatch<React.SetStateAction<boolean>>;
     isNetworkAllowed: boolean;
-    provider: ethers.providers.Web3Provider | null
+    provider: ethers.providers.Web3Provider | null,
+    selectedAddress: string | null
 }
 
 const EthersContext: Context<IEthersContext | undefined> = createContext(undefined as IEthersContext | undefined);
@@ -45,12 +46,18 @@ export const EthersProvider = (props: EthersProviderProps) => {
         )
     );
 
+    const [selectedAddress, setSelectedAddress] = useState<string | null>(
+        ethereum?.selectedAddress || null
+    );
+
     useEffect((): () => void => {
         const onAccountsChanged = (accounts: string[]): void => {
             if (accounts.length === 0) {
                 localStorage.removeItem(METAMASK_ENABLED_KEY);
                 setIsEnabled(false);
+                return;
             }
+            setSelectedAddress(accounts[0]);
         }
         const onNetworkChanged = (networkId: number): void => {
             setIsNetworkAllowed(networkId in allowedNetworks);
@@ -71,7 +78,8 @@ export const EthersProvider = (props: EthersProviderProps) => {
         isEnabled,
         setIsEnabled,
         isNetworkAllowed,
-        provider
+        provider,
+        selectedAddress
     };
 
     return <EthersContext.Provider value={value} {...props} />
@@ -83,6 +91,7 @@ export interface UseEthers {
     enableMetaMask: () => Promise<void>;
     isNetworkAllowed: boolean;
     provider: ethers.providers.Web3Provider | null;
+    selectedAddress: string | null;
 }
 
 export const useEthers = (): UseEthers => {
@@ -110,6 +119,7 @@ export const useEthers = (): UseEthers => {
         isEnabled: context.isEnabled,
         enableMetaMask,
         isNetworkAllowed: context.isNetworkAllowed,
-        provider: context.provider
+        provider: context.provider,
+        selectedAddress: context.selectedAddress
     };
 }

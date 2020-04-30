@@ -7,7 +7,7 @@ import { useEthers } from ".";
 import { Contracts, contractMetadatas } from "./config";
 
 
-interface IState {
+export interface TransactionState {
     unable: boolean;
     loading: boolean;
     error: string | null;
@@ -19,7 +19,7 @@ interface Action {
     payload?: any;
 }
 
-const initialState: IState = {
+const initialState: TransactionState = {
     unable: false,
     loading: false,
     error: null,
@@ -33,14 +33,14 @@ export interface UseTransactionArgs {
     args?: any[];
 }
 
-export interface UseTransaction extends Array<(() => Promise<void>) | IState>{0: () => Promise<void>; 1: IState};
+export interface UseTransaction extends Array<(() => Promise<void>) | TransactionState>{0: () => Promise<void>; 1: TransactionState};
 
 const LOADING = "LOADING";
 const ERROR = "ERROR_TYPE";
 const SUCCESS = "SUCCESS_TYPE";
 const UNABLE = "UNABLE_TYPE";
 
-const reducer = (state: IState, action: Action): IState => {
+const reducer = (state: TransactionState, action: Action): TransactionState => {
     switch (action.type) {
         case LOADING:
             return {
@@ -80,7 +80,7 @@ export const useTransaction = (hookArgs: UseTransactionArgs): UseTransaction => 
 
     const { provider } = useEthers();
 
-    const [state, dispatch] = useReducer<(state: IState, action: Action) => IState>(reducer, initialState);
+    const [state, dispatch] = useReducer<(state: TransactionState, action: Action) => TransactionState>(reducer, initialState);
 
     useEffect(() => {
         if (!provider) {
@@ -120,6 +120,7 @@ export const useTransaction = (hookArgs: UseTransactionArgs): UseTransaction => 
             });
         } catch (err) {
             console.error("Error during useTransaction: ", err);
+            console.error("Error during useTransaction: ", err.message);
             dispatch({
                 type: ERROR,
                 payload: err.message

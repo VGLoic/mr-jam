@@ -7,7 +7,7 @@ import { useEthers } from ".";
 import { Contracts, contractMetadatas } from "./config";
 
 
-interface IState {
+interface DeployState {
     unable: boolean;
     loading: boolean;
     error: string | null;
@@ -19,7 +19,7 @@ interface Action {
     payload?: any;
 }
 
-const initialState: IState = {
+const initialState: DeployState = {
     unable: false,
     loading: false,
     error: null,
@@ -31,14 +31,14 @@ export interface UseDeployArgs {
     args?: any[]
 }
 
-export interface UseDeploy extends Array<(() => Promise<void>) | IState>{0: () => Promise<void>; 1: IState};
+export interface UseDeploy extends Array<(() => Promise<void>) | DeployState>{0: () => Promise<void>; 1: DeployState};
 
 const LOADING = "LOADING";
 const ERROR = "ERROR_TYPE";
 const SUCCESS = "SUCCESS_TYPE";
 const UNABLE = "UNABLE_TYPE";
 
-const reducer = (state: IState, action: Action): IState => {
+const reducer = (state: DeployState, action: Action): DeployState => {
     switch (action.type) {
         case LOADING:
             return {
@@ -78,7 +78,7 @@ export const useDeploy = (hookArgs: UseDeployArgs): UseDeploy => {
 
     const { provider } = useEthers();
 
-    const [state, dispatch] = useReducer<(state: IState, action: Action) => IState>(reducer, initialState);
+    const [state, dispatch] = useReducer<(state: DeployState, action: Action) => DeployState>(reducer, initialState);
 
     useEffect(() => {
         if (!provider) {

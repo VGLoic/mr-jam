@@ -30,17 +30,26 @@ contract Project is ERC20, Ownable {
         bytes32 _projectHash,
         address managerAccount,
         uint256 managerId,
+        address[] memory additionalAccounts,
+        uint256[] memory additionalIds,
         address _oracleAddress
     ) ERC20("Test Merge Token Coolos ", "TMTC") public {
         bytes32 emptyBytes;
         require(_projectHash != emptyBytes, "Project: projectHash can not be empty");
         require(_oracleAddress != address(0), "Project: oracleAddress can not be the zero address");
+        require(additionalAccounts.length == additionalIds.length, "Project: additional accounts and ids must be of the same length");
         projectHash = _projectHash;
         oracle = Oracle(_oracleAddress);
         // The manager becomes the owner
         transferOwnership(managerAccount);
         // Register the manager as member and transfer the initial balance
         _addMember(managerAccount, managerId);
+        // Register the additional users
+        uint256 index;
+        while (index < additionalAccounts.length) {
+            _addMember(additionalAccounts[index], additionalIds[index]);
+            index = index.add(1);
+        }
     }
 
     modifier onlyMember() {
@@ -79,6 +88,7 @@ contract Project is ERC20, Ownable {
     }
  
     function _addMember(address account, uint256 id) internal {
+        require(account != address(0), "Project: account can not be the zero address");
         require(!isMember(account), "Project: account is already a member");
         // The account is registered as member
         members[account] = Member(true, id);
