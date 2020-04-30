@@ -134,6 +134,7 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
         <Grid item container sm={3} alignItems="center">
           <ProjectMemberShip
             projectName={project.name}
+            projectUsers={project.users}
           />
         </Grid>
         <Grid item container sm={4} justify="flex-end">
