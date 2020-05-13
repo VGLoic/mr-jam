@@ -10,7 +10,7 @@ import {
   IconButton,
   SvgIcon,
   Tooltip,
-  Avatar
+  Avatar,
 } from "@material-ui/core";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import { mdiGitlab } from "@mdi/js";
@@ -28,11 +28,10 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
 
   const classes = useStyles();
 
-  const dayAgo: number = 
-    differenceInCalendarDays(
-      new Date(),
-      new Date(mergeRequest.createdAt)
-    )
+  const dayAgo: number = differenceInCalendarDays(
+    new Date(),
+    new Date(mergeRequest.createdAt)
+  );
 
   const isUserAuthor = data?.id === mergeRequest.author.id;
 
@@ -58,7 +57,7 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
             <Box display="flex">
               <Typography variant="subtitle2">Approvals:</Typography>
               <AvatarGroup className={classes.avatarGroup}>
-                {mergeRequest.approvedBy.map(user => (
+                {mergeRequest.approvedBy.map((user) => (
                   <Tooltip key={user.id} title={user.name}>
                     <Avatar src={user.avatarUrl} className={classes.avatar} />
                   </Tooltip>
@@ -73,8 +72,8 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
           >
             <Box display="flex" alignItems="center">
               <Typography variant="subtitle2">
-                !{mergeRequest.iid} - opened {dayAgo} day{dayAgo > 1 && "s"} ago by{" "}
-                {mergeRequest.author.name}
+                !{mergeRequest.iid} - opened {dayAgo} day{dayAgo > 1 && "s"} ago
+                by {mergeRequest.author.name}
               </Typography>
               <Tooltip title="See on Gitlab">
                 <IconButton
@@ -88,11 +87,9 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
               </Tooltip>
             </Box>
             <Box display="flex">
-              <Typography variant="subtitle2">
-                Reviewed by:
-              </Typography>
+              <Typography variant="subtitle2">Reviewed by:</Typography>
               <AvatarGroup className={classes.avatarGroup}>
-                {mergeRequest.reviews.reviewedBy.map(user => (
+                {mergeRequest.reviews.reviewedBy.map((user) => (
                   <Tooltip key={user.id} title={user.name}>
                     <Avatar src={user.avatarUrl} className={classes.avatar} />
                   </Tooltip>
