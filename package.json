@@ -21,7 +21,10 @@
     "contracts:compile": "yarn workspace smart-contracts compile",
     "contracts:deploy:dev": "yarn workspace smart-contracts deploy:dev",
     "contracts:console:dev": "yarn workspace smart-contracts console:dev",
-    "ganache:start": "yarn workspace smart-contracts ganache:start"
+    "ganache:start": "yarn workspace smart-contracts ganache:start",
+    "precommit:client": "yarn workspace client precommit",
+    "precommit:lambda": "yarn workspace lambda precommit",
+    "precommit:all": "npm-run-all precommit:client precommit:lambda"
   },
   "devDependencies": {
     "husky": "^4.2.5",
@@ -29,7 +32,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test:client:cover"
+      "pre-commit": "yarn precommit:all"
     }
   }
 }
