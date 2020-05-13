@@ -1,6 +1,6 @@
 import { UseProjectMembership } from "../useProjectMembership";
 
-export const useProjectMembership = (): UseProjectMembership => ({
+const useProjectMembership = (): UseProjectMembership => ({
   unable: false,
   loading: false,
   error: null,
@@ -8,3 +8,5 @@ export const useProjectMembership = (): UseProjectMembership => ({
   isMember: null,
   refetch: () => Promise.resolve(),
 });
+
+export default useProjectMembership;

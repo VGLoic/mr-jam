@@ -12,9 +12,7 @@ export interface UseProjectMembership {
   isMember: boolean | null;
   refetch: () => Promise<void>;
 }
-export const useProjectMembership = (
-  projectName: string
-): UseProjectMembership => {
+const useProjectMembership = (projectName: string): UseProjectMembership => {
   const projectHash: string = ethers.utils.keccak256(
     ethers.utils.toUtf8Bytes(projectName.toUpperCase())
   );
@@ -29,21 +27,6 @@ export const useProjectMembership = (
       ? null
       : projectRegistryResult.data;
 
-  // const [sendTransaction, state] = useTransaction(
-  //     {
-  //         contract: Contracts.ProjectRegistry,
-  //         method: "registerProject",
-  //         args:[projectHash, 2]
-  //     }
-  // );
-
-  // const createProject = async () => {
-  //     await sendTransaction();
-  //     await projectRegistryResult.refetch();
-  // }
-
-  // console.log("STATE: ", state)
-
   return {
     unable: projectRegistryResult.unable,
     loading: projectRegistryResult.loading,
@@ -53,3 +36,5 @@ export const useProjectMembership = (
     refetch: projectRegistryResult.refetch,
   };
 };
+
+export default useProjectMembership;

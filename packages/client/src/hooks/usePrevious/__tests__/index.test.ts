@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks";
-import { usePrevious } from "../";
+import usePrevious from "../";
 
 describe("usePrevious", () => {
   test("it should update the value if value has changed", () => {

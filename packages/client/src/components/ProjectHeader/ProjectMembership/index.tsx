@@ -4,8 +4,8 @@ import { CircularProgress, Typography, Button } from "@material-ui/core";
 // Components
 import CreateProjectDialog from "./CreateProjectDialog";
 // Hooks
-import { useProjectMembership } from "./controllers/useProjectMembership";
-import { useDialog } from "hooks/useDialog";
+import useProjectMembership from "./controllers/useProjectMembership";
+import useDialog from "hooks/useDialog";
 // Types
 import { User } from "types/user";
 

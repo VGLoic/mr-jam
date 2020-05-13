@@ -19,7 +19,7 @@ import AvatarGroup from "@material-ui/lab/AvatarGroup";
 // Components
 import ProjectMemberShip from "./ProjectMembership";
 // Hooks
-import { useDialog } from "hooks/useDialog";
+import useDialog from "hooks/useDialog";
 // Query
 import { PROJECT_OVERVIEW } from "./controllers/projectOverview.query";
 // Types

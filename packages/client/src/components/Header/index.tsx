@@ -15,8 +15,8 @@ import { mdiBrightness6 } from "@mdi/js";
 import ProjectSelectionDialog from "./ProjectSelectionDialog";
 import EthereumIndicator from "./EthereumIndicator";
 // Hooks
-import { useDialog } from "hooks/useDialog";
-import { useUser } from "hooks/useUser";
+import useDialog from "hooks/useDialog";
+import useUser from "hooks/useUser";
 import { useTheme } from "contexts/theme";
 // Styles
 import { useStyles } from "./styles";

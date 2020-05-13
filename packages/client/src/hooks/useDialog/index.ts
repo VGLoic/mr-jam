@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-export interface UseDialog {
+interface UseDialog {
   open: boolean;
   openDialog: () => void;
   closeDialog: () => void;
   toggleDialog: () => void;
 }
 
-export const useDialog = (): UseDialog => {
+const useDialog = (): UseDialog => {
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleDialog = (): void => setOpen((open) => !open);
@@ -23,3 +23,5 @@ export const useDialog = (): UseDialog => {
     toggleDialog,
   };
 };
+
+export default useDialog;

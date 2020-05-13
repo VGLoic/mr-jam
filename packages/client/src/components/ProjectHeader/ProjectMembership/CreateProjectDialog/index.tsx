@@ -22,7 +22,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 // Icons
 import { mdiAccountPlus } from "@mdi/js";
 // Hooks
-import { useCreateProject } from "./controllers/useCreateProject";
+import useCreateProject from "./controllers/useCreateProject";
 // Styles
 import { useStyles } from "./styles";
 // Types

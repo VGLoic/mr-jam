@@ -14,7 +14,7 @@ import {
 // Components
 import ProjectList from "./ProjectList";
 // Controllers
-import { useProjectSelectionDialog } from "./controllers/useProjectSelectionDialog";
+import useProjectSelectionDialog from "./controllers/useProjectSelectionDialog";
 // Styles
 import { useStyles } from "./styles";
 

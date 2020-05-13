@@ -18,7 +18,7 @@ import { mdiGitlab } from "@mdi/js";
 import { useStyles } from "./styles";
 // Types
 import { MergeRequest } from "../controllers/mergeRequests.types";
-import { useUser } from "hooks/useUser";
+import useUser from "hooks/useUser";
 
 interface MergeRequestProps {
   mergeRequest: MergeRequest;
