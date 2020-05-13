@@ -5,7 +5,7 @@ import {
   useTransaction,
   TransactionState,
 } from "contexts/ethers/useTransaction";
-import { useUser } from "hooks/useUser";
+import useUser from "hooks/useUser";
 import { useEthers } from "contexts/ethers";
 // Config
 import { Contracts } from "contexts/ethers/config";
@@ -34,7 +34,7 @@ interface UseCreateProject {
   createProject: () => Promise<void>;
   isConfirmDisabled: boolean;
 }
-export const useCreateProject = ({
+const useCreateProject = ({
   projectName,
   updateProjectAddress,
   closeDialog,
@@ -116,3 +116,5 @@ export const useCreateProject = ({
     isConfirmDisabled,
   };
 };
+
+export default useCreateProject;

@@ -4,7 +4,7 @@ import { useEffect, useReducer, useCallback } from "react";
 import { useEthers } from "./";
 // Config
 import { Contracts, contractMetadatas } from "./config";
-import { useMemoizedValue } from "hooks/useMemoizedValue";
+import useMemoizedValue from "hooks/useMemoizedValue";
 
 interface UseCallArgs {
   contract: Contracts;

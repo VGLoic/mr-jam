@@ -9,7 +9,7 @@ interface UseUser {
   error: ApolloError | undefined;
 }
 
-export const useUser = (): UseUser => {
+const useUser = (): UseUser => {
   const { loading, error, data } = useQuery<CurrentUserData>(CURRENT_USER);
 
   return {
@@ -18,3 +18,5 @@ export const useUser = (): UseUser => {
     data: data?.currentUser,
   };
 };
+
+export default useUser;

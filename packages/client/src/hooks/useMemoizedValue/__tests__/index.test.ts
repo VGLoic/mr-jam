@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks";
-import { useMemoizedValue } from "../";
+import useMemoizedValue from "../";
 
 describe("useMemoizedValue", () => {
   test("it should not return a new value if value has not changed", () => {

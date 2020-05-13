@@ -7,7 +7,7 @@ import { PROJECTS } from "./projects.query";
 // Types
 import { ProjectsData, ProjectsInput } from "./projects.types";
 
-export interface UseProjectSelectionDialog {
+interface UseProjectSelectionDialog {
   triggerSearch: (search: string) => void;
   onLoadMore: () => void;
   called: boolean;
@@ -21,7 +21,7 @@ export interface UseProjectSelectionDialog {
   confirm: () => void;
 }
 
-export const useProjectSelectionDialog = (
+const useProjectSelectionDialog = (
   toggleDialog: () => void
 ): UseProjectSelectionDialog => {
   const [projectId, setProjectId] = useState<string | null>(null);
@@ -108,3 +108,5 @@ export const useProjectSelectionDialog = (
     confirm,
   };
 };
+
+export default useProjectSelectionDialog;
