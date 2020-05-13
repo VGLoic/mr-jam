@@ -6,26 +6,26 @@ const styles = ({ spacing }: Theme): Styles => ({
     width: "900px",
   },
   divider: {
-      margin: `${spacing(4)}px 0`
+    margin: `${spacing(4)}px 0`,
   },
   avatar: {
     height: "25px",
     width: "25px",
-    marginRight: `${spacing(1)}px`
+    marginRight: `${spacing(1)}px`,
   },
   confirmButton: {
-    minWidth: "80px"
+    minWidth: "80px",
   },
   additionalUsersContainer: {
-    marginTop: `${spacing(2)}px`
+    marginTop: `${spacing(2)}px`,
   },
   userChip: {
     marginRight: `${spacing(1)}px`,
-    marginBottom: `${spacing(1)}px`
+    marginBottom: `${spacing(1)}px`,
   },
   tooltip: {
-    maxWidth: "none"
-  }
+    maxWidth: "none",
+  },
 });
 
 export interface Styles {

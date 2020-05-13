@@ -26,7 +26,7 @@ const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
     fromDate,
     toDate,
     onChangeFrom,
-    onChangeTo
+    onChangeTo,
   } = useProjectMergeRequests(projectId);
 
   const classes = useStyles();
@@ -38,7 +38,7 @@ const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
   ) : error || !data ? (
     <Grid item>
       <Typography color="textSecondary">
-        Oh no, we didn't succeed to retrieve the merge requests :(
+        Oh no, we didn't succeed to retrieve the merge requests :( :9
       </Typography>
     </Grid>
   ) : data.project.mergeRequests.edges.length === 0 ? (
@@ -66,7 +66,7 @@ const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
           selectMrState={selectMrState}
         />
       </Grid>
-      <Grid item xs={12} md={5} >
+      <Grid item xs={12} md={5}>
         <DateChoice
           fromDate={fromDate}
           toDate={toDate}
@@ -81,7 +81,7 @@ const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
             [classes.hidden]:
               initialLoading ||
               !data ||
-              !data?.project.mergeRequests.pageInfo.hasNextPage
+              !data?.project.mergeRequests.pageInfo.hasNextPage,
           })}
           disabled={loadingMore}
           onClick={onLoadMore}

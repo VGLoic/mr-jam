@@ -9,7 +9,7 @@ import {
   DialogContent,
   TextField,
   CircularProgress,
-  Grid
+  Grid,
 } from "@material-ui/core";
 // Components
 import ProjectList from "./ProjectList";
@@ -24,7 +24,7 @@ type ProjectSelectionDialogProps = {
 };
 const ProjectSelectionDialog = ({
   open,
-  toggleDialog
+  toggleDialog,
 }: ProjectSelectionDialogProps) => {
   const {
     triggerSearch,
@@ -36,7 +36,7 @@ const ProjectSelectionDialog = ({
     selectProject,
     selectedProjectId,
     onClose,
-    confirm
+    confirm,
   } = useProjectSelectionDialog(toggleDialog);
 
   const classes = useStyles();
@@ -69,7 +69,13 @@ const ProjectSelectionDialog = ({
             />
           </Grid>
           <Grid item xs={3} className={classes.circularProgress}>
-            {researchLoading && <CircularProgress size="30px" data-testid="research-loading" aria-label="Searching projects" />}
+            {researchLoading && (
+              <CircularProgress
+                size="30px"
+                data-testid="research-loading"
+                aria-label="Searching projects"
+              />
+            )}
           </Grid>
         </Grid>
         <Grid
@@ -100,8 +106,12 @@ const ProjectSelectionDialog = ({
           Cancel
         </Button>
         <Button
-          aria-label={selectedProjectId ? `Confirm selection of project id ${selectedProjectId}`: "Confirm disabled while no choice"}
-          data-testid="confirm-action-dialog" 
+          aria-label={
+            selectedProjectId
+              ? `Confirm selection of project id ${selectedProjectId}`
+              : "Confirm disabled while no choice"
+          }
+          data-testid="confirm-action-dialog"
           onClick={confirm}
           disabled={!Boolean(selectedProjectId)}
         >

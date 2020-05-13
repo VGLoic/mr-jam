@@ -9,7 +9,7 @@ import {
   Paper,
   ClickAwayListener,
   MenuList,
-  MenuItem
+  MenuItem,
 } from "@material-ui/core";
 // Icons
 import { mdiMenuDown } from "@mdi/js";
@@ -59,7 +59,7 @@ const StateMenu = ({ selectedMrState, selectMrState }: StateMenuProps) => {
             {...TransitionProps}
             style={{
               transformOrigin:
-                placement === "bottom" ? "center top" : "center bottom"
+                placement === "bottom" ? "center top" : "center bottom",
             }}
           >
             <Paper>

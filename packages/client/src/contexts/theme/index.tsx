@@ -2,15 +2,15 @@ import React, { useState, createContext, useContext } from "react";
 import {
   createMuiTheme,
   Theme,
-  ThemeProvider as MuiThemeProvider
+  ThemeProvider as MuiThemeProvider,
 } from "@material-ui/core/styles";
 
 const defaultMuiTheme = createMuiTheme({});
 
 const darkMuiTheme = createMuiTheme({
   palette: {
-    type: "dark"
-  }
+    type: "dark",
+  },
 });
 
 interface IContext {
@@ -18,7 +18,9 @@ interface IContext {
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ThemeContext: React.Context<IContext | undefined> = createContext(undefined as IContext | undefined );
+const ThemeContext: React.Context<IContext | undefined> = createContext(
+  undefined as IContext | undefined
+);
 
 type ThemeProviderProps = any;
 export const ThemeProvider = (props: ThemeProviderProps) => {
@@ -45,10 +47,10 @@ export const useTheme = () => {
   }
 
   const toggleMode: () => void = () =>
-    context.setIsDarkMode(isDarkMode => !isDarkMode);
+    context.setIsDarkMode((isDarkMode) => !isDarkMode);
 
   return {
     isDarkMode: context.isDarkMode,
-    toggleMode
+    toggleMode,
   };
 };

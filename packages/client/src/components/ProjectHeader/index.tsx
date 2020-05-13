@@ -13,7 +13,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  CircularProgress
+  CircularProgress,
 } from "@material-ui/core";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 // Components
@@ -21,13 +21,11 @@ import ProjectMemberShip from "./ProjectMembership";
 // Hooks
 import { useDialog } from "hooks/useDialog";
 // Query
-import {
-  PROJECT_OVERVIEW
-} from "./controllers/projectOverview.query";
+import { PROJECT_OVERVIEW } from "./controllers/projectOverview.query";
 // Types
 import {
   ProjectOverviewData,
-  ProjectOverviewInput
+  ProjectOverviewInput,
 } from "./controllers/projectOverview.types";
 // Styles
 import { useStyles, Styles } from "./styles";
@@ -36,12 +34,12 @@ interface ProjectHeaderProps {
   projectId: string;
 }
 const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
-  const { data, loading, error } = useQuery<ProjectOverviewData, ProjectOverviewInput>(
-    PROJECT_OVERVIEW,
-    {
-      variables: { projectId }
-    }
-  );
+  const { data, loading, error } = useQuery<
+    ProjectOverviewData,
+    ProjectOverviewInput
+  >(PROJECT_OVERVIEW, {
+    variables: { projectId },
+  });
   const { open, toggleDialog } = useDialog();
   const classes: Styles = useStyles();
 
@@ -93,7 +91,7 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
           <AvatarGroup>
             {tooMuchUsers ? (
               <div className={classes.avatarWrapper}>
-                {project.users.slice(0, 5).map(user => (
+                {project.users.slice(0, 5).map((user) => (
                   <Tooltip title={user.name} key={user.id}>
                     <Avatar
                       className={classes.avatar}
@@ -109,16 +107,13 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
                   data-testid="avatar-open-dialog"
                   aria-label="Open project users dialog"
                 >
-                  <Typography
-                    variant="subtitle2"
-                    color="textPrimary"
-                  >
+                  <Typography variant="subtitle2" color="textPrimary">
                     +{project.users.length - 5}
                   </Typography>
                 </Avatar>
               </div>
             ) : (
-              project.users.map(user => (
+              project.users.map((user) => (
                 <Tooltip title={user.name} key={user.id}>
                   <Avatar
                     className={classes.avatar}
@@ -145,7 +140,12 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
           >
             Full path:
           </Typography>
-          <Typography variant="body1" color="textSecondary" data-testid="full-path" aria-label={`Full path: ${project.pathWithNamespace}`}>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            data-testid="full-path"
+            aria-label={`Full path: ${project.pathWithNamespace}`}
+          >
             {project.pathWithNamespace}
           </Typography>
         </Grid>
@@ -153,7 +153,7 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
       <Dialog open={open} onClose={toggleDialog}>
         <DialogTitle>Project users</DialogTitle>
         <List>
-          {project.users.map(user => (
+          {project.users.map((user) => (
             <ListItem key={user.id}>
               <ListItemAvatar>
                 <Avatar
@@ -164,7 +164,9 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
                   data-testid="avatar-dialog"
                 />
               </ListItemAvatar>
-              <ListItemText aria-label={`name: ${user.name}`}>{user.name}</ListItemText>
+              <ListItemText aria-label={`name: ${user.name}`}>
+                {user.name}
+              </ListItemText>
             </ListItem>
           ))}
         </List>

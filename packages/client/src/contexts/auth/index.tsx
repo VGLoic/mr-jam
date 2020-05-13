@@ -3,7 +3,7 @@ import React, {
   useState,
   useContext,
   useMemo,
-  useEffect
+  useEffect,
 } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 // Utils
@@ -14,7 +14,9 @@ interface IContext {
   isAuthInitialized: boolean;
 }
 
-const AuthContext: React.Context<IContext | undefined> = createContext(undefined as IContext | undefined);
+const AuthContext: React.Context<IContext | undefined> = createContext(
+  undefined as IContext | undefined
+);
 
 type AuthProviderProps = any;
 export const AuthProvider = (props: AuthProviderProps) => {
@@ -31,7 +33,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
       const {
         token,
         expirationDate,
-        originalUrl
+        originalUrl,
       }: LoginInformations = AuthUtils.deriveLoginInfoFromUrl(pathname, hash);
       // Authenticating
       if (token && expirationDate) {
@@ -50,7 +52,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
   const value = useMemo(
     () => ({
       isAuthenticated,
-      isAuthInitialized
+      isAuthInitialized,
     }),
     [isAuthenticated, isAuthInitialized]
   );
@@ -76,6 +78,6 @@ export const useAuth = (): IAuth => {
   return {
     isAuthInitialized: context.isAuthInitialized,
     isAuthenticated: context.isAuthenticated,
-    getToken: AuthUtils.getToken
+    getToken: AuthUtils.getToken,
   };
 };
