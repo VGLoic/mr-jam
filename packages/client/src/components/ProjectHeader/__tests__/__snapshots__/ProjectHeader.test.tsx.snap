@@ -50,13 +50,7 @@ exports[`<ProjectHeader /> should render without error when there are less than 
     </div>
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-grid-sm-3"
-    >
-      <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
-      >
-        Yeay
-      </p>
-    </div>
+    />
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-flex-end MuiGrid-grid-sm-4"
     >
@@ -200,13 +194,7 @@ exports[`<ProjectHeader /> should render without error when there are more than 
     </div>
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-grid-sm-3"
-    >
-      <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
-      >
-        Yeay
-      </p>
-    </div>
+    />
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-flex-end MuiGrid-grid-sm-4"
     >
