@@ -8,8 +8,8 @@
   },
   "scripts": {
     "compile": "truffle compile",
-    "deploy:dev": "truffle deploy",
-    "console:dev": "truffle console",
+    "deploy:dev": "truffle deploy --network development --reset",
+    "console:dev": "truffle console --network development",
     "ganache:start": "ganache-cli -p 7545"
   },
   "devDependencies": {

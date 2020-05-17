@@ -11,6 +11,8 @@ interface UseCallArgs {
   method: string;
   address?: string;
   args?: any[];
+  manual?: boolean;
+  delayCondition?: boolean;
 }
 
 interface CallState {
@@ -25,11 +27,21 @@ interface Action {
   payload?: any;
 }
 
-const initialState: CallState = {
-  unable: false,
-  loading: true,
-  error: null,
-  data: null,
+const buildInitialState = (hookArgs: UseCallArgs): CallState => {
+  if (hookArgs.manual) {
+    return {
+      unable: false,
+      loading: false,
+      error: null,
+      data: null,
+    };
+  }
+  return {
+    unable: false,
+    loading: !hookArgs.delayCondition,
+    error: null,
+    data: null,
+  };
 };
 
 const LOADING = "LOADING_TYPE";
@@ -83,7 +95,7 @@ export const useCall = (hookArgs: UseCallArgs): UseCall => {
 
   const [state, dispatch] = useReducer<
     (state: CallState, action: Action) => CallState
-  >(reducer, initialState);
+  >(reducer, buildInitialState(hookArgs));
 
   const call: () => Promise<void> = useCallback(async () => {
     try {
@@ -91,6 +103,7 @@ export const useCall = (hookArgs: UseCallArgs): UseCall => {
         dispatch({ type: UNABLE });
         return;
       }
+      dispatch({ type: LOADING });
       const network: ethers.utils.Network = await provider.getNetwork();
       const contractAddress: string | undefined =
         memoizedHookArgs.address ||
@@ -126,17 +139,14 @@ export const useCall = (hookArgs: UseCallArgs): UseCall => {
     }
   }, [memoizedHookArgs, provider]);
 
-  const refetch: () => Promise<void> = useCallback(async () => {
-    dispatch({ type: LOADING });
-    await call();
-  }, [call, dispatch]);
-
   useEffect(() => {
-    call();
-  }, [call]);
+    if (!memoizedHookArgs.manual && !memoizedHookArgs.delayCondition) {
+      call();
+    }
+  }, [call, memoizedHookArgs]);
 
   return {
     ...state,
-    refetch,
+    refetch: call,
   };
 };

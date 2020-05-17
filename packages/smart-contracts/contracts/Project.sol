@@ -62,6 +62,19 @@ contract Project is ERC20, Ownable {
         return true;
     }
 
+    function addMembers(
+        address[] memory additionalAccounts,
+        uint256[] memory additionalIds
+    ) public onlyOwner returns (bool) {
+        require(additionalAccounts.length == additionalIds.length, "Project: additional accounts and ids must be of the same length");
+        // Register the additional users
+        uint256 index;
+        while (index < additionalAccounts.length) {
+            _addMember(additionalAccounts[index], additionalIds[index]);
+            index = index.add(1);
+        }
+    }
+
     function contribute(uint256 mrId, uint256 amount) public onlyMember returns (bool) {
         address sender = _msgSender();
         require(oracle.isMergeRequestOpened(projectHash, mrId), "Project: merge request is not opened");
