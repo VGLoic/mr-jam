@@ -15,11 +15,11 @@ interface UseCallArgs {
   delayCondition?: boolean;
 }
 
-interface CallState {
+interface CallState<T> {
   unable: boolean;
   loading: boolean;
   error: string | null;
-  data: any | null;
+  data: T | null;
 }
 
 interface Action {
@@ -27,7 +27,7 @@ interface Action {
   payload?: any;
 }
 
-const buildInitialState = (hookArgs: UseCallArgs): CallState => {
+const buildInitialState = <T>(hookArgs: UseCallArgs): CallState<T> => {
   if (hookArgs.manual) {
     return {
       unable: false,
@@ -49,7 +49,7 @@ const ERROR = "ERROR_TYPE";
 const SUCCESS = "SUCCESS_TYPE";
 const UNABLE = "UNABLE_TYPE";
 
-const reducer = (state: CallState, action: Action): CallState => {
+const reducer = <T>(state: CallState<T>, action: Action): CallState<T> => {
   switch (action.type) {
     case LOADING:
       return {
@@ -84,17 +84,17 @@ const reducer = (state: CallState, action: Action): CallState => {
   }
 };
 
-export interface UseCall extends CallState {
+export interface UseCall<T> extends CallState<T> {
   refetch: () => Promise<void>;
 }
 
-export const useCall = (hookArgs: UseCallArgs): UseCall => {
+export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
   const memoizedHookArgs = useMemoizedValue(hookArgs);
 
   const { provider } = useEthers();
 
   const [state, dispatch] = useReducer<
-    (state: CallState, action: Action) => CallState
+    (state: CallState<T>, action: Action) => CallState<T>
   >(reducer, buildInitialState(hookArgs));
 
   const call: () => Promise<void> = useCallback(async () => {

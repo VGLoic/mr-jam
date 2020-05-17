@@ -24,6 +24,7 @@ contract Project is ERC20, Ownable {
     Oracle public oracle;
     bytes32 public projectHash;
     mapping(address => Member) public members;
+    address[] public memberList;
     mapping(uint256 => Bounty) bounties;
 
     constructor(
@@ -99,12 +100,37 @@ contract Project is ERC20, Ownable {
     function isMember(address account) public view returns (bool) {
         return members[account].membership;
     }
- 
+
+    function isIdRegistered(uint256 id) public view returns (bool) {
+        uint256 index;
+        bool isIdMember;
+        while (!isIdMember && index < memberList.length) {
+            isIdMember = members[memberList[index]].id == id;
+            index = index.add(1);
+        }
+        return isIdMember;
+    }
+
+    function getMembers() public view returns (address[] memory, uint256[] memory) {
+        uint256[] memory ids = new uint256[](memberList.length);
+
+        for (uint256 i; i < memberList.length; i++) {
+            ids[i] = members[memberList[i]].id;
+        }
+
+        return (
+            memberList,
+            ids
+        );
+    }
+
     function _addMember(address account, uint256 id) internal {
         require(account != address(0), "Project: account can not be the zero address");
         require(!isMember(account), "Project: account is already a member");
+        require(!isIdRegistered(id), "Project: id is already assigned");
         // The account is registered as member
         members[account] = Member(true, id);
+        memberList.push(account);
         // The account receives the initial balance
         _mint(account, INITIAL_BALANCE);
     }

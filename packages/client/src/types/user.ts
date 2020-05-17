@@ -3,3 +3,8 @@ export interface User {
   name: string;
   avatarUrl: string;
 }
+
+export interface WrappedUser {
+  address: string;
+  user: User | null;
+}

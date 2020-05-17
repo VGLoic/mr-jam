@@ -11,6 +11,8 @@ interface WrappedUser {
 
 interface UseAdditionalUsersArgs {
   resetParameter: any;
+  addressBlackList?: string[];
+  idBlackList?: string[];
 }
 
 export interface UseAdditionalUsers {
@@ -23,9 +25,13 @@ export interface UseAdditionalUsers {
 
 const useAdditionalUsers = ({
   resetParameter,
+  addressBlackList,
+  idBlackList,
 }: UseAdditionalUsersArgs): UseAdditionalUsers => {
   const additionalUserInputContext = useUserInputs({
     resetParameter,
+    addressBlackList,
+    idBlackList,
   });
 
   const [additionalUsers, setAdditionalUsers] = useState<
