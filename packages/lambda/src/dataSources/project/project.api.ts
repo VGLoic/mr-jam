@@ -44,7 +44,6 @@ export class ProjectAPI extends RESTDataSource {
         sort: "asc",
         membership: true,
         search,
-        min_access_level: 30,
       });
       return gitlabProjects.map(gitlabProjectToProject);
     } catch (err) {

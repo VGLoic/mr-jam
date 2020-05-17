@@ -21,6 +21,8 @@
     "contracts:compile": "yarn workspace smart-contracts compile",
     "contracts:deploy:dev": "yarn workspace smart-contracts deploy:dev",
     "contracts:console:dev": "yarn workspace smart-contracts console:dev",
+    "contracts:deploy:ropsten": "yarn workspace smart-contracts deploy:ropsten",
+    "contracts:console:ropsten": "yarn workspace smart-contracts console:ropsten",
     "ganache:start": "yarn workspace smart-contracts ganache:start",
     "precommit:client": "yarn workspace client precommit",
     "precommit:lambda": "yarn workspace lambda precommit",

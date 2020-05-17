@@ -25,7 +25,7 @@ const useProjectMembership = (projectName: string): UseProjectMembership => {
     loading: projectAddressLoading,
     error: projectAddressError,
     refetch: refetchProjectAddress,
-  } = useCall({
+  } = useCall<string>({
     contract: Contracts.ProjectRegistry,
     method: "registry",
     args: [projectHash],
@@ -40,9 +40,9 @@ const useProjectMembership = (projectName: string): UseProjectMembership => {
     loading: adminAddressLoading,
     error: adminAddressError,
     data: adminAddress,
-  } = useCall({
+  } = useCall<string>({
     contract: Contracts.Project,
-    address: projectAddress,
+    address: projectAddress || "",
     method: "owner",
     delayCondition: !projectAddress,
   });
@@ -51,9 +51,9 @@ const useProjectMembership = (projectName: string): UseProjectMembership => {
     loading: isMemberLoading,
     error: isMemberError,
     data: isMember,
-  } = useCall({
+  } = useCall<boolean>({
     contract: Contracts.Project,
-    address: projectAddress,
+    address: projectAddress || "",
     method: "isMember",
     args: [selectedAddress],
     delayCondition: !Boolean(projectAddress),
@@ -66,14 +66,15 @@ const useProjectMembership = (projectName: string): UseProjectMembership => {
       adminAddressLoading ||
       isMemberLoading ||
       (Boolean(projectAddress) &&
-        (!Boolean(adminAddress) || !Boolean(isMember))),
+        (!Boolean(adminAddress) || isMember === null)),
     error: projectAddressError || adminAddressError || isMemberError,
     projectAddress,
     isMember,
-    isAdmin:
+    isAdmin: Boolean(
       adminAddress &&
-      ethers.utils.getAddress(adminAddress) ===
-        ethers.utils.getAddress(selectedAddress as string),
+        ethers.utils.getAddress(adminAddress) ===
+          ethers.utils.getAddress(selectedAddress as string)
+    ),
     refetchProjectAddress,
   };
 };

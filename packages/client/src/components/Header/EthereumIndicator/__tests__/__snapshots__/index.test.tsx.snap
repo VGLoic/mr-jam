@@ -57,10 +57,10 @@ exports[`<EthereumIndicator /> when network is not allowed: Network not allowed 
   <div>
     <svg
       aria-hidden="true"
-      aria-label="Please, change on one of the following networks development (ID 5777)."
+      aria-label="Please, change on one of the following networks Ropsten (ID 3), development (ID 5777)."
       class="MuiSvgIcon-root makeStyles-wrongNetwork-77 makeStyles-aloneIcon-79"
       focusable="false"
-      title="Please, change on one of the allowed following networks development (ID 5777)."
+      title="Please, change on one of the allowed following networks Ropsten (ID 3), development (ID 5777)."
       viewBox="0 0 24 24"
     >
       <path
