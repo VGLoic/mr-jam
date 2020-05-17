@@ -9,10 +9,14 @@
   "scripts": {
     "compile": "truffle compile",
     "deploy:dev": "truffle deploy --network development --reset",
+    "deploy:ropsten": "truffle deploy --network ropsten --reset",
     "console:dev": "truffle console --network development",
+    "console:ropsten": "truffle console --network ropsten",
     "ganache:start": "ganache-cli -p 7545"
   },
   "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.0.35",
+    "dotenv": "^8.2.0",
     "ganache-cli": "^6.9.1",
     "truffle": "^5.1.22"
   }
