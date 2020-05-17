@@ -7,6 +7,8 @@ interface UseUserInputsArgs {
   defaultUser?: User | null;
   defaultAddress?: string | null;
   resetParameter?: any;
+  addressBlackList?: string[];
+  idBlackList?: string[];
 }
 export interface UseUserInputs {
   userValue: User | null;
@@ -14,6 +16,7 @@ export interface UseUserInputs {
   addressValue: string;
   handleAddressChange: (event: ChangeEvent<HTMLInputElement>) => void;
   addressError: boolean;
+  userError: boolean;
   isConfirmDisabled: boolean;
   reset: () => void;
 }
@@ -21,6 +24,8 @@ const useUserInputs = ({
   defaultUser,
   defaultAddress,
   resetParameter,
+  addressBlackList,
+  idBlackList,
 }: UseUserInputsArgs = {}): UseUserInputs => {
   const hasMountedRef = useRef<boolean>(false);
   const [userValue, setUserValue] = useState<User | null>(defaultUser || null);
@@ -34,7 +39,11 @@ const useUserInputs = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>): void => setAddressValue(value);
 
-  const addressError = !isAddress(addressValue);
+  const addressError =
+    !isAddress(addressValue) ||
+    Boolean(addressValue && addressBlackList?.includes(addressValue));
+
+  const userError = Boolean(userValue && idBlackList?.includes(userValue?.id));
 
   const isConfirmDisabled = !userValue || !addressValue || addressError;
 
@@ -59,6 +68,7 @@ const useUserInputs = ({
     addressValue,
     handleAddressChange,
     addressError,
+    userError,
     isConfirmDisabled,
     reset,
   };

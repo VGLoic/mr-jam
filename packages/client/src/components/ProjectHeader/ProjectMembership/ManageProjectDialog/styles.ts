@@ -5,6 +5,9 @@ const styles = ({ spacing }: Theme): Styles => ({
     minHeight: "500px",
     width: "900px",
   },
+  divider: {
+    margin: `${spacing(4)}px 0`,
+  },
   avatar: {
     height: "25px",
     width: "25px",
@@ -27,6 +30,7 @@ const styles = ({ spacing }: Theme): Styles => ({
 
 export interface Styles {
   paperScrollPaper: any;
+  divider: any;
   avatar: any;
   confirmButton: any;
   additionalUsersContainer: any;
