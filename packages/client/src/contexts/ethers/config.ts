@@ -3,6 +3,7 @@ import ProjectRegistryBuild from "smart-contracts/build/contracts/ProjectRegistr
 
 export const allowedNetworks: Record<number, string> = {
   5777: "development",
+  3: "Ropsten",
 };
 
 export interface ContractMetadata {
