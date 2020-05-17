@@ -18,7 +18,6 @@ function extractAccessToken(authorizationHeader: string): string {
 }
 
 export function contextFunction({ event }: any): BaseContext {
-  console.log("rest: ", event);
   const accessToken: string = extractAccessToken(event.headers.authorization);
 
   if (!accessToken) {

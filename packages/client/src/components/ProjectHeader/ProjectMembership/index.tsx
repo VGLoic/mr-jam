@@ -1,8 +1,9 @@
 import React from "react";
 // UI Components
-import { CircularProgress, Typography, Button } from "@material-ui/core";
+import { CircularProgress, Typography, Button, Box } from "@material-ui/core";
 // Components
 import CreateProjectDialog from "./CreateProjectDialog";
+import ManageProjectDialog from "./ManageProjectDialog";
 // Hooks
 import useProjectMembership from "./controllers/useProjectMembership";
 import useDialog from "hooks/useDialog";
@@ -18,11 +19,13 @@ const ProjectMembership = ({
   projectUsers,
 }: ProjectMembershipProps) => {
   const {
-    refetch,
+    refetchProjectAddress,
     unable,
     loading,
     error,
     projectAddress,
+    isMember,
+    isAdmin,
   } = useProjectMembership(projectName);
 
   const { open, closeDialog, openDialog } = useDialog();
@@ -53,13 +56,18 @@ const ProjectMembership = ({
   if (!projectAddress) {
     return (
       <>
-        <Button onClick={openDialog} variant="contained">
+        <Button
+          onClick={openDialog}
+          variant="contained"
+          aria-label="Open project creation dialog"
+          data-testid="project-creation-dialog-button"
+        >
           Click here to setup on Ethereum
         </Button>
         <CreateProjectDialog
           open={open}
           closeDialog={closeDialog}
-          updateProjectAddress={refetch}
+          updateProjectAddress={refetchProjectAddress}
           projectName={projectName}
           projectUsers={projectUsers}
         />
@@ -67,7 +75,39 @@ const ProjectMembership = ({
     );
   }
 
-  return <Typography color="textPrimary">Yeay</Typography>;
+  if (!isMember) {
+    return null;
+  }
+
+  return (
+    <Box display="flex" alignItems="center">
+      <Typography
+        data-testid="member"
+        aria-label="You are a member"
+        color="textPrimary"
+      >
+        Youpi
+      </Typography>
+      {isAdmin && (
+        <>
+          <Button
+            onClick={openDialog}
+            variant="contained"
+            aria-label="Open project management dialog"
+            data-testid="project-management-dialog-button"
+          >
+            Manage Project
+          </Button>
+          <ManageProjectDialog
+            open={open}
+            closeDialog={closeDialog}
+            projectAddress={projectAddress}
+            projectUsers={projectUsers}
+          />
+        </>
+      )}
+    </Box>
+  );
 };
 
 export default ProjectMembership;

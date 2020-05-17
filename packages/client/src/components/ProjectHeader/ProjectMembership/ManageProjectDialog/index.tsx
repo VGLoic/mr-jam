@@ -8,7 +8,6 @@ import {
   DialogActions,
   Button,
   Grid,
-  Divider,
   TextField,
   Box,
   Avatar,
@@ -22,39 +21,35 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 // Icons
 import { mdiAccountPlus } from "@mdi/js";
 // Hooks
-import useCreateProject from "./controllers/useCreateProject";
+import useManageProject from "./controllers/useManageProject";
 // Styles
 import { useStyles } from "./styles";
 // Types
 import { User } from "types/user";
 
-interface CreateProjectDialogProps {
+interface ManageProjectDialogProps {
   open: boolean;
   closeDialog: () => void;
-  updateProjectAddress: () => Promise<void>;
-  projectName: string;
+  projectAddress: string;
   projectUsers: User[];
 }
-const CreateProjectDialog = ({
+const ManageProjectDialog = ({
   open,
   closeDialog,
-  updateProjectAddress,
-  projectName,
+  projectAddress,
   projectUsers,
-}: CreateProjectDialogProps) => {
+}: ManageProjectDialogProps) => {
   const {
     unable,
-    adminUserInputContext,
     additionalUserInputContext,
     additionalUsers,
     addUser,
     removeUser,
-    createProject,
+    inviteUsers,
     transactionState,
     isConfirmDisabled,
-  } = useCreateProject({
-    projectName,
-    updateProjectAddress,
+  } = useManageProject({
+    projectAddress,
     closeDialog,
   });
 
@@ -68,63 +63,9 @@ const CreateProjectDialog = ({
       onClose={closeDialog}
       classes={{ paperScrollPaper: classes.paperScrollPaper }}
     >
-      <DialogTitle>Setup this project on ethereum</DialogTitle>
+      <DialogTitle>Manage this project on ethereum</DialogTitle>
       <DialogContent>
-        <DialogContentText>Who is the admin of this project?</DialogContentText>
-        <Grid container alignItems="center" spacing={3}>
-          <Grid container item xs={10} alignItems="center" spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <Autocomplete
-                data-testid="admin-user-select"
-                id="admin-user-select"
-                disableClearable
-                fullWidth
-                options={projectUsers}
-                autoHighlight
-                getOptionLabel={(option) => option.name}
-                renderOption={(option) => (
-                  <Box display="flex">
-                    <Avatar className={classes.avatar} src={option.avatarUrl} />
-                    <span>{option.name}</span>
-                  </Box>
-                )}
-                getOptionSelected={(option: User, value: User) =>
-                  option.id === value.id
-                }
-                value={adminUserInputContext.userValue}
-                onChange={adminUserInputContext.handleUserChange}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="User"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                id="admin-address-input"
-                data-testid="admin-address-input"
-                label="Address"
-                value={adminUserInputContext.addressValue}
-                onChange={adminUserInputContext.handleAddressChange}
-                error={adminUserInputContext.addressError}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Divider className={classes.divider} />
-        <DialogContentText>
-          Do you wish to initiate this project with users?
-        </DialogContentText>
-        <DialogContentText variant="subtitle2">
-          The admin will be able to manage the users of this project later on
-        </DialogContentText>
+        <DialogContentText>Invite users on this project</DialogContentText>
         <Grid container alignItems="center" spacing={3}>
           <Grid container item xs={10} alignItems="center" spacing={3}>
             <Grid item xs={12} sm={6}>
@@ -220,9 +161,9 @@ const CreateProjectDialog = ({
           Cancel
         </Button>
         <Button
-          aria-label="Confirm creation of this project on Ethereum"
+          aria-label="Invite users on the Ethereum project"
           data-testid="confirm-action-dialog"
-          onClick={createProject}
+          onClick={inviteUsers}
           disabled={isConfirmDisabled}
           className={classes.confirmButton}
         >
@@ -237,4 +178,4 @@ const CreateProjectDialog = ({
   );
 };
 
-export default CreateProjectDialog;
+export default ManageProjectDialog;

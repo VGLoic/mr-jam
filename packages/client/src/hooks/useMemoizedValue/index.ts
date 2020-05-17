@@ -1,12 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import isEqual from "lodash/isEqual";
 
 const useMemoizedValue = <T>(value: T): T => {
-  const ref = useRef<T>(value);
+  const [memoizedValue, setMemoizeValue] = useState<T>(value);
   useEffect(() => {
-    if (!isEqual(ref.current, value)) ref.current = value;
-  }, [value]);
-  return ref.current;
+    if (!isEqual(memoizedValue, value)) setMemoizeValue(value);
+  }, [value, memoizedValue]);
+  return memoizedValue;
 };
 
 export default useMemoizedValue;
