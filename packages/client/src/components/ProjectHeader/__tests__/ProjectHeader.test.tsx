@@ -6,8 +6,7 @@ import ProjectHeader from "../";
 import { PROJECT_OVERVIEW } from "../controllers/projectOverview.query";
 import { ProjectOverviewData } from "../controllers/projectOverview.types";
 
-// For now we are mocking the call to blockchain, we need to think of a strategy for this
-jest.mock("../ProjectMembership/controllers/useProjectMembership");
+import { mockEthereumProject } from "pages/ProjectPage/controllers/__mocks__/useEthereumProject";
 
 describe("<ProjectHeader />", () => {
   it("should render with error", async () => {
@@ -20,7 +19,10 @@ describe("<ProjectHeader />", () => {
     };
     const { asFragment } = render(
       <MockedProvider mocks={[projectOverviewMock]} addTypename={false}>
-        <ProjectHeader projectId="projectIdTest" />
+        <ProjectHeader
+          projectId="projectIdTest"
+          ethereumProject={mockEthereumProject}
+        />
       </MockedProvider>
     );
 
@@ -57,7 +59,10 @@ describe("<ProjectHeader />", () => {
 
     const { asFragment } = render(
       <MockedProvider mocks={[projectOverviewMock]} addTypename={false}>
-        <ProjectHeader projectId="projectIdTest" />
+        <ProjectHeader
+          projectId="projectIdTest"
+          ethereumProject={mockEthereumProject}
+        />
       </MockedProvider>
     );
 
@@ -125,7 +130,10 @@ describe("<ProjectHeader />", () => {
 
     const { asFragment } = render(
       <MockedProvider mocks={[projectOverviewMock]} addTypename={false}>
-        <ProjectHeader projectId="projectIdTest" />
+        <ProjectHeader
+          projectId="projectIdTest"
+          ethereumProject={mockEthereumProject}
+        />
       </MockedProvider>
     );
 
