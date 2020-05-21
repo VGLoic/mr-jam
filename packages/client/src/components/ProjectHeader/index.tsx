@@ -17,7 +17,7 @@ import {
 } from "@material-ui/core";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 // Components
-import ProjectMemberShip from "./ProjectMembership";
+import ProjectInfo from "./ProjectInfo";
 // Hooks
 import useDialog from "hooks/useDialog";
 // Query
@@ -27,13 +27,15 @@ import {
   ProjectOverviewData,
   ProjectOverviewInput,
 } from "./controllers/projectOverview.types";
+import { UseEthereumProject } from "pages/ProjectPage/controllers/useEthereumProject";
 // Styles
 import { useStyles, Styles } from "./styles";
 
 interface ProjectHeaderProps {
   projectId: string;
+  ethereumProject: UseEthereumProject;
 }
-const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
+const ProjectHeader = ({ projectId, ethereumProject }: ProjectHeaderProps) => {
   const { data, loading, error } = useQuery<
     ProjectOverviewData,
     ProjectOverviewInput
@@ -127,8 +129,9 @@ const ProjectHeader = ({ projectId }: ProjectHeaderProps) => {
           </AvatarGroup>
         </Grid>
         <Grid item container sm={3} alignItems="center">
-          <ProjectMemberShip
-            projectName={project.name}
+          <ProjectInfo
+            projectId={projectId}
+            ethereumProject={ethereumProject}
             projectUsers={project.users}
           />
         </Grid>

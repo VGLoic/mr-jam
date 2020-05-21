@@ -5,7 +5,7 @@ import { useEthers } from "contexts/ethers";
 // Config
 import { Contracts } from "contexts/ethers/config";
 
-export interface UseProjectMembership {
+export interface UseEthereumProject {
   unable: boolean;
   loading: boolean;
   error: string | null;
@@ -14,11 +14,8 @@ export interface UseProjectMembership {
   isAdmin: boolean | null;
   refetchProjectAddress: () => Promise<void>;
 }
-const useProjectMembership = (projectName: string): UseProjectMembership => {
+const useEthereumProject = (projectId: string): UseEthereumProject => {
   const { selectedAddress } = useEthers();
-  const projectHash: string = ethers.utils.keccak256(
-    ethers.utils.toUtf8Bytes(projectName.toUpperCase())
-  );
   const {
     unable,
     data: retrievedProjectAddress,
@@ -28,7 +25,8 @@ const useProjectMembership = (projectName: string): UseProjectMembership => {
   } = useCall<string>({
     contract: Contracts.ProjectRegistry,
     method: "registry",
-    args: [projectHash],
+    args: [projectId],
+    delayCondition: !projectId,
   });
 
   const projectAddress =
@@ -79,4 +77,4 @@ const useProjectMembership = (projectName: string): UseProjectMembership => {
   };
 };
 
-export default useProjectMembership;
+export default useEthereumProject;

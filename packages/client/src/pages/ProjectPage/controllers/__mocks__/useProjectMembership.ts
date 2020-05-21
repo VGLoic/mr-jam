@@ -1,6 +1,6 @@
-import { UseProjectMembership } from "../useProjectMembership";
+import { UseEthereumProject } from "../useEthereumProject";
 
-const useProjectMembership = (): UseProjectMembership => ({
+const useEthereumProject = (): UseEthereumProject => ({
   unable: false,
   loading: false,
   error: null,
@@ -10,4 +10,4 @@ const useProjectMembership = (): UseProjectMembership => ({
   refetchProjectAddress: () => Promise.resolve(),
 });
 
-export default useProjectMembership;
+export default useEthereumProject;

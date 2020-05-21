@@ -5,30 +5,32 @@ import { CircularProgress, Typography, Button, Box } from "@material-ui/core";
 import CreateProjectDialog from "./CreateProjectDialog";
 import ManageProjectDialog from "./ManageProjectDialog";
 // Hooks
-import useProjectMembership from "./controllers/useProjectMembership";
 import useDialog from "hooks/useDialog";
 // Types
 import { User } from "types/user";
+import { UseEthereumProject } from "pages/ProjectPage/controllers/useEthereumProject";
 
-interface ProjectMembershipProps {
-  projectName: string;
+interface ProjectInfoProps {
+  ethereumProject: UseEthereumProject;
   projectUsers: User[];
+  projectId: string;
 }
 const ProjectMembership = ({
-  projectName,
+  ethereumProject,
   projectUsers,
-}: ProjectMembershipProps) => {
+  projectId,
+}: ProjectInfoProps) => {
+  const { open, closeDialog, openDialog } = useDialog();
+
   const {
-    refetchProjectAddress,
     unable,
     loading,
     error,
     projectAddress,
+    refetchProjectAddress,
     isMember,
     isAdmin,
-  } = useProjectMembership(projectName);
-
-  const { open, closeDialog, openDialog } = useDialog();
+  } = ethereumProject;
 
   if (unable) return null;
 
@@ -68,8 +70,8 @@ const ProjectMembership = ({
           open={open}
           closeDialog={closeDialog}
           updateProjectAddress={refetchProjectAddress}
-          projectName={projectName}
           projectUsers={projectUsers}
+          projectId={projectId}
         />
       </>
     );
