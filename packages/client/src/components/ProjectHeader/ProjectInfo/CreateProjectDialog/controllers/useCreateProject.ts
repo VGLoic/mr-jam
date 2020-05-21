@@ -1,4 +1,3 @@
-import { ethers } from "ethers";
 // Hooks and Types
 import {
   useTransaction,
@@ -14,7 +13,7 @@ import useAdditionalUsers, {
 import { Contracts } from "contexts/ethers/config";
 
 interface UseCreateProjectArgs {
-  projectName: string;
+  projectId: string;
   updateProjectAddress: () => Promise<void>;
   closeDialog: () => void;
 }
@@ -26,7 +25,7 @@ interface UseCreateProject extends Omit<UseAdditionalUsers, "reset"> {
   isConfirmDisabled: boolean;
 }
 const useCreateProject = ({
-  projectName,
+  projectId,
   updateProjectAddress,
   closeDialog,
 }: UseCreateProjectArgs): UseCreateProject => {
@@ -43,15 +42,13 @@ const useCreateProject = ({
     additionalUsers,
     addUser,
     removeUser,
-  } = useAdditionalUsers({ resetParameter: projectName });
+  } = useAdditionalUsers({ resetParameter: projectId });
 
   const [sendTransaction, transactionState] = useTransaction({
     contract: Contracts.ProjectRegistry,
     method: "registerProject",
     args: [
-      ethers.utils.keccak256(
-        ethers.utils.toUtf8Bytes(projectName.toUpperCase())
-      ),
+      projectId,
       adminUserInputContext.addressValue,
       adminUserInputContext.userValue?.id,
       additionalUsers.map((wrappedUser) => wrappedUser.address),

@@ -22,24 +22,22 @@ contract Project is ERC20, Ownable {
     uint256 constant INITIAL_BALANCE = 100;
 
     Oracle public oracle;
-    bytes32 public projectHash;
+    uint256 public projectId;
     mapping(address => Member) public members;
     address[] public memberList;
     mapping(uint256 => Bounty) bounties;
 
     constructor(
-        bytes32 _projectHash,
+        uint256 _projectId,
         address managerAccount,
         uint256 managerId,
         address[] memory additionalAccounts,
         uint256[] memory additionalIds,
         address _oracleAddress
     ) ERC20("Test Merge Token Coolos ", "TMTC") public {
-        bytes32 emptyBytes;
-        require(_projectHash != emptyBytes, "Project: projectHash can not be empty");
         require(_oracleAddress != address(0), "Project: oracleAddress can not be the zero address");
         require(additionalAccounts.length == additionalIds.length, "Project: additional accounts and ids must be of the same length");
-        projectHash = _projectHash;
+        projectId = _projectId;
         oracle = Oracle(_oracleAddress);
         // The manager becomes the owner
         transferOwnership(managerAccount);
@@ -78,8 +76,8 @@ contract Project is ERC20, Ownable {
 
     function contribute(uint256 mrId, uint256 amount) public onlyMember returns (bool) {
         address sender = _msgSender();
-        require(oracle.isMergeRequestOpened(projectHash, mrId), "Project: merge request is not opened");
-        require(!oracle.isParticipant(projectHash, mrId, members[sender].id), "Project: sender is already a participant");
+        require(oracle.isMergeRequestOpened(projectId, mrId), "Project: merge request is not opened");
+        require(!oracle.isParticipant(projectId, mrId, members[sender].id), "Project: sender is already a participant");
         _burn(sender, amount);
         bounties[mrId].amount = bounties[mrId].amount.add(amount);
         bounties[mrId].contributions[sender] = bounties[mrId].contributions[sender].add(amount);
@@ -89,8 +87,8 @@ contract Project is ERC20, Ownable {
     function redeem(uint256 mrId) public onlyMember returns (bool) {
         address sender = _msgSender();
         Bounty storage bounty = bounties[mrId];
-        require(oracle.isMergeRequestMerged(projectHash, mrId), "Project: merge request is not merged");
-        require(oracle.isParticipant(projectHash, mrId, members[sender].id), "Project: sender is not a participant");
+        require(oracle.isMergeRequestMerged(projectId, mrId), "Project: merge request is not merged");
+        require(oracle.isParticipant(projectId, mrId, members[sender].id), "Project: sender is not a participant");
         require(!bounty.registeredRedeemers.contains(sender), "Project: sender has already redeemed");
         bounty.registeredRedeemers.add(sender);
         _mint(sender, bounty.amount);

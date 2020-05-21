@@ -32,14 +32,14 @@ interface CreateProjectDialogProps {
   open: boolean;
   closeDialog: () => void;
   updateProjectAddress: () => Promise<void>;
-  projectName: string;
+  projectId: string;
   projectUsers: User[];
 }
 const CreateProjectDialog = ({
   open,
   closeDialog,
   updateProjectAddress,
-  projectName,
+  projectId,
   projectUsers,
 }: CreateProjectDialogProps) => {
   const {
@@ -53,7 +53,7 @@ const CreateProjectDialog = ({
     transactionState,
     isConfirmDisabled,
   } = useCreateProject({
-    projectName,
+    projectId,
     updateProjectAddress,
     closeDialog,
   });
