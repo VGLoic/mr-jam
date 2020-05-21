@@ -4,6 +4,7 @@ import { CircularProgress, Typography, Button, Box } from "@material-ui/core";
 // Components
 import CreateProjectDialog from "./CreateProjectDialog";
 import ManageProjectDialog from "./ManageProjectDialog";
+import Balance from "./Balance";
 // Hooks
 import useDialog from "hooks/useDialog";
 // Types
@@ -30,6 +31,7 @@ const ProjectMembership = ({
     refetchProjectAddress,
     isMember,
     isAdmin,
+    balance,
   } = ethereumProject;
 
   if (unable) return null;
@@ -82,14 +84,13 @@ const ProjectMembership = ({
   }
 
   return (
-    <Box display="flex" alignItems="center">
-      <Typography
-        data-testid="member"
-        aria-label="You are a member"
-        color="textPrimary"
-      >
-        Youpi
-      </Typography>
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      flex={1}
+    >
+      <Balance balance={balance as number} />
       {isAdmin && (
         <>
           <Button

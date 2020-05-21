@@ -55,18 +55,18 @@ const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
 
   return (
     <Grid item container spacing={2}>
-      <Grid item xs={6} md={3}>
+      <Grid item xs={6} md={5}>
         <Typography variant="h6" color="textSecondary">
           Merge Requests:
         </Typography>
       </Grid>
-      <Grid item container xs={6} md={4} justify="center">
+      <Grid item container xs={6} md={3}>
         <StateMenu
           selectedMrState={selectedMrState}
           selectMrState={selectMrState}
         />
       </Grid>
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} md={4}>
         <DateChoice
           fromDate={fromDate}
           toDate={toDate}
