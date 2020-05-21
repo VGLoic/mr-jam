@@ -12,7 +12,9 @@ export interface UseEthereumProject {
   projectAddress: string | null;
   isMember: boolean | null;
   isAdmin: boolean | null;
+  balance: number | null;
   refetchProjectAddress: () => Promise<void>;
+  refetchBalance: () => Promise<void>;
 }
 const useEthereumProject = (projectId: string): UseEthereumProject => {
   const { selectedAddress } = useEthers();
@@ -57,15 +59,33 @@ const useEthereumProject = (projectId: string): UseEthereumProject => {
     delayCondition: !Boolean(projectAddress),
   });
 
+  const {
+    loading: isBalanceLoading,
+    error: isBalanceError,
+    data: balanceBN,
+    refetch: refetchBalance,
+  } = useCall<ethers.utils.BigNumber>({
+    contract: Contracts.Project,
+    address: projectAddress || "",
+    method: "balanceOf",
+    args: [selectedAddress],
+    delayCondition: !Boolean(projectAddress),
+  });
+
   return {
     unable,
     loading:
       projectAddressLoading ||
       adminAddressLoading ||
       isMemberLoading ||
+      isBalanceLoading ||
       (Boolean(projectAddress) &&
         (!Boolean(adminAddress) || isMember === null)),
-    error: projectAddressError || adminAddressError || isMemberError,
+    error:
+      projectAddressError ||
+      adminAddressError ||
+      isMemberError ||
+      isBalanceError,
     projectAddress,
     isMember,
     isAdmin: Boolean(
@@ -73,7 +93,9 @@ const useEthereumProject = (projectId: string): UseEthereumProject => {
         ethers.utils.getAddress(adminAddress) ===
           ethers.utils.getAddress(selectedAddress as string)
     ),
+    balance: balanceBN?.toNumber() || null,
     refetchProjectAddress,
+    refetchBalance,
   };
 };
 
