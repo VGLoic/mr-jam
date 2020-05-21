@@ -45,24 +45,42 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
             alignItems="center"
           >
             <Box display="flex" alignItems="baseline">
-              <Typography>
+              <Typography aria-label="Merge request title">
                 <strong>{mergeRequest.title}</strong>
               </Typography>
               {isUserAuthor && (
-                <Typography className={classes.authorBadge} variant="caption">
+                <Typography
+                  className={classes.authorBadge}
+                  variant="caption"
+                  aria-label="is merge request author"
+                >
                   Author
                 </Typography>
               )}
             </Box>
             <Box display="flex">
-              <Typography variant="subtitle2">Approvals:</Typography>
-              <AvatarGroup className={classes.avatarGroup}>
-                {mergeRequest.approvedBy.map((user) => (
-                  <Tooltip key={user.id} title={user.name}>
-                    <Avatar src={user.avatarUrl} className={classes.avatar} />
-                  </Tooltip>
-                ))}
-              </AvatarGroup>
+              {mergeRequest.approvedBy.length === 0 ? (
+                <Typography variant="subtitle2" aria-label="No approvals">
+                  No approvals yet
+                </Typography>
+              ) : (
+                <>
+                  <Typography variant="subtitle2">Approvals:</Typography>
+                  <AvatarGroup
+                    className={classes.avatarGroup}
+                    aria-label="Approvers lists"
+                  >
+                    {mergeRequest.approvedBy.map((user) => (
+                      <Tooltip key={user.id} title={user.name}>
+                        <Avatar
+                          src={user.avatarUrl}
+                          className={classes.avatar}
+                        />
+                      </Tooltip>
+                    ))}
+                  </AvatarGroup>
+                </>
+              )}
             </Box>
           </Box>
           <Box
@@ -79,6 +97,7 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
                 <IconButton
                   href={mergeRequest.webUrl}
                   className={classes.redirectIcon}
+                  aria-label="Redirect to Gitlab Merge Request"
                 >
                   <SvgIcon>
                     <path d={mdiGitlab} />
@@ -87,14 +106,28 @@ const MergeRequestCard = ({ mergeRequest }: MergeRequestProps) => {
               </Tooltip>
             </Box>
             <Box display="flex">
-              <Typography variant="subtitle2">Reviewed by:</Typography>
-              <AvatarGroup className={classes.avatarGroup}>
-                {mergeRequest.reviews.reviewedBy.map((user) => (
-                  <Tooltip key={user.id} title={user.name}>
-                    <Avatar src={user.avatarUrl} className={classes.avatar} />
-                  </Tooltip>
-                ))}
-              </AvatarGroup>
+              {mergeRequest.reviews.reviewedBy.length === 0 ? (
+                <Typography variant="subtitle2" aria-label="No reviews">
+                  No review yet
+                </Typography>
+              ) : (
+                <>
+                  <Typography variant="subtitle2">Reviewed by:</Typography>
+                  <AvatarGroup
+                    className={classes.avatarGroup}
+                    aria-label="Reviewers lists"
+                  >
+                    {mergeRequest.reviews.reviewedBy.map((user) => (
+                      <Tooltip key={user.id} title={user.name}>
+                        <Avatar
+                          src={user.avatarUrl}
+                          className={classes.avatar}
+                        />
+                      </Tooltip>
+                    ))}
+                  </AvatarGroup>
+                </>
+              )}
             </Box>
           </Box>
         </CardContent>
