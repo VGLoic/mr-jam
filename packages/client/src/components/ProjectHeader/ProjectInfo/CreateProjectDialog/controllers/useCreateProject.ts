@@ -1,4 +1,3 @@
-import { ethers } from "ethers";
 // Hooks and Types
 import {
   useTransaction,
