@@ -222,6 +222,31 @@
           "internalType": "uint256",
           "name": "mrId",
           "type": "uint256"
+        }
+      ],
+      "name": "getMergeRequestState",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "projectId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "mrId",
+          "type": "uint256"
         },
         {
           "internalType": "uint256",
@@ -242,21 +267,21 @@
       "constant": true
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"addParticipant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestClosed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestMerged\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestOpened\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"isParticipant\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"removeParticipant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"updateStateToClosed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"updateStateToMerged\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"addParticipant(uint256,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\",\"userId\":\"Gitlab ID of the user\"}},\"isMergeRequestClosed(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"{bool} True if the merge request is in Closed state\"}},\"isMergeRequestMerged(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"{bool} True if the merge request is in Merged state\"}},\"isMergeRequestOpened(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"True if the merge request is in Opened state\"}},\"isParticipant(uint256,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\",\"userId\":\"Gitlab ID of the user\"},\"returns\":{\"_0\":\"{bool} True if the user belongs to the participants\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"removeParticipant(uint256,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\",\"userId\":\"Gitlab ID of the user\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"updateStateToClosed(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\"}},\"updateStateToMerged(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\"}}}},\"userdoc\":{\"methods\":{\"addParticipant(uint256,uint256,uint256)\":{\"notice\":\"Add a participant to a merge request of a project\"},\"isMergeRequestClosed(uint256,uint256)\":{\"notice\":\"Check if a merge request of a project is in Closed state\"},\"isMergeRequestMerged(uint256,uint256)\":{\"notice\":\"Check if a merge request of a project is in Merged state\"},\"isMergeRequestOpened(uint256,uint256)\":{\"notice\":\"Check if a merge request of a project is in Opened state\"},\"isParticipant(uint256,uint256,uint256)\":{\"notice\":\"Check if a user is a participant to a merge request of a project\"},\"removeParticipant(uint256,uint256,uint256)\":{\"notice\":\"Remove a participant to a merge request of a project\"},\"updateStateToClosed(uint256,uint256)\":{\"notice\":\"Update the state of a merge request of a project to Closed\"},\"updateStateToMerged(uint256,uint256)\":{\"notice\":\"Update the state of a merge request of a project to Merged\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol\":\"Oracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol\":{\"keccak256\":\"0x1ade23b039ff3d4144566d2201659f0b6d2531d42e95ed8a1fd5d3882188857e\",\"urls\":[\"bzz-raw://d9c69c6120312cc885d55eadbd70f244762bb28229dde433033557c5eac23f87\",\"dweb:/ipfs/QmcXbCTqhnnvqovsfMrVJoLuBikfXDe9RXLDuTAmhwxkEX\"]},\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x0de74dfa6b37943c1b834cbd8fb7a8d052e5ff80c7adb33692102dd6cd2985e9\",\"urls\":[\"bzz-raw://9d2d827fcf4a838f5821732c0acd6a40d21c2a5a2cfe2563feec91465f47bb60\",\"dweb:/ipfs/Qmex3wMKf5Sghbfvr288RUg1kP2uAyTMf11w83WbMbpQQc\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x9a8c691b81a4a48adbbd5b010faa56a168c189e711495c16347d93b60b805f82\",\"urls\":[\"bzz-raw://d951d626ed7bfe1a2d7a6bd4af315ff8691929bd567594d6ab53599fe9e17e4e\",\"dweb:/ipfs/QmYkGeowpa6Bjr9aaDirWdDo7hSfShzzZhanKC4nTfRhLj\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0x7f6401708b61f575b497aa7c8118ca9d70348643c83c26e70d9b643edf1a95c1\",\"urls\":[\"bzz-raw://b020d65f592c1715bc3d5799ad835cd975ef7d314f340f27603fb99ad86a0427\",\"dweb:/ipfs/QmQoGZmzE5aDTMGJM4BW77eraerfTSV9Rs8wykpQ42i1in\"]}},\"version\":1}",
-  "bytecode": "0x608060405260006100146100b760201b60201c565b9050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508073ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3506100bf565b600033905090565b610ef3806100ce6000396000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c806381a74df51161007157806381a74df5146101dc5780638c7d06b81461022c5780638da5cb5b14610264578063ca35c372146102ae578063d2687c60146102e6578063f2fde38b14610340576100a9565b8063437109f6146100ae578063593e3869146100fe578063595e3bd91461014e578063715018a6146101905780637e0861f61461019a575b600080fd5b6100e4600480360360408110156100c457600080fd5b810190808035906020019092919080359060200190929190505050610384565b604051808215151515815260200191505060405180910390f35b6101346004803603604081101561011457600080fd5b8101908080359060200190929190803590602001909291905050506103db565b604051808215151515815260200191505060405180910390f35b61018e6004803603606081101561016457600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610432565b005b61019861053a565b005b6101da600480360360608110156101b057600080fd5b810190808035906020019092919080359060200190929190803590602001909291905050506106c2565b005b610212600480360360408110156101f257600080fd5b8101908080359060200190929190803590602001909291905050506107ca565b604051808215151515815260200191505060405180910390f35b6102626004803603604081101561024257600080fd5b810190808035906020019092919080359060200190929190505050610821565b005b61026c610937565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102e4600480360360408110156102c457600080fd5b810190808035906020019092919080359060200190929190505050610960565b005b610326600480360360608110156102fc57600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610a75565b604051808215151515815260200191505060405180910390f35b6103826004803603602081101561035657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610ab9565b005b600080600281111561039257fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff1660028111156103d257fe5b14905092915050565b60006002808111156103e957fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561042957fe5b14905092915050565b61043a610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146104fb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b61053481600160008681526020019081526020016000206000858152602001908152602001600020600101610cce90919063ffffffff16565b50505050565b610542610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610603576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6106ca610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161461078b576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6107c481600160008681526020019081526020016000206000858152602001908152602001600020600101610ce890919063ffffffff16565b50505050565b60006002808111156107d857fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561081857fe5b14905092915050565b610829610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146108ea576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600260016000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff0219169083600281111561092e57fe5b02179055505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b610968610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610a29576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6001806000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff02191690836002811115610a6c57fe5b02179055505050565b6000610ab082600160008781526020019081526020016000206000868152602001908152602001600020600101610d0290919063ffffffff16565b90509392505050565b610ac1610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610b82576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610c08576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610e986026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600033905090565b6000610ce0836000018360001b610d1c565b905092915050565b6000610cfa836000018360001b610d8c565b905092915050565b6000610d14836000018360001b610e74565b905092915050565b6000610d288383610e74565b610d81578260000182908060018154018082558091505060019003906000526020600020016000909190919091505582600001805490508360010160008481526020019081526020016000208190555060019050610d86565b600090505b92915050565b60008083600101600084815260200190815260200160002054905060008114610e685760006001820390506000600186600001805490500390506000866000018281548110610dd757fe5b9060005260206000200154905080876000018481548110610df457fe5b9060005260206000200181905550600183018760010160008381526020019081526020016000208190555086600001805480610e2c57fe5b60019003818190600052602060002001600090559055866001016000878152602001908152602001600020600090556001945050505050610e6e565b60009150505b92915050565b60008083600101600084815260200190815260200160002054141590509291505056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a2646970667358221220ac7a9e519a90438b5d3d9aadf22bb3f5035298f27ae7e2e206d33e7afac44b3464736f6c63430006020033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100a95760003560e01c806381a74df51161007157806381a74df5146101dc5780638c7d06b81461022c5780638da5cb5b14610264578063ca35c372146102ae578063d2687c60146102e6578063f2fde38b14610340576100a9565b8063437109f6146100ae578063593e3869146100fe578063595e3bd91461014e578063715018a6146101905780637e0861f61461019a575b600080fd5b6100e4600480360360408110156100c457600080fd5b810190808035906020019092919080359060200190929190505050610384565b604051808215151515815260200191505060405180910390f35b6101346004803603604081101561011457600080fd5b8101908080359060200190929190803590602001909291905050506103db565b604051808215151515815260200191505060405180910390f35b61018e6004803603606081101561016457600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610432565b005b61019861053a565b005b6101da600480360360608110156101b057600080fd5b810190808035906020019092919080359060200190929190803590602001909291905050506106c2565b005b610212600480360360408110156101f257600080fd5b8101908080359060200190929190803590602001909291905050506107ca565b604051808215151515815260200191505060405180910390f35b6102626004803603604081101561024257600080fd5b810190808035906020019092919080359060200190929190505050610821565b005b61026c610937565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102e4600480360360408110156102c457600080fd5b810190808035906020019092919080359060200190929190505050610960565b005b610326600480360360608110156102fc57600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610a75565b604051808215151515815260200191505060405180910390f35b6103826004803603602081101561035657600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610ab9565b005b600080600281111561039257fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff1660028111156103d257fe5b14905092915050565b60006002808111156103e957fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561042957fe5b14905092915050565b61043a610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146104fb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b61053481600160008681526020019081526020016000206000858152602001908152602001600020600101610cce90919063ffffffff16565b50505050565b610542610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610603576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6106ca610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161461078b576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6107c481600160008681526020019081526020016000206000858152602001908152602001600020600101610ce890919063ffffffff16565b50505050565b60006002808111156107d857fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561081857fe5b14905092915050565b610829610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146108ea576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600260016000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff0219169083600281111561092e57fe5b02179055505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b610968610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610a29576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6001806000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff02191690836002811115610a6c57fe5b02179055505050565b6000610ab082600160008781526020019081526020016000206000868152602001908152602001600020600101610d0290919063ffffffff16565b90509392505050565b610ac1610cc6565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610b82576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610c08576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610e986026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600033905090565b6000610ce0836000018360001b610d1c565b905092915050565b6000610cfa836000018360001b610d8c565b905092915050565b6000610d14836000018360001b610e74565b905092915050565b6000610d288383610e74565b610d81578260000182908060018154018082558091505060019003906000526020600020016000909190919091505582600001805490508360010160008481526020019081526020016000208190555060019050610d86565b600090505b92915050565b60008083600101600084815260200190815260200160002054905060008114610e685760006001820390506000600186600001805490500390506000866000018281548110610dd757fe5b9060005260206000200154905080876000018481548110610df457fe5b9060005260206000200181905550600183018760010160008381526020019081526020016000208190555086600001805480610e2c57fe5b60019003818190600052602060002001600090559055866001016000878152602001908152602001600020600090556001945050505050610e6e565b60009150505b92915050565b60008083600101600084815260200190815260200160002054141590509291505056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a2646970667358221220ac7a9e519a90438b5d3d9aadf22bb3f5035298f27ae7e2e206d33e7afac44b3464736f6c63430006020033",
-  "sourceMap": "137:3552:1:-:0;;;832:17:5;852:12;:10;;;:12;;:::i;:::-;832:32;;883:9;874:6;;:18;;;;;;;;;;;;;;;;;;940:9;907:43;;936:1;907:43;;;;;;;;;;;;798:159;137:3552:1;;735:104:4;788:15;822:10;815:17;;735:104;:::o;137:3552:1:-;;;;;;;",
-  "deployedSourceMap": "137:3552:1:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;137:3552:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2174:179;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2174:179:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2600;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2600:179:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;684:163;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;684:163:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1656:145:5;;;:::i;:::-;;1071:169:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1071:169:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;3026:179;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3026:179:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1774:160;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1774:160:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1033:77:5;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1427:160:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1427:160:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;3503:184;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3503:184:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1950:240:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1950:240:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;2174:179:1;2258:4;2322:24;2281:65;;;;;;;;:14;:25;2296:9;2281:25;;;;;;;;;;;:31;2307:4;2281:31;;;;;;;;;;;:37;;;;;;;;;;;;:65;;;;;;;;;2274:72;;2174:179;;;;:::o;2600:::-;2684:4;2748:24;2707:65;;;;;;;;:14;:25;2722:9;2707:25;;;;;;;;;;;:31;2733:4;2707:31;;;;;;;;;;;:37;;;;;;;;;;;;:65;;;;;;;;;2700:72;;2600:179;;;;:::o;684:163::-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;784:56:1::1;833:6;784:14;:25;799:9;784:25;;;;;;;;;;;:31;810:4;784:31;;;;;;;;;;;:44;;:48;;:56;;;;:::i;:::-;;684:163:::0;;;:::o;1656:145:5:-;1247:12;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1762:1:::1;1725:40;;1746:6;::::0;::::1;;;;;;;;;1725:40;;;;;;;;;;;;1792:1;1775:6:::0;::::1;:19;;;;;;;;;;;;;;;;;;1656:145::o:0;1071:169:1:-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1174:59:1::1;1226:6;1174:14;:25;1189:9;1174:25;;;;;;;;;;;:31;1200:4;1174:31;;;;;;;;;;;:44;;:51;;:59;;;;:::i;:::-;;1071:169:::0;;;:::o;3026:179::-;3110:4;3174:24;3133:65;;;;;;;;:14;:25;3148:9;3133:25;;;;;;;;;;;:31;3159:4;3133:31;;;;;;;;;;;:37;;;;;;;;;;;;:65;;;;;;;;;3126:72;;3026:179;;;;:::o;1774:160::-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1903:24:1::1;1863:14;:25;1878:9;1863:25;;;;;;;;;;;:31;1889:4;1863:31;;;;;;;;;;;:37;;;:64;;;;;;;;;;;;;;;;;;;;;;;;1774:160:::0;;:::o;1033:77:5:-;1071:7;1097:6;;;;;;;;;;;1090:13;;1033:77;:::o;1427:160:1:-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1556:24:1::1;1516:14:::0;:25:::1;1531:9;1516:25;;;;;;;;;;;:31;1542:4;1516:31;;;;;;;;;;;:37;;;:64;;;;;;;;;;;;;;;;;;;;;;;;1427:160:::0;;:::o;3503:184::-;3596:4;3619:61;3673:6;3619:14;:25;3634:9;3619:25;;;;;;;;;;;:31;3645:4;3619:31;;;;;;;;;;;:44;;:53;;:61;;;;:::i;:::-;3612:68;;3503:184;;;;;:::o;1950:240:5:-;1247:12;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2058:1:::1;2038:22;;:8;:22;;;;2030:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2147:8;2118:38;;2139:6;::::0;::::1;;;;;;;;;2118:38;;;;;;;;;;;;2175:8;2166:6;::::0;:17:::1;;;;;;;;;;;;;;;;;;1950:240:::0;:::o;735:104:4:-;788:15;822:10;815:17;;735:104;:::o;6434:129:10:-;6501:4;6524:32;6529:3;:10;;6549:5;6541:14;;6524:4;:32::i;:::-;6517:39;;6434:129;;;;:::o;6731:135::-;6801:4;6824:35;6832:3;:10;;6852:5;6844:14;;6824:7;:35::i;:::-;6817:42;;6731:135;;;;:::o;6947:144::-;7024:4;7047:37;7057:3;:10;;7077:5;7069:14;;7047:9;:37::i;:::-;7040:44;;6947:144;;;;:::o;1578:404::-;1641:4;1662:21;1672:3;1677:5;1662:9;:21::i;:::-;1657:319;;1699:3;:11;;1716:5;1699:23;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1699:23:10;;;;;;;;;;;;;;;;;;;1879:3;:11;;:18;;;;1857:3;:12;;:19;1870:5;1857:19;;;;;;;;;;;:40;;;;1918:4;1911:11;;;;1657:319;1960:5;1953:12;;1578:404;;;;;:::o;2150:1512::-;2216:4;2332:18;2353:3;:12;;:19;2366:5;2353:19;;;;;;;;;;;;2332:40;;2401:1;2387:10;:15;2383:1273;;2744:21;2781:1;2768:10;:14;2744:38;;2796:17;2837:1;2816:3;:11;;:18;;;;:22;2796:42;;3078:17;3098:3;:11;;3110:9;3098:22;;;;;;;;;;;;;;;;3078:42;;3241:9;3212:3;:11;;3224:13;3212:26;;;;;;;;;;;;;;;:38;;;;3358:1;3342:13;:17;3316:3;:12;;:23;3329:9;3316:23;;;;;;;;;;;:43;;;;3465:3;:11;;:17;;;;;;;;;;;;;;;;;;;;;;;;3557:3;:12;;:19;3570:5;3557:19;;;;;;;;;;;3550:26;;;3598:4;3591:11;;;;;;;;2383:1273;3640:5;3633:12;;;2150:1512;;;;;:::o;3743:127::-;3816:4;3862:1;3839:3;:12;;:19;3852:5;3839:19;;;;;;;;;;;;:24;;3832:31;;3743:127;;;;:::o",
-  "source": "pragma solidity ^0.6.2;\n\nimport \"@openzeppelin/contracts/utils/EnumerableSet.sol\";\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\n\ncontract Oracle is Ownable {\n    using EnumerableSet for EnumerableSet.UintSet;\n\n    enum MergeRequestState { Opened, Closed, Merged }\n\n    struct MergeRequest {\n        MergeRequestState state;\n        EnumerableSet.UintSet participants;\n    }\n\n    mapping(uint256 => mapping(uint256 => MergeRequest)) private _mergeRequests;\n\n    /**\n     * Add a participant to a merge request of a project\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     * @param userId Gitlab ID of the user\n     */\n    function addParticipant(uint256 projectId, uint256 mrId, uint256 userId) public onlyOwner {\n        _mergeRequests[projectId][mrId].participants.add(userId);\n    }\n\n    /**\n     * Remove a participant to a merge request of a project\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     * @param userId Gitlab ID of the user\n     */\n    function removeParticipant(uint256 projectId, uint256 mrId, uint256 userId) public onlyOwner {\n        _mergeRequests[projectId][mrId].participants.remove(userId);\n    }\n\n    /**\n     * Update the state of a merge request of a project to Closed\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     */\n    function updateStateToClosed(uint256 projectId, uint256 mrId) public onlyOwner {\n        _mergeRequests[projectId][mrId].state = MergeRequestState.Closed;\n    }\n\n    /**\n     * Update the state of a merge request of a project to Merged\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     */\n    function updateStateToMerged(uint256 projectId, uint256 mrId) public onlyOwner {\n        _mergeRequests[projectId][mrId].state = MergeRequestState.Merged;\n    }\n\n    /**\n     * Check if a merge request of a project is in Opened state\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return True if the merge request is in Opened state\n     */\n    function isMergeRequestOpened(uint256 projectId, uint256 mrId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].state == MergeRequestState.Opened;\n    }\n\n    /**\n     * Check if a merge request of a project is in Merged state\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return {bool} True if the merge request is in Merged state\n     */\n    function isMergeRequestMerged(uint256 projectId, uint256 mrId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].state == MergeRequestState.Merged;\n    }\n\n    /**\n     * Check if a merge request of a project is in Closed state\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return {bool} True if the merge request is in Closed state\n     */\n    function isMergeRequestClosed(uint256 projectId, uint256 mrId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].state == MergeRequestState.Merged;\n    }\n\n    /**\n     * Check if a user is a participant to a merge request of a project\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @param userId Gitlab ID of the user\n     * @return {bool} True if the user belongs to the participants\n     */\n    function isParticipant(uint256 projectId, uint256 mrId, uint256 userId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].participants.contains(userId);\n    }\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"addParticipant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"getMergeRequestState\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestClosed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestMerged\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"isMergeRequestOpened\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"isParticipant\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"}],\"name\":\"removeParticipant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"updateStateToClosed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"projectId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mrId\",\"type\":\"uint256\"}],\"name\":\"updateStateToMerged\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"addParticipant(uint256,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\",\"userId\":\"Gitlab ID of the user\"}},\"getMergeRequestState(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"{uint8} 0 for opened, 1 for merged, 2 for closed\"}},\"isMergeRequestClosed(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"{bool} True if the merge request is in Closed state\"}},\"isMergeRequestMerged(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"{bool} True if the merge request is in Merged state\"}},\"isMergeRequestOpened(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\"},\"returns\":{\"_0\":\"True if the merge request is in Opened state\"}},\"isParticipant(uint256,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Hash of the project\",\"userId\":\"Gitlab ID of the user\"},\"returns\":{\"_0\":\"{bool} True if the user belongs to the participants\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"removeParticipant(uint256,uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\",\"userId\":\"Gitlab ID of the user\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"updateStateToClosed(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\"}},\"updateStateToMerged(uint256,uint256)\":{\"params\":{\"mrId\":\"Gitlab ID of the merge request\",\"projectId\":\"Gitlab ID of the project\"}}}},\"userdoc\":{\"methods\":{\"addParticipant(uint256,uint256,uint256)\":{\"notice\":\"Add a participant to a merge request of a project\"},\"getMergeRequestState(uint256,uint256)\":{\"notice\":\"Get the merge request state as a uint\"},\"isMergeRequestClosed(uint256,uint256)\":{\"notice\":\"Check if a merge request of a project is in Closed state\"},\"isMergeRequestMerged(uint256,uint256)\":{\"notice\":\"Check if a merge request of a project is in Merged state\"},\"isMergeRequestOpened(uint256,uint256)\":{\"notice\":\"Check if a merge request of a project is in Opened state\"},\"isParticipant(uint256,uint256,uint256)\":{\"notice\":\"Check if a user is a participant to a merge request of a project\"},\"removeParticipant(uint256,uint256,uint256)\":{\"notice\":\"Remove a participant to a merge request of a project\"},\"updateStateToClosed(uint256,uint256)\":{\"notice\":\"Update the state of a merge request of a project to Closed\"},\"updateStateToMerged(uint256,uint256)\":{\"notice\":\"Update the state of a merge request of a project to Merged\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol\":\"Oracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol\":{\"keccak256\":\"0x53d9864c2af092257fdebe6ac7f26e4a97faee41bff7ccc2de0fdc029994b560\",\"urls\":[\"bzz-raw://2f75eb972732599b3cab9b9b15514a3a2445f150a020b461eb82b889ebd09713\",\"dweb:/ipfs/QmUbCwJZZvNdS9aVdFLziWE5HBjj6gtgh1VRZyYwz8su9d\"]},\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x0de74dfa6b37943c1b834cbd8fb7a8d052e5ff80c7adb33692102dd6cd2985e9\",\"urls\":[\"bzz-raw://9d2d827fcf4a838f5821732c0acd6a40d21c2a5a2cfe2563feec91465f47bb60\",\"dweb:/ipfs/Qmex3wMKf5Sghbfvr288RUg1kP2uAyTMf11w83WbMbpQQc\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x9a8c691b81a4a48adbbd5b010faa56a168c189e711495c16347d93b60b805f82\",\"urls\":[\"bzz-raw://d951d626ed7bfe1a2d7a6bd4af315ff8691929bd567594d6ab53599fe9e17e4e\",\"dweb:/ipfs/QmYkGeowpa6Bjr9aaDirWdDo7hSfShzzZhanKC4nTfRhLj\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0x7f6401708b61f575b497aa7c8118ca9d70348643c83c26e70d9b643edf1a95c1\",\"urls\":[\"bzz-raw://b020d65f592c1715bc3d5799ad835cd975ef7d314f340f27603fb99ad86a0427\",\"dweb:/ipfs/QmQoGZmzE5aDTMGJM4BW77eraerfTSV9Rs8wykpQ42i1in\"]}},\"version\":1}",
+  "bytecode": "0x608060405260006100146100b760201b60201c565b9050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508073ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3506100bf565b600033905090565b610fe7806100ce6000396000f3fe608060405234801561001057600080fd5b50600436106100b45760003560e01c806381a74df51161007157806381a74df5146102395780638c7d06b8146102895780638da5cb5b146102c1578063ca35c3721461030b578063d2687c6014610343578063f2fde38b1461039d576100b4565b80631359dd8e146100b9578063437109f61461010b578063593e38691461015b578063595e3bd9146101ab578063715018a6146101ed5780637e0861f6146101f7575b600080fd5b6100ef600480360360408110156100cf57600080fd5b8101908080359060200190929190803590602001909291905050506103e1565b604051808260ff1660ff16815260200191505060405180910390f35b6101416004803603604081101561012157600080fd5b810190808035906020019092919080359060200190929190505050610478565b604051808215151515815260200191505060405180910390f35b6101916004803603604081101561017157600080fd5b8101908080359060200190929190803590602001909291905050506104cf565b604051808215151515815260200191505060405180910390f35b6101eb600480360360608110156101c157600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610526565b005b6101f561062e565b005b6102376004803603606081101561020d57600080fd5b810190808035906020019092919080359060200190929190803590602001909291905050506107b6565b005b61026f6004803603604081101561024f57600080fd5b8101908080359060200190929190803590602001909291905050506108be565b604051808215151515815260200191505060405180910390f35b6102bf6004803603604081101561029f57600080fd5b810190808035906020019092919080359060200190929190505050610915565b005b6102c9610a2b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6103416004803603604081101561032157600080fd5b810190808035906020019092919080359060200190929190505050610a54565b005b6103836004803603606081101561035957600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610b69565b604051808215151515815260200191505060405180910390f35b6103df600480360360208110156103b357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610bad565b005b60008060016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff1690506001600281111561042857fe5b81600281111561043457fe5b1415610444576002915050610472565b60028081111561045057fe5b81600281111561045c57fe5b141561046c576001915050610472565b60009150505b92915050565b600080600281111561048657fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff1660028111156104c657fe5b14905092915050565b60006002808111156104dd57fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561051d57fe5b14905092915050565b61052e610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146105ef576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b61062881600160008681526020019081526020016000206000858152602001908152602001600020600101610dc290919063ffffffff16565b50505050565b610636610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146106f7576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6107be610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161461087f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6108b881600160008681526020019081526020016000206000858152602001908152602001600020600101610ddc90919063ffffffff16565b50505050565b60006002808111156108cc57fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561090c57fe5b14905092915050565b61091d610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146109de576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600260016000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff02191690836002811115610a2257fe5b02179055505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b610a5c610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610b1d576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6001806000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff02191690836002811115610b6057fe5b02179055505050565b6000610ba482600160008781526020019081526020016000206000868152602001908152602001600020600101610df690919063ffffffff16565b90509392505050565b610bb5610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610c76576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610cfc576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610f8c6026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600033905090565b6000610dd4836000018360001b610e10565b905092915050565b6000610dee836000018360001b610e80565b905092915050565b6000610e08836000018360001b610f68565b905092915050565b6000610e1c8383610f68565b610e75578260000182908060018154018082558091505060019003906000526020600020016000909190919091505582600001805490508360010160008481526020019081526020016000208190555060019050610e7a565b600090505b92915050565b60008083600101600084815260200190815260200160002054905060008114610f5c5760006001820390506000600186600001805490500390506000866000018281548110610ecb57fe5b9060005260206000200154905080876000018481548110610ee857fe5b9060005260206000200181905550600183018760010160008381526020019081526020016000208190555086600001805480610f2057fe5b60019003818190600052602060002001600090559055866001016000878152602001908152602001600020600090556001945050505050610f62565b60009150505b92915050565b60008083600101600084815260200190815260200160002054141590509291505056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a264697066735822122023d96abb50a3fd7b17433f43303c2c09b9ad88adedc13a5dbabf5379f04ca0f564736f6c63430006020033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100b45760003560e01c806381a74df51161007157806381a74df5146102395780638c7d06b8146102895780638da5cb5b146102c1578063ca35c3721461030b578063d2687c6014610343578063f2fde38b1461039d576100b4565b80631359dd8e146100b9578063437109f61461010b578063593e38691461015b578063595e3bd9146101ab578063715018a6146101ed5780637e0861f6146101f7575b600080fd5b6100ef600480360360408110156100cf57600080fd5b8101908080359060200190929190803590602001909291905050506103e1565b604051808260ff1660ff16815260200191505060405180910390f35b6101416004803603604081101561012157600080fd5b810190808035906020019092919080359060200190929190505050610478565b604051808215151515815260200191505060405180910390f35b6101916004803603604081101561017157600080fd5b8101908080359060200190929190803590602001909291905050506104cf565b604051808215151515815260200191505060405180910390f35b6101eb600480360360608110156101c157600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610526565b005b6101f561062e565b005b6102376004803603606081101561020d57600080fd5b810190808035906020019092919080359060200190929190803590602001909291905050506107b6565b005b61026f6004803603604081101561024f57600080fd5b8101908080359060200190929190803590602001909291905050506108be565b604051808215151515815260200191505060405180910390f35b6102bf6004803603604081101561029f57600080fd5b810190808035906020019092919080359060200190929190505050610915565b005b6102c9610a2b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6103416004803603604081101561032157600080fd5b810190808035906020019092919080359060200190929190505050610a54565b005b6103836004803603606081101561035957600080fd5b81019080803590602001909291908035906020019092919080359060200190929190505050610b69565b604051808215151515815260200191505060405180910390f35b6103df600480360360208110156103b357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610bad565b005b60008060016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff1690506001600281111561042857fe5b81600281111561043457fe5b1415610444576002915050610472565b60028081111561045057fe5b81600281111561045c57fe5b141561046c576001915050610472565b60009150505b92915050565b600080600281111561048657fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff1660028111156104c657fe5b14905092915050565b60006002808111156104dd57fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561051d57fe5b14905092915050565b61052e610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146105ef576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b61062881600160008681526020019081526020016000206000858152602001908152602001600020600101610dc290919063ffffffff16565b50505050565b610636610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146106f7576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6107be610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161461087f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6108b881600160008681526020019081526020016000206000858152602001908152602001600020600101610ddc90919063ffffffff16565b50505050565b60006002808111156108cc57fe5b60016000858152602001908152602001600020600084815260200190815260200160002060000160009054906101000a900460ff16600281111561090c57fe5b14905092915050565b61091d610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16146109de576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600260016000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff02191690836002811115610a2257fe5b02179055505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b610a5c610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610b1d576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b6001806000848152602001908152602001600020600083815260200190815260200160002060000160006101000a81548160ff02191690836002811115610b6057fe5b02179055505050565b6000610ba482600160008781526020019081526020016000206000868152602001908152602001600020600101610df690919063ffffffff16565b90509392505050565b610bb5610dba565b73ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614610c76576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657281525060200191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610cfc576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610f8c6026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600033905090565b6000610dd4836000018360001b610e10565b905092915050565b6000610dee836000018360001b610e80565b905092915050565b6000610e08836000018360001b610f68565b905092915050565b6000610e1c8383610f68565b610e75578260000182908060018154018082558091505060019003906000526020600020016000909190919091505582600001805490508360010160008481526020019081526020016000208190555060019050610e7a565b600090505b92915050565b60008083600101600084815260200190815260200160002054905060008114610f5c5760006001820390506000600186600001805490500390506000866000018281548110610ecb57fe5b9060005260206000200154905080876000018481548110610ee857fe5b9060005260206000200181905550600183018760010160008381526020019081526020016000208190555086600001805480610f2057fe5b60019003818190600052602060002001600090559055866001016000878152602001908152602001600020600090556001945050505050610f62565b60009150505b92915050565b60008083600101600084815260200190815260200160002054141590509291505056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a264697066735822122023d96abb50a3fd7b17433f43303c2c09b9ad88adedc13a5dbabf5379f04ca0f564736f6c63430006020033",
+  "sourceMap": "137:4146:1:-:0;;;832:17:5;852:12;:10;;;:12;;:::i;:::-;832:32;;883:9;874:6;;:18;;;;;;;;;;;;;;;;;;940:9;907:43;;936:1;907:43;;;;;;;;;;;;798:159;137:4146:1;;735:104:4;788:15;822:10;815:17;;735:104;:::o;137:4146:1:-;;;;;;;",
+  "deployedSourceMap": "137:4146:1:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;137:4146:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3430:369;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3430:369:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2174:179;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2174:179:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2600;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2600:179:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;684:163;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;684:163:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1656:145:5;;;:::i;:::-;;1071:169:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1071:169:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;3026:179;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3026:179:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1774:160;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1774:160:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1033:77:5;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1427:160:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1427:160:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;4097:184;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;4097:184:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1950:240:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1950:240:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;3430:369:1;3514:5;3531:23;3557:14;:25;3572:9;3557:25;;;;;;;;;;;:31;3583:4;3557:31;;;;;;;;;;;:37;;;;;;;;;;;;3531:63;;3617:24;3608:33;;;;;;;;:5;:33;;;;;;;;;3604:189;;;3664:1;3657:8;;;;;3604:189;3695:24;3686:33;;;;;;;;:5;:33;;;;;;;;;3682:111;;;3742:1;3735:8;;;;;3682:111;3781:1;3774:8;;;3430:369;;;;;:::o;2174:179::-;2258:4;2322:24;2281:65;;;;;;;;:14;:25;2296:9;2281:25;;;;;;;;;;;:31;2307:4;2281:31;;;;;;;;;;;:37;;;;;;;;;;;;:65;;;;;;;;;2274:72;;2174:179;;;;:::o;2600:::-;2684:4;2748:24;2707:65;;;;;;;;:14;:25;2722:9;2707:25;;;;;;;;;;;:31;2733:4;2707:31;;;;;;;;;;;:37;;;;;;;;;;;;:65;;;;;;;;;2700:72;;2600:179;;;;:::o;684:163::-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;784:56:1::1;833:6;784:14;:25;799:9;784:25;;;;;;;;;;;:31;810:4;784:31;;;;;;;;;;;:44;;:48;;:56;;;;:::i;:::-;;684:163:::0;;;:::o;1656:145:5:-;1247:12;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1762:1:::1;1725:40;;1746:6;::::0;::::1;;;;;;;;;1725:40;;;;;;;;;;;;1792:1;1775:6:::0;::::1;:19;;;;;;;;;;;;;;;;;;1656:145::o:0;1071:169:1:-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1174:59:1::1;1226:6;1174:14;:25;1189:9;1174:25;;;;;;;;;;;:31;1200:4;1174:31;;;;;;;;;;;:44;;:51;;:59;;;;:::i;:::-;;1071:169:::0;;;:::o;3026:179::-;3110:4;3174:24;3133:65;;;;;;;;:14;:25;3148:9;3133:25;;;;;;;;;;;:31;3159:4;3133:31;;;;;;;;;;;:37;;;;;;;;;;;;:65;;;;;;;;;3126:72;;3026:179;;;;:::o;1774:160::-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1903:24:1::1;1863:14;:25;1878:9;1863:25;;;;;;;;;;;:31;1889:4;1863:31;;;;;;;;;;;:37;;;:64;;;;;;;;;;;;;;;;;;;;;;;;1774:160:::0;;:::o;1033:77:5:-;1071:7;1097:6;;;;;;;;;;;1090:13;;1033:77;:::o;1427:160:1:-;1247:12:5;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1556:24:1::1;1516:14:::0;:25:::1;1531:9;1516:25;;;;;;;;;;;:31;1542:4;1516:31;;;;;;;;;;;:37;;;:64;;;;;;;;;;;;;;;;;;;;;;;;1427:160:::0;;:::o;4097:184::-;4190:4;4213:61;4267:6;4213:14;:25;4228:9;4213:25;;;;;;;;;;;:31;4239:4;4213:31;;;;;;;;;;;:44;;:53;;:61;;;;:::i;:::-;4206:68;;4097:184;;;;;:::o;1950:240:5:-;1247:12;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2058:1:::1;2038:22;;:8;:22;;;;2030:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2147:8;2118:38;;2139:6;::::0;::::1;;;;;;;;;2118:38;;;;;;;;;;;;2175:8;2166:6;::::0;:17:::1;;;;;;;;;;;;;;;;;;1950:240:::0;:::o;735:104:4:-;788:15;822:10;815:17;;735:104;:::o;6434:129:10:-;6501:4;6524:32;6529:3;:10;;6549:5;6541:14;;6524:4;:32::i;:::-;6517:39;;6434:129;;;;:::o;6731:135::-;6801:4;6824:35;6832:3;:10;;6852:5;6844:14;;6824:7;:35::i;:::-;6817:42;;6731:135;;;;:::o;6947:144::-;7024:4;7047:37;7057:3;:10;;7077:5;7069:14;;7047:9;:37::i;:::-;7040:44;;6947:144;;;;:::o;1578:404::-;1641:4;1662:21;1672:3;1677:5;1662:9;:21::i;:::-;1657:319;;1699:3;:11;;1716:5;1699:23;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1699:23:10;;;;;;;;;;;;;;;;;;;1879:3;:11;;:18;;;;1857:3;:12;;:19;1870:5;1857:19;;;;;;;;;;;:40;;;;1918:4;1911:11;;;;1657:319;1960:5;1953:12;;1578:404;;;;;:::o;2150:1512::-;2216:4;2332:18;2353:3;:12;;:19;2366:5;2353:19;;;;;;;;;;;;2332:40;;2401:1;2387:10;:15;2383:1273;;2744:21;2781:1;2768:10;:14;2744:38;;2796:17;2837:1;2816:3;:11;;:18;;;;:22;2796:42;;3078:17;3098:3;:11;;3110:9;3098:22;;;;;;;;;;;;;;;;3078:42;;3241:9;3212:3;:11;;3224:13;3212:26;;;;;;;;;;;;;;;:38;;;;3358:1;3342:13;:17;3316:3;:12;;:23;3329:9;3316:23;;;;;;;;;;;:43;;;;3465:3;:11;;:17;;;;;;;;;;;;;;;;;;;;;;;;3557:3;:12;;:19;3570:5;3557:19;;;;;;;;;;;3550:26;;;3598:4;3591:11;;;;;;;;2383:1273;3640:5;3633:12;;;2150:1512;;;;;:::o;3743:127::-;3816:4;3862:1;3839:3;:12;;:19;3852:5;3839:19;;;;;;;;;;;;:24;;3832:31;;3743:127;;;;:::o",
+  "source": "pragma solidity ^0.6.2;\n\nimport \"@openzeppelin/contracts/utils/EnumerableSet.sol\";\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\n\ncontract Oracle is Ownable {\n    using EnumerableSet for EnumerableSet.UintSet;\n\n    enum MergeRequestState { Opened, Closed, Merged }\n\n    struct MergeRequest {\n        MergeRequestState state;\n        EnumerableSet.UintSet participants;\n    }\n\n    mapping(uint256 => mapping(uint256 => MergeRequest)) private _mergeRequests;\n\n    /**\n     * Add a participant to a merge request of a project\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     * @param userId Gitlab ID of the user\n     */\n    function addParticipant(uint256 projectId, uint256 mrId, uint256 userId) public onlyOwner {\n        _mergeRequests[projectId][mrId].participants.add(userId);\n    }\n\n    /**\n     * Remove a participant to a merge request of a project\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     * @param userId Gitlab ID of the user\n     */\n    function removeParticipant(uint256 projectId, uint256 mrId, uint256 userId) public onlyOwner {\n        _mergeRequests[projectId][mrId].participants.remove(userId);\n    }\n\n    /**\n     * Update the state of a merge request of a project to Closed\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     */\n    function updateStateToClosed(uint256 projectId, uint256 mrId) public onlyOwner {\n        _mergeRequests[projectId][mrId].state = MergeRequestState.Closed;\n    }\n\n    /**\n     * Update the state of a merge request of a project to Merged\n     * @param projectId Gitlab ID of the project\n     * @param mrId Gitlab ID of the merge request\n     */\n    function updateStateToMerged(uint256 projectId, uint256 mrId) public onlyOwner {\n        _mergeRequests[projectId][mrId].state = MergeRequestState.Merged;\n    }\n\n    /**\n     * Check if a merge request of a project is in Opened state\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return True if the merge request is in Opened state\n     */\n    function isMergeRequestOpened(uint256 projectId, uint256 mrId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].state == MergeRequestState.Opened;\n    }\n\n    /**\n     * Check if a merge request of a project is in Merged state\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return {bool} True if the merge request is in Merged state\n     */\n    function isMergeRequestMerged(uint256 projectId, uint256 mrId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].state == MergeRequestState.Merged;\n    }\n\n    /**\n     * Check if a merge request of a project is in Closed state\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return {bool} True if the merge request is in Closed state\n     */\n    function isMergeRequestClosed(uint256 projectId, uint256 mrId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].state == MergeRequestState.Merged;\n    }\n\n    /**\n     * Get the merge request state as a uint\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @return {uint8} 0 for opened, 1 for merged, 2 for closed\n     */\n    function getMergeRequestState(uint256 projectId, uint256 mrId) public view returns (uint8) {\n        MergeRequestState state = _mergeRequests[projectId][mrId].state;\n        if (state == MergeRequestState.Closed) {\n            return 2;\n        } else if (state == MergeRequestState.Merged) {\n            return 1;\n        } else {\n            return 0;\n        }\n    }\n\n    /**\n     * Check if a user is a participant to a merge request of a project\n     * @param projectId Hash of the project\n     * @param mrId Gitlab ID of the merge request\n     * @param userId Gitlab ID of the user\n     * @return {bool} True if the user belongs to the participants\n     */\n    function isParticipant(uint256 projectId, uint256 mrId, uint256 userId) public view returns (bool) {\n        return _mergeRequests[projectId][mrId].participants.contains(userId);\n    }\n}",
   "sourcePath": "/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol",
   "ast": {
     "absolutePath": "/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol",
     "exportedSymbols": {
       "Oracle": [
-        227
+        265
       ]
     },
-    "id": 228,
+    "id": 266,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -275,8 +300,8 @@
         "file": "@openzeppelin/contracts/utils/EnumerableSet.sol",
         "id": 39,
         "nodeType": "ImportDirective",
-        "scope": 228,
-        "sourceUnit": 2136,
+        "scope": 266,
+        "sourceUnit": 2248,
         "src": "25:57:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -286,8 +311,8 @@
         "file": "@openzeppelin/contracts/access/Ownable.sol",
         "id": 40,
         "nodeType": "ImportDirective",
-        "scope": 228,
-        "sourceUnit": 952,
+        "scope": 266,
+        "sourceUnit": 1064,
         "src": "83:52:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -302,10 +327,10 @@
               "id": 41,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 951,
+              "referencedDeclaration": 1063,
               "src": "156:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$951",
+                "typeIdentifier": "t_contract$_Ownable_$1063",
                 "typeString": "contract Ownable"
               }
             },
@@ -315,17 +340,17 @@
           }
         ],
         "contractDependencies": [
-          848,
-          951
+          960,
+          1063
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 227,
+        "id": 265,
         "linearizedBaseContracts": [
-          227,
-          951,
-          848
+          265,
+          1063,
+          960
         ],
         "name": "Oracle",
         "nodeType": "ContractDefinition",
@@ -337,10 +362,10 @@
               "id": 43,
               "name": "EnumerableSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2135,
+              "referencedDeclaration": 2247,
               "src": "176:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EnumerableSet_$2135",
+                "typeIdentifier": "t_contract$_EnumerableSet_$2247",
                 "typeString": "library EnumerableSet"
               }
             },
@@ -351,10 +376,10 @@
               "id": 44,
               "name": "EnumerableSet.UintSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2045,
+              "referencedDeclaration": 2157,
               "src": "194:21:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_UintSet_$2045_storage_ptr",
+                "typeIdentifier": "t_struct$_UintSet_$2157_storage_ptr",
                 "typeString": "struct EnumerableSet.UintSet"
               }
             }
@@ -430,7 +455,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_UintSet_$2045_storage_ptr",
+                  "typeIdentifier": "t_struct$_UintSet_$2157_storage_ptr",
                   "typeString": "struct EnumerableSet.UintSet"
                 },
                 "typeName": {
@@ -438,10 +463,10 @@
                   "id": 52,
                   "name": "EnumerableSet.UintSet",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 2045,
+                  "referencedDeclaration": 2157,
                   "src": "340:21:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_UintSet_$2045_storage_ptr",
+                    "typeIdentifier": "t_struct$_UintSet_$2157_storage_ptr",
                     "typeString": "struct EnumerableSet.UintSet"
                   }
                 },
@@ -451,7 +476,7 @@
             ],
             "name": "MergeRequest",
             "nodeType": "StructDefinition",
-            "scope": 227,
+            "scope": 265,
             "src": "277:104:1",
             "visibility": "public"
           },
@@ -461,7 +486,7 @@
             "name": "_mergeRequests",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 227,
+            "scope": 265,
             "src": "387:75:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -632,7 +657,7 @@
                         "referencedDeclaration": 53,
                         "src": "784:44:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$2045_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$2157_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -643,10 +668,10 @@
                       "lValueRequested": false,
                       "memberName": "add",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2064,
+                      "referencedDeclaration": 2176,
                       "src": "784:48:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2045_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2045_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2157_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2157_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -686,7 +711,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "764:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -794,7 +819,7 @@
               "parameters": [],
               "src": "774:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "684:163:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -910,7 +935,7 @@
                         "referencedDeclaration": 53,
                         "src": "1174:44:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$2045_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$2157_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -921,10 +946,10 @@
                       "lValueRequested": false,
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2083,
+                      "referencedDeclaration": 2195,
                       "src": "1174:51:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2045_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2045_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2157_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2157_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -964,7 +989,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "1154:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1072,7 +1097,7 @@
               "parameters": [],
               "src": "1164:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "1071:169:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1233,7 +1258,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "1496:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1314,7 +1339,7 @@
               "parameters": [],
               "src": "1506:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "1427:160:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1475,7 +1500,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "1843:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1556,7 +1581,7 @@
               "parameters": [],
               "src": "1853:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "1774:160:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1811,7 +1836,7 @@
               ],
               "src": "2257:6:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "2174:179:1",
             "stateMutability": "view",
             "virtual": false,
@@ -2066,7 +2091,7 @@
               ],
               "src": "2683:6:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "2600:179:1",
             "stateMutability": "view",
             "virtual": false,
@@ -2321,7 +2346,7 @@
               ],
               "src": "3109:6:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "3026:179:1",
             "stateMutability": "view",
             "virtual": false,
@@ -2329,9 +2354,474 @@
           },
           {
             "body": {
-              "id": 225,
+              "id": 241,
               "nodeType": "Block",
-              "src": "3602:85:1",
+              "src": "3521:278:1",
+              "statements": [
+                {
+                  "assignments": [
+                    214
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 214,
+                      "name": "state",
+                      "nodeType": "VariableDeclaration",
+                      "overrides": null,
+                      "scope": 241,
+                      "src": "3531:23:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 213,
+                        "name": "MergeRequestState",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 49,
+                        "src": "3531:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                          "typeString": "enum Oracle.MergeRequestState"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 221,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 215,
+                          "name": "_mergeRequests",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 60,
+                          "src": "3557:14:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$_$",
+                            "typeString": "mapping(uint256 => mapping(uint256 => struct Oracle.MergeRequest storage ref))"
+                          }
+                        },
+                        "id": 217,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 216,
+                          "name": "projectId",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 206,
+                          "src": "3572:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "3557:25:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$",
+                          "typeString": "mapping(uint256 => struct Oracle.MergeRequest storage ref)"
+                        }
+                      },
+                      "id": 219,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 218,
+                        "name": "mrId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 208,
+                        "src": "3583:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "3557:31:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_MergeRequest_$54_storage",
+                        "typeString": "struct Oracle.MergeRequest storage ref"
+                      }
+                    },
+                    "id": 220,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "state",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 51,
+                    "src": "3557:37:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                      "typeString": "enum Oracle.MergeRequestState"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "3531:63:1"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                      "typeString": "enum Oracle.MergeRequestState"
+                    },
+                    "id": 225,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 222,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 214,
+                      "src": "3608:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 223,
+                        "name": "MergeRequestState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 49,
+                        "src": "3617:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_MergeRequestState_$49_$",
+                          "typeString": "type(enum Oracle.MergeRequestState)"
+                        }
+                      },
+                      "id": 224,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Closed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "3617:24:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      }
+                    },
+                    "src": "3608:33:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "condition": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      },
+                      "id": 232,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "id": 229,
+                        "name": "state",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 214,
+                        "src": "3686:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                          "typeString": "enum Oracle.MergeRequestState"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 230,
+                          "name": "MergeRequestState",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 49,
+                          "src": "3695:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_MergeRequestState_$49_$",
+                            "typeString": "type(enum Oracle.MergeRequestState)"
+                          }
+                        },
+                        "id": 231,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberName": "Merged",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "3695:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                          "typeString": "enum Oracle.MergeRequestState"
+                        }
+                      },
+                      "src": "3686:33:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseBody": {
+                      "id": 238,
+                      "nodeType": "Block",
+                      "src": "3760:33:1",
+                      "statements": [
+                        {
+                          "expression": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 236,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "3781:1:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "functionReturnParameters": 212,
+                          "id": 237,
+                          "nodeType": "Return",
+                          "src": "3774:8:1"
+                        }
+                      ]
+                    },
+                    "id": 239,
+                    "nodeType": "IfStatement",
+                    "src": "3682:111:1",
+                    "trueBody": {
+                      "id": 235,
+                      "nodeType": "Block",
+                      "src": "3721:33:1",
+                      "statements": [
+                        {
+                          "expression": {
+                            "argumentTypes": null,
+                            "hexValue": "31",
+                            "id": 233,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "3742:1:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_1_by_1",
+                              "typeString": "int_const 1"
+                            },
+                            "value": "1"
+                          },
+                          "functionReturnParameters": 212,
+                          "id": 234,
+                          "nodeType": "Return",
+                          "src": "3735:8:1"
+                        }
+                      ]
+                    }
+                  },
+                  "id": 240,
+                  "nodeType": "IfStatement",
+                  "src": "3604:189:1",
+                  "trueBody": {
+                    "id": 228,
+                    "nodeType": "Block",
+                    "src": "3643:33:1",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "hexValue": "32",
+                          "id": 226,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "3664:1:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_2_by_1",
+                            "typeString": "int_const 2"
+                          },
+                          "value": "2"
+                        },
+                        "functionReturnParameters": 212,
+                        "id": 227,
+                        "nodeType": "Return",
+                        "src": "3657:8:1"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": "Get the merge request state as a uint\n@param projectId Hash of the project\n@param mrId Gitlab ID of the merge request\n@return {uint8} 0 for opened, 1 for merged, 2 for closed",
+            "functionSelector": "1359dd8e",
+            "id": 242,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMergeRequestState",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 209,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 206,
+                  "name": "projectId",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 242,
+                  "src": "3460:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 205,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3460:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 208,
+                  "name": "mrId",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 242,
+                  "src": "3479:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 207,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3479:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3459:33:1"
+            },
+            "returnParameters": {
+              "id": 212,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 211,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 242,
+                  "src": "3514:5:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 210,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3514:5:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3513:7:1"
+            },
+            "scope": 265,
+            "src": "3430:369:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 263,
+              "nodeType": "Block",
+              "src": "4196:85:1",
               "statements": [
                 {
                   "expression": {
@@ -2339,12 +2829,12 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 222,
+                        "id": 260,
                         "name": "userId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 210,
-                        "src": "3673:6:1",
+                        "referencedDeclaration": 248,
+                        "src": "4267:6:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2366,26 +2856,26 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 215,
+                              "id": 253,
                               "name": "_mergeRequests",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 60,
-                              "src": "3619:14:1",
+                              "src": "4213:14:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$_$",
                                 "typeString": "mapping(uint256 => mapping(uint256 => struct Oracle.MergeRequest storage ref))"
                               }
                             },
-                            "id": 217,
+                            "id": 255,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 216,
+                              "id": 254,
                               "name": "projectId",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 206,
-                              "src": "3634:9:1",
+                              "referencedDeclaration": 244,
+                              "src": "4228:9:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -2396,21 +2886,21 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "3619:25:1",
+                            "src": "4213:25:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$",
                               "typeString": "mapping(uint256 => struct Oracle.MergeRequest storage ref)"
                             }
                           },
-                          "id": 219,
+                          "id": 257,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 218,
+                            "id": 256,
                             "name": "mrId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 208,
-                            "src": "3645:4:1",
+                            "referencedDeclaration": 246,
+                            "src": "4239:4:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -2421,13 +2911,13 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "3619:31:1",
+                          "src": "4213:31:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_MergeRequest_$54_storage",
                             "typeString": "struct Oracle.MergeRequest storage ref"
                           }
                         },
-                        "id": 220,
+                        "id": 258,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -2435,27 +2925,27 @@
                         "memberName": "participants",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 53,
-                        "src": "3619:44:1",
+                        "src": "4213:44:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$2045_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$2157_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
-                      "id": 221,
+                      "id": 259,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2102,
-                      "src": "3619:53:1",
+                      "referencedDeclaration": 2214,
+                      "src": "4213:53:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$2045_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2045_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$2157_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2157_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (bool)"
                       }
                     },
-                    "id": 223,
+                    "id": 261,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2463,23 +2953,23 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3619:61:1",
+                    "src": "4213:61:1",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 214,
-                  "id": 224,
+                  "functionReturnParameters": 252,
+                  "id": 262,
                   "nodeType": "Return",
-                  "src": "3612:68:1"
+                  "src": "4206:68:1"
                 }
               ]
             },
             "documentation": "Check if a user is a participant to a merge request of a project\n@param projectId Hash of the project\n@param mrId Gitlab ID of the merge request\n@param userId Gitlab ID of the user\n@return {bool} True if the user belongs to the participants",
             "functionSelector": "d2687c60",
-            "id": 226,
+            "id": 264,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -2487,17 +2977,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 211,
+              "id": 249,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 206,
+                  "id": 244,
                   "name": "projectId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3526:17:1",
+                  "scope": 264,
+                  "src": "4120:17:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2505,10 +2995,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 205,
+                    "id": 243,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3526:7:1",
+                    "src": "4120:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2519,12 +3009,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 208,
+                  "id": 246,
                   "name": "mrId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3545:12:1",
+                  "scope": 264,
+                  "src": "4139:12:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2532,10 +3022,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 207,
+                    "id": 245,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3545:7:1",
+                    "src": "4139:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2546,12 +3036,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 210,
+                  "id": 248,
                   "name": "userId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3559:14:1",
+                  "scope": 264,
+                  "src": "4153:14:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2559,10 +3049,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 209,
+                    "id": 247,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3559:7:1",
+                    "src": "4153:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2572,20 +3062,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3525:49:1"
+              "src": "4119:49:1"
             },
             "returnParameters": {
-              "id": 214,
+              "id": 252,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 213,
+                  "id": 251,
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3596:4:1",
+                  "scope": 264,
+                  "src": "4190:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2593,10 +3083,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 212,
+                    "id": 250,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3596:4:1",
+                    "src": "4190:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2606,29 +3096,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3595:6:1"
+              "src": "4189:6:1"
             },
-            "scope": 227,
-            "src": "3503:184:1",
+            "scope": 265,
+            "src": "4097:184:1",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 228,
-        "src": "137:3552:1"
+        "scope": 266,
+        "src": "137:4146:1"
       }
     ],
-    "src": "0:3689:1"
+    "src": "0:4283:1"
   },
   "legacyAST": {
     "absolutePath": "/Users/v-g/Documents/personal-projects/mr-project/mr-jam/packages/smart-contracts/contracts/Oracle.sol",
     "exportedSymbols": {
       "Oracle": [
-        227
+        265
       ]
     },
-    "id": 228,
+    "id": 266,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -2647,8 +3137,8 @@
         "file": "@openzeppelin/contracts/utils/EnumerableSet.sol",
         "id": 39,
         "nodeType": "ImportDirective",
-        "scope": 228,
-        "sourceUnit": 2136,
+        "scope": 266,
+        "sourceUnit": 2248,
         "src": "25:57:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2658,8 +3148,8 @@
         "file": "@openzeppelin/contracts/access/Ownable.sol",
         "id": 40,
         "nodeType": "ImportDirective",
-        "scope": 228,
-        "sourceUnit": 952,
+        "scope": 266,
+        "sourceUnit": 1064,
         "src": "83:52:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2674,10 +3164,10 @@
               "id": 41,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 951,
+              "referencedDeclaration": 1063,
               "src": "156:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$951",
+                "typeIdentifier": "t_contract$_Ownable_$1063",
                 "typeString": "contract Ownable"
               }
             },
@@ -2687,17 +3177,17 @@
           }
         ],
         "contractDependencies": [
-          848,
-          951
+          960,
+          1063
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 227,
+        "id": 265,
         "linearizedBaseContracts": [
-          227,
-          951,
-          848
+          265,
+          1063,
+          960
         ],
         "name": "Oracle",
         "nodeType": "ContractDefinition",
@@ -2709,10 +3199,10 @@
               "id": 43,
               "name": "EnumerableSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2135,
+              "referencedDeclaration": 2247,
               "src": "176:13:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EnumerableSet_$2135",
+                "typeIdentifier": "t_contract$_EnumerableSet_$2247",
                 "typeString": "library EnumerableSet"
               }
             },
@@ -2723,10 +3213,10 @@
               "id": 44,
               "name": "EnumerableSet.UintSet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2045,
+              "referencedDeclaration": 2157,
               "src": "194:21:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_UintSet_$2045_storage_ptr",
+                "typeIdentifier": "t_struct$_UintSet_$2157_storage_ptr",
                 "typeString": "struct EnumerableSet.UintSet"
               }
             }
@@ -2802,7 +3292,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_UintSet_$2045_storage_ptr",
+                  "typeIdentifier": "t_struct$_UintSet_$2157_storage_ptr",
                   "typeString": "struct EnumerableSet.UintSet"
                 },
                 "typeName": {
@@ -2810,10 +3300,10 @@
                   "id": 52,
                   "name": "EnumerableSet.UintSet",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 2045,
+                  "referencedDeclaration": 2157,
                   "src": "340:21:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_UintSet_$2045_storage_ptr",
+                    "typeIdentifier": "t_struct$_UintSet_$2157_storage_ptr",
                     "typeString": "struct EnumerableSet.UintSet"
                   }
                 },
@@ -2823,7 +3313,7 @@
             ],
             "name": "MergeRequest",
             "nodeType": "StructDefinition",
-            "scope": 227,
+            "scope": 265,
             "src": "277:104:1",
             "visibility": "public"
           },
@@ -2833,7 +3323,7 @@
             "name": "_mergeRequests",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 227,
+            "scope": 265,
             "src": "387:75:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3004,7 +3494,7 @@
                         "referencedDeclaration": 53,
                         "src": "784:44:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$2045_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$2157_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -3015,10 +3505,10 @@
                       "lValueRequested": false,
                       "memberName": "add",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2064,
+                      "referencedDeclaration": 2176,
                       "src": "784:48:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2045_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2045_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2157_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2157_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -3058,7 +3548,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "764:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3166,7 +3656,7 @@
               "parameters": [],
               "src": "774:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "684:163:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3282,7 +3772,7 @@
                         "referencedDeclaration": 53,
                         "src": "1174:44:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$2045_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$2157_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
@@ -3293,10 +3783,10 @@
                       "lValueRequested": false,
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2083,
+                      "referencedDeclaration": 2195,
                       "src": "1174:51:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2045_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2045_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_UintSet_$2157_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2157_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) returns (bool)"
                       }
                     },
@@ -3336,7 +3826,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "1154:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3444,7 +3934,7 @@
               "parameters": [],
               "src": "1164:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "1071:169:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3605,7 +4095,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "1496:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3686,7 +4176,7 @@
               "parameters": [],
               "src": "1506:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "1427:160:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -3847,7 +4337,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 902,
+                  "referencedDeclaration": 1014,
                   "src": "1843:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3928,7 +4418,7 @@
               "parameters": [],
               "src": "1853:0:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "1774:160:1",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -4183,7 +4673,7 @@
               ],
               "src": "2257:6:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "2174:179:1",
             "stateMutability": "view",
             "virtual": false,
@@ -4438,7 +4928,7 @@
               ],
               "src": "2683:6:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "2600:179:1",
             "stateMutability": "view",
             "virtual": false,
@@ -4693,7 +5183,7 @@
               ],
               "src": "3109:6:1"
             },
-            "scope": 227,
+            "scope": 265,
             "src": "3026:179:1",
             "stateMutability": "view",
             "virtual": false,
@@ -4701,9 +5191,474 @@
           },
           {
             "body": {
-              "id": 225,
+              "id": 241,
               "nodeType": "Block",
-              "src": "3602:85:1",
+              "src": "3521:278:1",
+              "statements": [
+                {
+                  "assignments": [
+                    214
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 214,
+                      "name": "state",
+                      "nodeType": "VariableDeclaration",
+                      "overrides": null,
+                      "scope": 241,
+                      "src": "3531:23:1",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 213,
+                        "name": "MergeRequestState",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 49,
+                        "src": "3531:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                          "typeString": "enum Oracle.MergeRequestState"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 221,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 215,
+                          "name": "_mergeRequests",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 60,
+                          "src": "3557:14:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$_$",
+                            "typeString": "mapping(uint256 => mapping(uint256 => struct Oracle.MergeRequest storage ref))"
+                          }
+                        },
+                        "id": 217,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 216,
+                          "name": "projectId",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 206,
+                          "src": "3572:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "3557:25:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$",
+                          "typeString": "mapping(uint256 => struct Oracle.MergeRequest storage ref)"
+                        }
+                      },
+                      "id": 219,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 218,
+                        "name": "mrId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 208,
+                        "src": "3583:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "3557:31:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_MergeRequest_$54_storage",
+                        "typeString": "struct Oracle.MergeRequest storage ref"
+                      }
+                    },
+                    "id": 220,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "state",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 51,
+                    "src": "3557:37:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                      "typeString": "enum Oracle.MergeRequestState"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "3531:63:1"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                      "typeString": "enum Oracle.MergeRequestState"
+                    },
+                    "id": 225,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 222,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 214,
+                      "src": "3608:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 223,
+                        "name": "MergeRequestState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 49,
+                        "src": "3617:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_MergeRequestState_$49_$",
+                          "typeString": "type(enum Oracle.MergeRequestState)"
+                        }
+                      },
+                      "id": 224,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Closed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "3617:24:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      }
+                    },
+                    "src": "3608:33:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "condition": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                        "typeString": "enum Oracle.MergeRequestState"
+                      },
+                      "id": 232,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "id": 229,
+                        "name": "state",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 214,
+                        "src": "3686:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                          "typeString": "enum Oracle.MergeRequestState"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 230,
+                          "name": "MergeRequestState",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 49,
+                          "src": "3695:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_MergeRequestState_$49_$",
+                            "typeString": "type(enum Oracle.MergeRequestState)"
+                          }
+                        },
+                        "id": 231,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberName": "Merged",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "3695:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_MergeRequestState_$49",
+                          "typeString": "enum Oracle.MergeRequestState"
+                        }
+                      },
+                      "src": "3686:33:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseBody": {
+                      "id": 238,
+                      "nodeType": "Block",
+                      "src": "3760:33:1",
+                      "statements": [
+                        {
+                          "expression": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 236,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "3781:1:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "functionReturnParameters": 212,
+                          "id": 237,
+                          "nodeType": "Return",
+                          "src": "3774:8:1"
+                        }
+                      ]
+                    },
+                    "id": 239,
+                    "nodeType": "IfStatement",
+                    "src": "3682:111:1",
+                    "trueBody": {
+                      "id": 235,
+                      "nodeType": "Block",
+                      "src": "3721:33:1",
+                      "statements": [
+                        {
+                          "expression": {
+                            "argumentTypes": null,
+                            "hexValue": "31",
+                            "id": 233,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "3742:1:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_1_by_1",
+                              "typeString": "int_const 1"
+                            },
+                            "value": "1"
+                          },
+                          "functionReturnParameters": 212,
+                          "id": 234,
+                          "nodeType": "Return",
+                          "src": "3735:8:1"
+                        }
+                      ]
+                    }
+                  },
+                  "id": 240,
+                  "nodeType": "IfStatement",
+                  "src": "3604:189:1",
+                  "trueBody": {
+                    "id": 228,
+                    "nodeType": "Block",
+                    "src": "3643:33:1",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "hexValue": "32",
+                          "id": 226,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "3664:1:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_2_by_1",
+                            "typeString": "int_const 2"
+                          },
+                          "value": "2"
+                        },
+                        "functionReturnParameters": 212,
+                        "id": 227,
+                        "nodeType": "Return",
+                        "src": "3657:8:1"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": "Get the merge request state as a uint\n@param projectId Hash of the project\n@param mrId Gitlab ID of the merge request\n@return {uint8} 0 for opened, 1 for merged, 2 for closed",
+            "functionSelector": "1359dd8e",
+            "id": 242,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMergeRequestState",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 209,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 206,
+                  "name": "projectId",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 242,
+                  "src": "3460:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 205,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3460:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 208,
+                  "name": "mrId",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 242,
+                  "src": "3479:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 207,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3479:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3459:33:1"
+            },
+            "returnParameters": {
+              "id": 212,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 211,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 242,
+                  "src": "3514:5:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 210,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3514:5:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3513:7:1"
+            },
+            "scope": 265,
+            "src": "3430:369:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 263,
+              "nodeType": "Block",
+              "src": "4196:85:1",
               "statements": [
                 {
                   "expression": {
@@ -4711,12 +5666,12 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 222,
+                        "id": 260,
                         "name": "userId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 210,
-                        "src": "3673:6:1",
+                        "referencedDeclaration": 248,
+                        "src": "4267:6:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -4738,26 +5693,26 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 215,
+                              "id": 253,
                               "name": "_mergeRequests",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 60,
-                              "src": "3619:14:1",
+                              "src": "4213:14:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$_$",
                                 "typeString": "mapping(uint256 => mapping(uint256 => struct Oracle.MergeRequest storage ref))"
                               }
                             },
-                            "id": 217,
+                            "id": 255,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 216,
+                              "id": 254,
                               "name": "projectId",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 206,
-                              "src": "3634:9:1",
+                              "referencedDeclaration": 244,
+                              "src": "4228:9:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -4768,21 +5723,21 @@
                             "isPure": false,
                             "lValueRequested": false,
                             "nodeType": "IndexAccess",
-                            "src": "3619:25:1",
+                            "src": "4213:25:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_MergeRequest_$54_storage_$",
                               "typeString": "mapping(uint256 => struct Oracle.MergeRequest storage ref)"
                             }
                           },
-                          "id": 219,
+                          "id": 257,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 218,
+                            "id": 256,
                             "name": "mrId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 208,
-                            "src": "3645:4:1",
+                            "referencedDeclaration": 246,
+                            "src": "4239:4:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -4793,13 +5748,13 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "3619:31:1",
+                          "src": "4213:31:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_MergeRequest_$54_storage",
                             "typeString": "struct Oracle.MergeRequest storage ref"
                           }
                         },
-                        "id": 220,
+                        "id": 258,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -4807,27 +5762,27 @@
                         "memberName": "participants",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 53,
-                        "src": "3619:44:1",
+                        "src": "4213:44:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_UintSet_$2045_storage",
+                          "typeIdentifier": "t_struct$_UintSet_$2157_storage",
                           "typeString": "struct EnumerableSet.UintSet storage ref"
                         }
                       },
-                      "id": 221,
+                      "id": 259,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2102,
-                      "src": "3619:53:1",
+                      "referencedDeclaration": 2214,
+                      "src": "4213:53:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$2045_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2045_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_UintSet_$2157_storage_ptr_$_t_uint256_$returns$_t_bool_$bound_to$_t_struct$_UintSet_$2157_storage_ptr_$",
                         "typeString": "function (struct EnumerableSet.UintSet storage pointer,uint256) view returns (bool)"
                       }
                     },
-                    "id": 223,
+                    "id": 261,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4835,23 +5790,23 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "3619:61:1",
+                    "src": "4213:61:1",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 214,
-                  "id": 224,
+                  "functionReturnParameters": 252,
+                  "id": 262,
                   "nodeType": "Return",
-                  "src": "3612:68:1"
+                  "src": "4206:68:1"
                 }
               ]
             },
             "documentation": "Check if a user is a participant to a merge request of a project\n@param projectId Hash of the project\n@param mrId Gitlab ID of the merge request\n@param userId Gitlab ID of the user\n@return {bool} True if the user belongs to the participants",
             "functionSelector": "d2687c60",
-            "id": 226,
+            "id": 264,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -4859,17 +5814,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 211,
+              "id": 249,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 206,
+                  "id": 244,
                   "name": "projectId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3526:17:1",
+                  "scope": 264,
+                  "src": "4120:17:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4877,10 +5832,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 205,
+                    "id": 243,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3526:7:1",
+                    "src": "4120:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4891,12 +5846,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 208,
+                  "id": 246,
                   "name": "mrId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3545:12:1",
+                  "scope": 264,
+                  "src": "4139:12:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4904,10 +5859,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 207,
+                    "id": 245,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3545:7:1",
+                    "src": "4139:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4918,12 +5873,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 210,
+                  "id": 248,
                   "name": "userId",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3559:14:1",
+                  "scope": 264,
+                  "src": "4153:14:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4931,10 +5886,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 209,
+                    "id": 247,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3559:7:1",
+                    "src": "4153:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4944,20 +5899,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3525:49:1"
+              "src": "4119:49:1"
             },
             "returnParameters": {
-              "id": 214,
+              "id": 252,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 213,
+                  "id": 251,
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 226,
-                  "src": "3596:4:1",
+                  "scope": 264,
+                  "src": "4190:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4965,10 +5920,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 212,
+                    "id": 250,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3596:4:1",
+                    "src": "4190:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -4978,20 +5933,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3595:6:1"
+              "src": "4189:6:1"
             },
-            "scope": 227,
-            "src": "3503:184:1",
+            "scope": 265,
+            "src": "4097:184:1",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 228,
-        "src": "137:3552:1"
+        "scope": 266,
+        "src": "137:4146:1"
       }
     ],
-    "src": "0:3689:1"
+    "src": "0:4283:1"
   },
   "compiler": {
     "name": "solc",
@@ -5047,12 +6002,12 @@
         }
       },
       "links": {},
-      "address": "0x2210E3deBe08966FE98E3601EE57858D4bc191C0",
-      "transactionHash": "0xa5b571221c9d659fcc522b7473b74d921ff99811d0c566bafe50c4cd92fa0893"
+      "address": "0x364014B2a559359713b64758D136950f0E8693c7",
+      "transactionHash": "0x4675b485676bc94ac6e62527668d58098ce678a999926ab097e97acb9827d022"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-21T15:18:06.496Z",
+  "updatedAt": "2020-05-22T06:38:03.031Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
@@ -5061,6 +6016,15 @@
           "mrId": "Gitlab ID of the merge request",
           "projectId": "Gitlab ID of the project",
           "userId": "Gitlab ID of the user"
+        }
+      },
+      "getMergeRequestState(uint256,uint256)": {
+        "params": {
+          "mrId": "Gitlab ID of the merge request",
+          "projectId": "Hash of the project"
+        },
+        "returns": {
+          "_0": "{uint8} 0 for opened, 1 for merged, 2 for closed"
         }
       },
       "isMergeRequestClosed(uint256,uint256)": {
@@ -5134,6 +6098,9 @@
     "methods": {
       "addParticipant(uint256,uint256,uint256)": {
         "notice": "Add a participant to a merge request of a project"
+      },
+      "getMergeRequestState(uint256,uint256)": {
+        "notice": "Get the merge request state as a uint"
       },
       "isMergeRequestClosed(uint256,uint256)": {
         "notice": "Check if a merge request of a project is in Closed state"

@@ -1,10 +1,10 @@
 import { ethers } from "ethers";
-import { useEffect, useReducer, useCallback } from "react";
+import { useEffect, useReducer, useCallback, useRef } from "react";
 // Hooks
 import { useEthers } from "./";
+import useMemoizedValue from "hooks/useMemoizedValue";
 // Config
 import { Contracts, contractMetadatas } from "./config";
-import useMemoizedValue from "hooks/useMemoizedValue";
 
 interface UseCallArgs {
   contract: Contracts;
@@ -48,6 +48,7 @@ const LOADING = "LOADING_TYPE";
 const ERROR = "ERROR_TYPE";
 const SUCCESS = "SUCCESS_TYPE";
 const UNABLE = "UNABLE_TYPE";
+const RESET = "RESET_TYPE";
 
 const reducer = <T>(state: CallState<T>, action: Action): CallState<T> => {
   switch (action.type) {
@@ -79,6 +80,13 @@ const reducer = <T>(state: CallState<T>, action: Action): CallState<T> => {
         error: null,
         data: null,
       };
+    case RESET:
+      return {
+        unable: false,
+        loading: false,
+        error: null,
+        data: null,
+      };
     default:
       throw new Error("Unknow action type");
   }
@@ -89,6 +97,7 @@ export interface UseCall<T> extends CallState<T> {
 }
 
 export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
+  const isMountedRef = useRef<boolean | null>(null);
   const memoizedHookArgs = useMemoizedValue(hookArgs);
 
   const { provider } = useEthers();
@@ -126,11 +135,13 @@ export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
       const data: any = memoizedHookArgs.args
         ? await contract[memoizedHookArgs.method](...memoizedHookArgs.args)
         : await contract[memoizedHookArgs.method]();
+      if (!isMountedRef.current) return;
       dispatch({
         type: SUCCESS,
         payload: data,
       });
     } catch (err) {
+      if (!isMountedRef.current) return;
       console.error("Error during useCall: ", err);
       dispatch({
         type: ERROR,
@@ -140,9 +151,21 @@ export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
   }, [memoizedHookArgs, provider]);
 
   useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  });
+
+  useEffect(() => {
     if (!memoizedHookArgs.manual && !memoizedHookArgs.delayCondition) {
       call();
     }
+    return () => {
+      dispatch({
+        type: RESET,
+      });
+    };
   }, [call, memoizedHookArgs]);
 
   return {
