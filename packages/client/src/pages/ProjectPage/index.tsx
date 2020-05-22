@@ -21,7 +21,10 @@ const Dashboard = () => {
     <Grid container direction="column" spacing={4}>
       <ProjectHeader projectId={projectId} ethereumProject={ethereumProject} />
       <Divider />
-      <ProjectMergeRequests projectId={projectId} />
+      <ProjectMergeRequests
+        projectId={projectId}
+        ethereumProject={ethereumProject}
+      />
     </Grid>
   );
 };

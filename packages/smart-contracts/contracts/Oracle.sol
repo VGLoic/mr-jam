@@ -84,6 +84,23 @@ contract Oracle is Ownable {
     }
 
     /**
+     * Get the merge request state as a uint
+     * @param projectId Hash of the project
+     * @param mrId Gitlab ID of the merge request
+     * @return {uint8} 0 for opened, 1 for merged, 2 for closed
+     */
+    function getMergeRequestState(uint256 projectId, uint256 mrId) public view returns (uint8) {
+        MergeRequestState state = _mergeRequests[projectId][mrId].state;
+        if (state == MergeRequestState.Closed) {
+            return 2;
+        } else if (state == MergeRequestState.Merged) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
      * Check if a user is a participant to a merge request of a project
      * @param projectId Hash of the project
      * @param mrId Gitlab ID of the merge request

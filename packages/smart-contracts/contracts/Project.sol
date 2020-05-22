@@ -122,6 +122,23 @@ contract Project is ERC20, Ownable {
         );
     }
 
+    function getBountyDetails(uint256 mrId) public view returns (
+        uint256 bountyAmount,
+        bool hasRedeemed,
+        bool isContributor
+    ) {
+        Bounty storage bounty = bounties[mrId];
+        bountyAmount = bounty.amount;
+        hasRedeemed = bounty.registeredRedeemers.contains(_msgSender());
+        isContributor = bounty.contributions[_msgSender()] > 0;
+
+        return (
+            bountyAmount,
+            hasRedeemed,
+            isContributor
+        );
+    }
+
     function _addMember(address account, uint256 id) internal {
         require(account != address(0), "Project: account can not be the zero address");
         require(!isMember(account), "Project: account is already a member");

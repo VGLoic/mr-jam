@@ -8,13 +8,19 @@ import { useProjectMergeRequests } from "./controllers/useProjectMergeRequests";
 import MergeRequestCard from "./MergeRequestCard";
 import StateMenu from "./StateMenu";
 import DateChoice from "./DateChoice";
+// Types
+import { UseEthereumProject } from "pages/ProjectPage/controllers/useEthereumProject";
 // Styles
 import { useStyles } from "./styles";
 
 interface ProjectMergeRequestsProps {
   projectId: string;
+  ethereumProject: UseEthereumProject;
 }
-const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
+const ProjectMergeRequests = ({
+  projectId,
+  ethereumProject,
+}: ProjectMergeRequestsProps) => {
   const {
     selectedMrState,
     selectMrState,
@@ -49,7 +55,11 @@ const ProjectMergeRequests = ({ projectId }: ProjectMergeRequestsProps) => {
     </Grid>
   ) : (
     data.project.mergeRequests.edges.map(({ node: mergeRequest }) => (
-      <MergeRequestCard key={mergeRequest.id} mergeRequest={mergeRequest} />
+      <MergeRequestCard
+        key={mergeRequest.id}
+        mergeRequest={mergeRequest}
+        ethereumProject={ethereumProject}
+      />
     ))
   );
 
