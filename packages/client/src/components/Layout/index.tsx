@@ -3,6 +3,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 // Component
 import Header from "components/Header";
+import TransactionSnackbars from "components/TransactionSnackbars";
 // Styles
 import { useStyles } from "./styles";
 
@@ -22,6 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
           <Grid item md={1} />
         </Grid>
       </main>
+      <TransactionSnackbars />
     </div>
   );
 };

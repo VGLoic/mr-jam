@@ -1,8 +1,9 @@
 import { ethers } from "ethers";
-import { useEffect, useReducer, useCallback, useRef } from "react";
+import { useEffect, useReducer, useCallback } from "react";
 // Hooks
-import { useEthers } from "./";
+import useEthers from "./useEthers";
 import useMemoizedValue from "hooks/useMemoizedValue";
+import useMountedRef from "./useMountedRef";
 // Config
 import { Contracts, contractMetadatas } from "./config";
 
@@ -88,7 +89,7 @@ const reducer = <T>(state: CallState<T>, action: Action): CallState<T> => {
         data: null,
       };
     default:
-      throw new Error("Unknow action type");
+      throw new Error("Unknown action type");
   }
 };
 
@@ -97,7 +98,7 @@ export interface UseCall<T> extends CallState<T> {
 }
 
 export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
-  const isMountedRef = useRef<boolean | null>(null);
+  const isMountedRef = useMountedRef();
   const memoizedHookArgs = useMemoizedValue(hookArgs);
 
   const { provider } = useEthers();
@@ -114,6 +115,8 @@ export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
       }
       dispatch({ type: LOADING });
       const network: ethers.utils.Network = await provider.getNetwork();
+
+      if (!isMountedRef) return;
       const contractAddress: string | undefined =
         memoizedHookArgs.address ||
         contractMetadatas[memoizedHookArgs.contract]?.networks?.[
@@ -135,27 +138,20 @@ export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
       const data: any = memoizedHookArgs.args
         ? await contract[memoizedHookArgs.method](...memoizedHookArgs.args)
         : await contract[memoizedHookArgs.method]();
-      if (!isMountedRef.current) return;
+      if (!isMountedRef) return;
       dispatch({
         type: SUCCESS,
         payload: data,
       });
     } catch (err) {
-      if (!isMountedRef.current) return;
+      if (!isMountedRef) return;
       console.error("Error during useCall: ", err);
       dispatch({
         type: ERROR,
         payload: err.message,
       });
     }
-  }, [memoizedHookArgs, provider]);
-
-  useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-    };
-  });
+  }, [memoizedHookArgs, provider, isMountedRef]);
 
   useEffect(() => {
     if (!memoizedHookArgs.manual && !memoizedHookArgs.delayCondition) {
@@ -166,7 +162,7 @@ export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
         type: RESET,
       });
     };
-  }, [call, memoizedHookArgs]);
+  }, [call, memoizedHookArgs, isMountedRef]);
 
   return {
     ...state,

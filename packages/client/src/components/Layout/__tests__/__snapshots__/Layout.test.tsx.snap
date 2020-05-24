@@ -48,7 +48,7 @@ exports[`<Layout /> it should match snapshot: Layout 1`] = `
           <svg
             aria-hidden="true"
             aria-label="MetaMask is properly setup"
-            class="MuiSvgIcon-root makeStyles-correctNetwork-175 makeStyles-aloneIcon-176"
+            class="MuiSvgIcon-root makeStyles-correctNetwork-177 makeStyles-aloneIcon-178"
             focusable="false"
             title="MetaMask is properly setup"
             viewBox="0 0 24 24"
@@ -118,6 +118,9 @@ exports[`<Layout /> it should match snapshot: Layout 1`] = `
         />
       </div>
     </main>
+    <div
+      class="MuiBox-root MuiBox-root-163"
+    />
   </div>
 </DocumentFragment>
 `;

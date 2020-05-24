@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 // Hooks
 import { useCall } from "contexts/ethers/useCall";
-import { useEthers } from "contexts/ethers";
+import useEthers from "contexts/ethers/useEthers";
 // Config
 import { Contracts } from "contexts/ethers/config";
 

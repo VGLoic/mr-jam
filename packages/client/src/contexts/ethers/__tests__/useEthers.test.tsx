@@ -1,16 +1,15 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 
-import {
-  EthersProvider,
+import EthersProvider, {
   IEthereum,
-  useEthers,
   METAMASK_ENABLED_KEY,
   METAMASK_ENABLED_VALUE,
-} from "..";
+} from "../EthersProvider";
+import useEthers from "../useEthers";
 
 jest.mock("ethers");
 
-describe("<EthersProvider />", () => {
+describe("useEthers", () => {
   describe("when ethereum in not in the window object", () => {
     let originalEthereum: IEthereum;
     beforeAll(() => {

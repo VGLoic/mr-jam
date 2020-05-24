@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { useEffect, useReducer, useCallback } from "react";
 // Hooks
 import useMemoizedValue from "hooks/useMemoizedValue";
-import { useEthers } from ".";
+import useEthers from "./useEthers";
 // Config
 import { Contracts, contractMetadatas } from "./config";
 

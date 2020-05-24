@@ -2,20 +2,23 @@ import { ethers } from "ethers";
 import { useEffect, useReducer, useCallback } from "react";
 // Hooks
 import useMemoizedValue from "hooks/useMemoizedValue";
-import { useEthers } from ".";
+import useEthers from "./useEthers";
+import useTransactionStore from "./useTransactionStore";
+import useMountedRef from "./useMountedRef";
 // Config
 import { Contracts, contractMetadatas } from "./config";
+import { ContractTransaction, Contract } from "ethers/contract";
 
 export interface TransactionState {
   unable: boolean;
   loading: boolean;
   error: string | null;
-  data: ethers.Contract | null;
+  data: string | null;
 }
 
 interface Action {
   type: string;
-  payload?: any;
+  payload?: string;
 }
 
 const initialState: TransactionState = {
@@ -26,10 +29,14 @@ const initialState: TransactionState = {
 };
 
 export interface UseTransactionArgs {
+  key: string;
+  description?: string;
   contract: Contracts;
   method: string;
   address?: string;
   args?: any[];
+  onBroadcast?: Function;
+  onMined?: Function;
 }
 
 export interface UseTransaction
@@ -64,7 +71,7 @@ const reducer = (state: TransactionState, action: Action): TransactionState => {
         unable: false,
         loading: false,
         error: null,
-        data: action.payload,
+        data: action.payload as string,
       };
     case UNABLE:
       return {
@@ -78,12 +85,16 @@ const reducer = (state: TransactionState, action: Action): TransactionState => {
   }
 };
 
-export const useTransaction = (
-  hookArgs: UseTransactionArgs
-): UseTransaction => {
+const useTransaction = (hookArgs: UseTransactionArgs): UseTransaction => {
   const memoizedHookArgs = useMemoizedValue(hookArgs);
+  const isMountedRef = useMountedRef();
 
   const { provider } = useEthers();
+  const {
+    broadcastTransaction,
+    updateTransactionAsMined,
+    updateTransactionAsReverted,
+  } = useTransactionStore();
 
   const [state, dispatch] = useReducer<
     (state: TransactionState, action: Action) => TransactionState
@@ -92,56 +103,161 @@ export const useTransaction = (
   useEffect(() => {
     if (!provider) {
       dispatch({ type: UNABLE });
-      return;
     }
   }, [provider]);
 
-  const sendTransaction = useCallback(async (): Promise<void> => {
-    if (!provider) return;
-    try {
-      const network: ethers.utils.Network = await provider.getNetwork();
-      const contractAddress: string | undefined =
-        memoizedHookArgs.address ||
-        contractMetadatas[memoizedHookArgs.contract]?.networks?.[
-          network.chainId
-        ];
+  const handleTransaction = useCallback(
+    async (tx: ContractTransaction): Promise<void> => {
+      broadcastTransaction({
+        key: memoizedHookArgs.key,
+        description: memoizedHookArgs.description,
+        hash: tx.hash as string,
+      });
 
-      if (!contractAddress) {
-        dispatch({
-          type: ERROR,
-          payload: "No contract address have been found",
-        });
+      try {
+        await tx.wait();
+      } catch (err) {
+        console.error(
+          "useTransaction: transaction has been reverted. Stack error: ",
+          err
+        );
+        updateTransactionAsReverted(memoizedHookArgs.key);
         return;
       }
 
-      const contract = new ethers.Contract(
+      updateTransactionAsMined(memoizedHookArgs.key);
+
+      if (memoizedHookArgs.onMined) {
+        try {
+          await memoizedHookArgs.onMined();
+        } catch (err) {
+          console.error(
+            "useTransaction: onMined callback has failed. Stack error: ",
+            err
+          );
+        }
+      }
+    },
+    [
+      memoizedHookArgs,
+      broadcastTransaction,
+      updateTransactionAsMined,
+      updateTransactionAsReverted,
+    ]
+  );
+
+  const sendTransaction = useCallback(async (): Promise<void> => {
+    if (!provider) return;
+    dispatch({
+      type: LOADING,
+    });
+
+    let network: ethers.utils.Network;
+    try {
+      network = await provider.getNetwork();
+    } catch (err) {
+      console.error(
+        "useTransaction: unable to get the network. Stack error: ",
+        err
+      );
+      if (!isMountedRef) return;
+      dispatch({
+        type: ERROR,
+        payload: "Unable to select the current network",
+      });
+      return;
+    }
+
+    const contractAddress: string | undefined =
+      memoizedHookArgs.address ||
+      contractMetadatas[memoizedHookArgs.contract]?.networks?.[network.chainId];
+
+    if (!contractAddress) {
+      console.error("useTransaction: no contract address has been found.");
+      dispatch({
+        type: ERROR,
+        payload: "No contract address have been found",
+      });
+      return;
+    }
+
+    let ethersContract: Contract;
+    try {
+      ethersContract = new Contract(
         contractAddress,
         contractMetadatas[memoizedHookArgs.contract].abi,
         provider.getSigner()
       );
-
-      const tx = memoizedHookArgs.args
-        ? await contract[memoizedHookArgs.method](...memoizedHookArgs.args)
-        : await contract[memoizedHookArgs.method]();
-
-      dispatch({
-        type: LOADING,
-      });
-
-      const receipt = await tx.wait();
-      dispatch({
-        type: SUCCESS,
-        payload: receipt,
-      });
     } catch (err) {
-      console.error("Error during useTransaction: ", err);
-      console.error("Error during useTransaction: ", err.message);
+      console.error(
+        "useTransaction: unable to build the contract. Stack error: ",
+        err
+      );
       dispatch({
         type: ERROR,
-        payload: err.message,
+        payload: "Unable to build the contract from abi, address and signer",
+      });
+      return;
+    }
+
+    let tx: ContractTransaction;
+    try {
+      tx = memoizedHookArgs.args
+        ? await ethersContract[memoizedHookArgs.method](
+            ...memoizedHookArgs.args
+          )
+        : await ethersContract[memoizedHookArgs.method]();
+    } catch (err) {
+      console.error(
+        "useTransaction: unable to broadcast the transaction. Stack error: ",
+        err
+      );
+      if (!isMountedRef) return;
+      dispatch({
+        type: ERROR,
+        payload: "Unable to broadcast the transaction",
+      });
+      return;
+    }
+
+    if (!tx.hash) {
+      console.error("useTransaction: no transaction hash has been found.");
+      if (!isMountedRef) return;
+      dispatch({
+        type: ERROR,
+        payload: "No transaction hash has been found",
+      });
+      return;
+    }
+
+    handleTransaction(tx);
+
+    if (memoizedHookArgs.onBroadcast) {
+      try {
+        await memoizedHookArgs.onBroadcast();
+      } catch (err) {
+        console.error(
+          "useTransaction: onBroadcast callback has failed. Stack error: ",
+          err
+        );
+        if (!isMountedRef) return;
+        dispatch({
+          type: ERROR,
+          payload: "onBroadcast callback has failed",
+        });
+        return;
+      }
+    }
+
+    if (isMountedRef) {
+      dispatch({
+        type: SUCCESS,
+        payload: tx.hash,
       });
     }
-  }, [memoizedHookArgs, provider]);
+  }, [memoizedHookArgs, provider, isMountedRef, handleTransaction]);
 
   return [sendTransaction, state];
 };
+
+export default useTransaction;

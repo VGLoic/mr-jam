@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 // Hooks and Types
 import useUserInputs, { UseUserInputs } from "./useUserInputs";
 // Types
@@ -61,10 +61,11 @@ const useAdditionalUsers = ({
     });
   };
 
-  const reset = (): void => {
-    additionalUserInputContext.reset();
+  const { reset: userInputReset } = additionalUserInputContext;
+  const reset = useCallback((): void => {
+    userInputReset();
     setAdditionalUsers(new Map());
-  };
+  }, [userInputReset]);
 
   return {
     additionalUserInputContext,
