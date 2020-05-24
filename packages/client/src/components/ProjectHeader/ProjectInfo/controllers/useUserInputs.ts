@@ -60,6 +60,9 @@ const useUserInputs = ({
 
   useEffect(() => {
     hasMountedRef.current = true;
+    return () => {
+      hasMountedRef.current = false;
+    };
   }, []);
 
   return {

@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 // Hooks
-import {
-  useTransaction,
+import useTransaction, {
   TransactionState,
 } from "contexts/ethers/useTransaction";
 // Constants
@@ -32,18 +31,19 @@ const usePlaceBounty = ({
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setAmount(event.target.value);
 
-  const [sendTransaction, transactionState] = useTransaction({
+  const [placeBounty, transactionState] = useTransaction({
+    key: `project/contribute/${mrId}`,
+    description: "Contributing to merge request",
     contract: Contracts.Project,
     address: projectAddress,
     method: "contribute",
     args: [mrId, amount],
+    onBroadcast: onClose,
+    onMined: useCallback(() => {
+      refetchBalance();
+      refetchBounty();
+    }, [refetchBalance, refetchBounty]),
   });
-
-  const placeBounty = async () => {
-    await sendTransaction();
-    await Promise.all([refetchBalance(), refetchBounty()]);
-    onClose();
-  };
 
   return {
     amount,

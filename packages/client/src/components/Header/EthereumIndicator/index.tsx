@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { Tooltip, IconButton, SvgIcon } from "@material-ui/core";
 import { mdiEthereum } from "@mdi/js";
 // Hooks
-import { useEthers } from "contexts/ethers";
+import useEthers from "contexts/ethers/useEthers";
 import { allowedNetworks } from "contexts/ethers/config";
 // Styles
 import { useStyles } from "./styles";

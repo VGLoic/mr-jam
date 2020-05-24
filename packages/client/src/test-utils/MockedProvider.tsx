@@ -5,7 +5,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ethers } from "ethers";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "contexts/theme";
-import { EthersProvider, IEthersContext } from "contexts/ethers";
+import EthersProvider, { IEthersContext } from "contexts/ethers/EthersProvider";
+import TransactionStoreProvider from "contexts/ethers/TransactionStoreProvider";
 
 const mockProvider: any = {
   getNetwork: () => 1,
@@ -42,12 +43,14 @@ const MockedProvider = ({ children, ethersContext }: MockedProviderProps) => {
 
   return (
     <EthersProvider {...ethersProviderProps}>
-      <Router>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <CssBaseline />
-          <ThemeProvider>{children}</ThemeProvider>
-        </MuiPickersUtilsProvider>
-      </Router>
+      <TransactionStoreProvider>
+        <Router>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <CssBaseline />
+            <ThemeProvider>{children}</ThemeProvider>
+          </MuiPickersUtilsProvider>
+        </Router>
+      </TransactionStoreProvider>
     </EthersProvider>
   );
 };

@@ -3,9 +3,11 @@ import { render } from "test-utils";
 import { ethers } from "ethers";
 
 import EthereumIndicator from "../index";
-import { UseEthers, useEthers, EthersProvider } from "contexts/ethers";
+import EthersProvider from "contexts/ethers/EthersProvider";
+import useEthers, { UseEthers } from "contexts/ethers/useEthers";
 
-jest.mock("contexts/ethers");
+jest.mock("contexts/ethers/useEthers");
+jest.mock("contexts/ethers/EthersProvider");
 
 describe("<EthereumIndicator />", () => {
   const baseMock: UseEthers = {
@@ -14,6 +16,7 @@ describe("<EthereumIndicator />", () => {
     isNetworkAllowed: true,
     enableMetaMask: jest.fn(() => Promise.resolve()),
     provider: {} as ethers.providers.Web3Provider,
+    selectedAddress: null,
   };
   beforeAll(() => {
     (EthersProvider as jest.Mock<

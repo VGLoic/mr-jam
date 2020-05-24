@@ -1,9 +1,8 @@
 // Hooks and Types
-import {
-  useTransaction,
+import useTransaction, {
   TransactionState,
 } from "contexts/ethers/useTransaction";
-import { useEthers } from "contexts/ethers";
+import useEthers from "contexts/ethers/useEthers";
 import useAdditionalUsers, {
   UseAdditionalUsers,
 } from "../../controllers/useAdditionalUsers";
@@ -74,7 +73,9 @@ const useManageProject = ({
     idBlackList,
   });
 
-  const [sendTransaction, transactionState] = useTransaction({
+  const [inviteUsers, transactionState] = useTransaction({
+    key: `project/addUsers/${projectAddress}`,
+    description: "Adding users to project",
     contract: Contracts.Project,
     method: "addMembers",
     address: projectAddress,
@@ -82,13 +83,9 @@ const useManageProject = ({
       additionalUsers.map((wrappedUser) => wrappedUser.address),
       additionalUsers.map((wrappedUser) => wrappedUser.user.id),
     ],
+    onBroadcast: closeDialog,
+    onMined: resetAdditionalUsers,
   });
-
-  const inviteUsers = async () => {
-    await sendTransaction();
-    closeDialog();
-    resetAdditionalUsers();
-  };
 
   const isConfirmDisabled =
     transactionState.loading || additionalUsers.length === 0;

@@ -1,10 +1,9 @@
 // Hooks and Types
-import {
-  useTransaction,
+import useTransaction, {
   TransactionState,
 } from "contexts/ethers/useTransaction";
 import useUser from "hooks/useUser";
-import { useEthers } from "contexts/ethers";
+import useEthers from "contexts/ethers/useEthers";
 import useUserInputs, { UseUserInputs } from "../../controllers/useUserInputs";
 import useAdditionalUsers, {
   UseAdditionalUsers,
@@ -44,7 +43,9 @@ const useCreateProject = ({
     removeUser,
   } = useAdditionalUsers({ resetParameter: projectId });
 
-  const [sendTransaction, transactionState] = useTransaction({
+  const [createProject, transactionState] = useTransaction({
+    key: `project/register/${projectId}`,
+    description: "Creating project on Ethereum",
     contract: Contracts.ProjectRegistry,
     method: "registerProject",
     args: [
@@ -54,13 +55,9 @@ const useCreateProject = ({
       additionalUsers.map((wrappedUser) => wrappedUser.address),
       additionalUsers.map((wrappedUser) => wrappedUser.user.id),
     ],
+    onBroadcast: closeDialog,
+    onMined: updateProjectAddress,
   });
-
-  const createProject = async () => {
-    await sendTransaction();
-    await updateProjectAddress();
-    closeDialog();
-  };
 
   const isConfirmDisabled =
     adminUserInputContext.isConfirmDisabled || transactionState.loading;
