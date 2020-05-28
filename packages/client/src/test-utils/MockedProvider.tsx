@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "contexts/theme";
 import EthersProvider, { IEthersContext } from "contexts/ethers/EthersProvider";
 import TransactionStoreProvider from "contexts/ethers/TransactionStoreProvider";
+import CallStoreProvider from "contexts/ethers/CallStoreProvider";
 
 const mockProvider: any = {
   getNetwork: () => 1,
@@ -25,6 +26,7 @@ const defaultMockEthersContext: IEthersContext = {
   isEnabled: true,
   setIsEnabled: () => {},
   isNetworkAllowed: true,
+  networkId: "1",
   provider: mockProvider as ethers.providers.Web3Provider,
   selectedAddress: "0x627306090abaB3A6e1400e9345bC60c78a8BEf57",
 };
@@ -44,12 +46,14 @@ const MockedProvider = ({ children, ethersContext }: MockedProviderProps) => {
   return (
     <EthersProvider {...ethersProviderProps}>
       <TransactionStoreProvider>
-        <Router>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <CssBaseline />
-            <ThemeProvider>{children}</ThemeProvider>
-          </MuiPickersUtilsProvider>
-        </Router>
+        <CallStoreProvider>
+          <Router>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <CssBaseline />
+              <ThemeProvider>{children}</ThemeProvider>
+            </MuiPickersUtilsProvider>
+          </Router>
+        </CallStoreProvider>
       </TransactionStoreProvider>
     </EthersProvider>
   );

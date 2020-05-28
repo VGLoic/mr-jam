@@ -12,6 +12,7 @@ import * as serviceWorker from "./serviceWorker";
 import { AuthProvider } from "contexts/auth";
 import EthersProvider from "contexts/ethers/EthersProvider";
 import TransactionStoreProvider from "contexts/ethers/TransactionStoreProvider";
+import CallStoreProvider from "contexts/ethers/CallStoreProvider";
 // Services
 import { client } from "./services/apollo.service";
 
@@ -22,7 +23,9 @@ ReactDOM.render(
         <AuthProvider>
           <EthersProvider>
             <TransactionStoreProvider>
-              <App />
+              <CallStoreProvider>
+                <App />
+              </CallStoreProvider>
             </TransactionStoreProvider>
           </EthersProvider>
         </AuthProvider>
