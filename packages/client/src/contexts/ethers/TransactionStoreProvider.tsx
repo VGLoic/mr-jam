@@ -14,7 +14,7 @@ export interface TransactionPayload {
 export interface TransactionObject extends TransactionPayload {
   state: TransactionState;
 }
-export type TransactionStore = Record<string, TransactionObject>;
+export type TransactionStore = Record<Key, TransactionObject>;
 
 export const BROADCASTED = "BROADCASTED";
 interface BroadcastAction {

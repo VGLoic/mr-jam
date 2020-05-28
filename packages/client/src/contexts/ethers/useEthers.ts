@@ -11,6 +11,7 @@ export interface UseEthers {
   isMetaMaskDetected: boolean;
   isEnabled: boolean;
   enableMetaMask: () => Promise<void>;
+  networkId: string | null;
   isNetworkAllowed: boolean;
   provider: ethers.providers.Web3Provider | null;
   selectedAddress: string | null;
@@ -43,6 +44,7 @@ const useEthers = (): UseEthers => {
     isMetaMaskDetected: context.isMetaMaskDetected,
     isEnabled: context.isEnabled,
     enableMetaMask,
+    networkId: context.networkId,
     isNetworkAllowed: context.isNetworkAllowed,
     provider: context.provider,
     selectedAddress: context.selectedAddress,

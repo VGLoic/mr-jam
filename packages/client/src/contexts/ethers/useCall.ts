@@ -1,11 +1,12 @@
-import { ethers } from "ethers";
-import { useEffect, useReducer, useCallback } from "react";
+import { ethers, Contract } from "ethers";
+import { useEffect, useCallback } from "react";
 // Hooks
 import useEthers from "./useEthers";
 import useMemoizedValue from "hooks/useMemoizedValue";
-import useMountedRef from "./useMountedRef";
 // Config
 import { Contracts, contractMetadatas } from "./config";
+import useCallStore from "./useCallStore";
+import { Web3Provider } from "ethers/providers";
 
 interface UseCallArgs {
   contract: Contracts;
@@ -16,156 +17,130 @@ interface UseCallArgs {
   delayCondition?: boolean;
 }
 
-interface CallState<T> {
+const buildKey = (
+  contract: string,
+  contractAddress: string,
+  method: string,
+  args?: any[]
+) => {
+  return JSON.stringify({
+    contract,
+    contractAddress,
+    method,
+    args,
+  });
+};
+
+export interface UseCall<T> {
   unable: boolean;
   loading: boolean;
+  refreshing: boolean;
   error: string | null;
   data: T | null;
-}
-
-interface Action {
-  type: string;
-  payload?: any;
-}
-
-const buildInitialState = <T>(hookArgs: UseCallArgs): CallState<T> => {
-  if (hookArgs.manual) {
-    return {
-      unable: false,
-      loading: false,
-      error: null,
-      data: null,
-    };
-  }
-  return {
-    unable: false,
-    loading: !hookArgs.delayCondition,
-    error: null,
-    data: null,
-  };
-};
-
-const LOADING = "LOADING_TYPE";
-const ERROR = "ERROR_TYPE";
-const SUCCESS = "SUCCESS_TYPE";
-const UNABLE = "UNABLE_TYPE";
-const RESET = "RESET_TYPE";
-
-const reducer = <T>(state: CallState<T>, action: Action): CallState<T> => {
-  switch (action.type) {
-    case LOADING:
-      return {
-        unable: false,
-        loading: true,
-        error: null,
-        data: state.data,
-      };
-    case ERROR:
-      return {
-        unable: false,
-        loading: false,
-        error: action.payload || "Default error",
-        data: null,
-      };
-    case SUCCESS:
-      return {
-        unable: false,
-        loading: false,
-        error: null,
-        data: action.payload,
-      };
-    case UNABLE:
-      return {
-        unable: true,
-        loading: false,
-        error: null,
-        data: null,
-      };
-    case RESET:
-      return {
-        unable: false,
-        loading: false,
-        error: null,
-        data: null,
-      };
-    default:
-      throw new Error("Unknown action type");
-  }
-};
-
-export interface UseCall<T> extends CallState<T> {
   refetch: () => Promise<void>;
 }
 
 export const useCall = <T>(hookArgs: UseCallArgs): UseCall<T> => {
-  const isMountedRef = useMountedRef();
   const memoizedHookArgs = useMemoizedValue(hookArgs);
 
-  const { provider } = useEthers();
+  const { provider, networkId } = useEthers();
 
-  const [state, dispatch] = useReducer<
-    (state: CallState<T>, action: Action) => CallState<T>
-  >(reducer, buildInitialState(hookArgs));
+  const {
+    getCallObject,
+    loadCall,
+    updateCallAsError,
+    updateCallAsSuccess,
+  } = useCallStore();
+
+  const contractAddress: string | null =
+    memoizedHookArgs.address ||
+    (networkId &&
+      contractMetadatas[memoizedHookArgs.contract]?.networks?.[networkId]) ||
+    null;
+
+  const unable: boolean = !provider || !contractAddress;
+
+  const key = contractAddress
+    ? buildKey(
+        memoizedHookArgs.contract,
+        contractAddress,
+        memoizedHookArgs.method,
+        memoizedHookArgs.args
+      )
+    : null;
+
+  const callObject = getCallObject(key);
 
   const call: () => Promise<void> = useCallback(async () => {
+    if (unable || !key) return;
+    loadCall(key);
+
+    let contract: Contract;
     try {
-      if (!provider) {
-        dispatch({ type: UNABLE });
-        return;
-      }
-      dispatch({ type: LOADING });
-      const network: ethers.utils.Network = await provider.getNetwork();
-
-      if (!isMountedRef) return;
-      const contractAddress: string | undefined =
-        memoizedHookArgs.address ||
-        contractMetadatas[memoizedHookArgs.contract]?.networks?.[
-          network.chainId
-        ];
-
-      if (!contractAddress) {
-        dispatch({
-          type: ERROR,
-          payload: "No contract address have been found",
-        });
-        return;
-      }
-      const contract = new ethers.Contract(
-        contractAddress,
+      contract = new ethers.Contract(
+        contractAddress as string,
         contractMetadatas[memoizedHookArgs.contract].abi,
-        provider
+        provider as Web3Provider
       );
-      const data: any = memoizedHookArgs.args
+    } catch (err) {
+      console.error(
+        "useCall: Unable to create the contract. Detailed error: ",
+        err
+      );
+      updateCallAsError({
+        key,
+        error: "useCall: Unable to create the contract",
+      });
+      return;
+    }
+
+    let data: T;
+    try {
+      data = memoizedHookArgs.args
         ? await contract[memoizedHookArgs.method](...memoizedHookArgs.args)
         : await contract[memoizedHookArgs.method]();
-      if (!isMountedRef) return;
-      dispatch({
-        type: SUCCESS,
-        payload: data,
-      });
     } catch (err) {
-      if (!isMountedRef) return;
-      console.error("Error during useCall: ", err);
-      dispatch({
-        type: ERROR,
-        payload: err.message,
+      console.error(
+        "useCall: Error during call to the blockchain. Detailed error: ",
+        err
+      );
+      updateCallAsError({
+        key,
+        error: "useCall: Error during call to the blockchain",
       });
+      return;
     }
-  }, [memoizedHookArgs, provider, isMountedRef]);
+
+    updateCallAsSuccess({ key, data });
+  }, [
+    contractAddress,
+    key,
+    loadCall,
+    memoizedHookArgs.args,
+    memoizedHookArgs.contract,
+    memoizedHookArgs.method,
+    provider,
+    unable,
+    updateCallAsError,
+    updateCallAsSuccess,
+  ]);
 
   useEffect(() => {
-    if (!memoizedHookArgs.manual && !memoizedHookArgs.delayCondition) {
+    if (
+      !unable &&
+      !memoizedHookArgs.manual &&
+      !memoizedHookArgs.delayCondition
+    ) {
       call();
     }
-    return () => {
-      dispatch({
-        type: RESET,
-      });
-    };
-  }, [call, memoizedHookArgs, isMountedRef]);
+  }, [call, memoizedHookArgs, unable]);
 
   return {
-    ...state,
+    unable,
+    refreshing: callObject.loading && callObject.data,
+    loading: callObject.loading && !callObject.data,
+    error: callObject.error,
+    data: callObject.data as T | null,
     refetch: call,
   };
 };

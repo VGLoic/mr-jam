@@ -9,7 +9,7 @@ export const allowedNetworks: Record<number, string> = {
 export interface ContractMetadata {
   abi: any[];
   bytecode: string;
-  networks?: Record<number, string>;
+  networks?: Record<string, string>;
 }
 
 export enum Contracts {
